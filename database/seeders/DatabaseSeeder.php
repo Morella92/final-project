@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             TeacherSeeder::class,
             SpecializationSeeder::class,
             SponsorshipSeeder::class,
+            VoteSeeder::class,
         ]);
     }
 }
