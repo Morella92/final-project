@@ -3,7 +3,11 @@
 @section('content')
 
     <div class="container">
-        <h1>Ciao mondo</h1>
+        @foreach($teachers as $teacher)
+            <p>{{$teacher->name}}</p>
+            <p>{{$teacher->address}}</p>
+
+        @endforeach
     </div>
 
 @endsection

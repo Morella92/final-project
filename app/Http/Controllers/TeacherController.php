@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Teacher;
 use App\Http\Requests\StoreTeacherRequest;
 use App\Http\Requests\UpdateTeacherRequest;
+use Illuminate\Http\Request;
+
 
 class TeacherController extends Controller
 {
@@ -15,8 +17,9 @@ class TeacherController extends Controller
      */
     public function index()
     {   
-
-        return view('teachers.index');
+        $teachers = Teacher::all();
+        dd($teachers);
+        return view('teachers.index', compact('teachers'));
     }
 
     /**
@@ -26,7 +29,7 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        //
+        return view('teachers.create');
     }
 
     /**
@@ -36,8 +39,12 @@ class TeacherController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(StoreTeacherRequest $request)
-    {
-        //
+    {   
+        $data = $request->all();
+
+        $new_teacher= Teacher::create($data);
+
+        return to_route('teachers.create', $new_teacher);
     }
 
     /**
@@ -47,8 +54,10 @@ class TeacherController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Teacher $teacher)
-    {
-        //
+    {   
+        
+
+        return view('teachers.show', compact('teacher'));
     }
 
     /**
@@ -59,7 +68,7 @@ class TeacherController extends Controller
      */
     public function edit(Teacher $teacher)
     {
-        //
+        return view('teachers.edit', compact('teacher'));
     }
 
     /**
@@ -70,8 +79,12 @@ class TeacherController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateTeacherRequest $request, Teacher $teacher)
-    {
-        //
+    {   
+        $data = $request->all();
+
+        $teacher->update($data);
+
+        return to_route('teachers.show', $teacher);
     }
 
     /**
@@ -81,7 +94,9 @@ class TeacherController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Teacher $teacher)
-    {
-        //
+    {   
+        $teacher->delete();
+        
+        return back(); 
     }
 }

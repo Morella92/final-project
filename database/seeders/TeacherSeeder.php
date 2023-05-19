@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use App\Models\Teacher;
+use App\Models\User;
 
 class TeacherSeeder extends Seeder
 {
@@ -16,9 +17,11 @@ class TeacherSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for($i=0; $i<10; $i++){
+        $userIds = User::pluck('id')->toArray();
 
+        foreach ($userIds as $userId) {
             $teacher = new Teacher();
+            $teacher->user_id = $userId;
             $teacher->address = $faker->address();
             $teacher->cv = $faker->text();
             $teacher->picture = $faker->text();
