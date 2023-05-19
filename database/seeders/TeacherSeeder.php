@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use App\Models\Teacher;
 use App\Models\User;
+use App\Models\Specialization;
 
 class TeacherSeeder extends Seeder
 {
@@ -17,7 +18,8 @@ class TeacherSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        $userIds = User::pluck('id')->toArray();
+        $userIds = User::pluck('id')->all();
+        $specializationIds = Specialization::all()->pluck('id')->all();
 
         foreach ($userIds as $userId) {
             $teacher = new Teacher();
@@ -29,6 +31,9 @@ class TeacherSeeder extends Seeder
             $teacher->credit_card = $faker->creditCardNumber();
 
             $teacher->save();
+
+            $randomSpecializationIds = $faker->randomElements($specializationIds, rand(1,2));
+            $teacher->specializations()->attach($randomSpecializationIds);
         }
     }
 }

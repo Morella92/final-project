@@ -23,11 +23,11 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UserSeeder::class,
-            TeacherSeeder::class,
             SpecializationSeeder::class,
             SponsorshipSeeder::class,
             VoteSeeder::class,
             MessageSeeder::class,
+            TeacherSeeder::class,
         ]);
     }
 }
