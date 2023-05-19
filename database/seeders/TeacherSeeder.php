@@ -9,6 +9,7 @@ use App\Models\Teacher;
 use App\Models\User;
 use App\Models\Specialization;
 use App\Models\Sponsorship;
+use App\Models\Vote;
 
 class TeacherSeeder extends Seeder
 {
@@ -22,6 +23,7 @@ class TeacherSeeder extends Seeder
         $userIds = User::pluck('id')->all();
         $specializationIds = Specialization::all()->pluck('id')->all();
         $sponsorshipIds = Sponsorship::all()->pluck('id')->all();
+        $voteIds = Vote::all()->pluck('id')->all();
 
         foreach ($userIds as $userId) {
             $teacher = new Teacher();
@@ -39,6 +41,9 @@ class TeacherSeeder extends Seeder
 
             $randomSponsorshipIds = $faker->randomElements($sponsorshipIds, rand(1,2));
             $teacher->sponsorships()->attach($randomSponsorshipIds);
+
+            $randomVoteIds = $faker->randomElements($voteIds, rand(1,5));
+            $teacher->votes()->attach($randomVoteIds);
         }
     }
 }
