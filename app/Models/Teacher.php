@@ -17,4 +17,8 @@ class Teacher extends Model
     public function specializations(){
         return $this->belongsToMany(Specialization::class);
     }
+
+    public function sponsorships(){
+        return $this->belongsToMany(Sponsorship::class);
+    }
 }

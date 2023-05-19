@@ -8,6 +8,7 @@ use Faker\Generator as Faker;
 use App\Models\Teacher;
 use App\Models\User;
 use App\Models\Specialization;
+use App\Models\Sponsorship;
 
 class TeacherSeeder extends Seeder
 {
@@ -20,6 +21,7 @@ class TeacherSeeder extends Seeder
     {
         $userIds = User::pluck('id')->all();
         $specializationIds = Specialization::all()->pluck('id')->all();
+        $sponsorshipIds = Sponsorship::all()->pluck('id')->all();
 
         foreach ($userIds as $userId) {
             $teacher = new Teacher();
@@ -34,6 +36,9 @@ class TeacherSeeder extends Seeder
 
             $randomSpecializationIds = $faker->randomElements($specializationIds, rand(1,2));
             $teacher->specializations()->attach($randomSpecializationIds);
+
+            $randomSponsorshipIds = $faker->randomElements($sponsorshipIds, rand(1,2));
+            $teacher->sponsorships()->attach($randomSponsorshipIds);
         }
     }
 }
