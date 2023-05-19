@@ -10,6 +10,8 @@ use App\Models\User;
 use App\Models\Specialization;
 use App\Models\Sponsorship;
 use App\Models\Vote;
+use App\Models\Message;
+use App\Models\Review;
 
 class TeacherSeeder extends Seeder
 {
@@ -24,6 +26,7 @@ class TeacherSeeder extends Seeder
         $specializationIds = Specialization::all()->pluck('id')->all();
         $sponsorshipIds = Sponsorship::all()->pluck('id')->all();
         $voteIds = Vote::all()->pluck('id')->all();
+        
 
         foreach ($userIds as $userId) {
             $teacher = new Teacher();
@@ -34,6 +37,7 @@ class TeacherSeeder extends Seeder
             $teacher->phone = $faker->phoneNumber();
             $teacher->credit_card = $faker->creditCardNumber();
 
+            
             $teacher->save();
 
             $randomSpecializationIds = $faker->randomElements($specializationIds, rand(1,2));

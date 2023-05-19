@@ -25,4 +25,12 @@ class Teacher extends Model
     public function votes(){
         return $this->belongsToMany(Vote::class);
     }
+
+    public function message(){
+        return $this->belongsTo(Message::class);
+    }
+
+    public function review(){
+        return $this->belongsTo(Review::class);
+    }
 }

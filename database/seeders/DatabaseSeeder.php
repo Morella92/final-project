@@ -26,8 +26,9 @@ class DatabaseSeeder extends Seeder
             SpecializationSeeder::class,
             SponsorshipSeeder::class,
             VoteSeeder::class,
-            MessageSeeder::class,
             TeacherSeeder::class,
+            MessageSeeder::class,
+            ReviewSeeder::class,
         ]);
     }
 }
