@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->unique();
+            $table->unsignedBigInteger('user_id')->unique()->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->string('address', 255)->required();
             $table->string('cv', 255)->nullable();
             $table->string('picture', 255)->nullable();
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE')->onUpdate('CASCADE');
         });
     }
 

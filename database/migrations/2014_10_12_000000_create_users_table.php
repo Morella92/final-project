@@ -21,9 +21,11 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            
+          
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *

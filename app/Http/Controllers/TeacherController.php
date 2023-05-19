@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Teacher;
+use App\Models\User;
 use App\Http\Requests\StoreTeacherRequest;
 use App\Http\Requests\UpdateTeacherRequest;
 use Illuminate\Http\Request;
@@ -18,7 +19,11 @@ class TeacherController extends Controller
     public function index()
     {   
         $teachers = Teacher::all();
-        dd($teachers);
+
+        // $user = $teachers->user;
+     
+
+        // dd($user);
         return view('teachers.index', compact('teachers'));
     }
 
