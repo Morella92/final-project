@@ -40,10 +40,7 @@ class TeacherSeeder extends Seeder
             'Via Roma 148, Ravenna Italia',
             'Via serra 15, Como Italia'
             ];
-            
-            $address = array_values($address); // Reindicizza l'array $address per mantenere l'ordine degli indici
-            $addressCount = count($address); // Numero di elementi nell'array $address
-            $addressIndex = 0;
+          
            
 
         $userIds = User::pluck('id')->all();
@@ -53,12 +50,13 @@ class TeacherSeeder extends Seeder
         $voteIds = Vote::all()->pluck('id')->all();
               
 
+        
         foreach ($userIds as $userId){
+        
             $teacher = new Teacher();
             $teacher->id = $userId;
             $teacher->user_id = $userId;
-            $teacher->address = $address[$addressIndex];
-            echo "Address Index: " . $addressIndex . "\n";
+            $teacher->address = $address[$userId - 1];
             $teacher->cv = $faker->text();
             $teacher->picture = $faker->text();
             $teacher->phone = $faker->phoneNumber();
@@ -76,7 +74,7 @@ class TeacherSeeder extends Seeder
             $randomVoteIds = $faker->randomElements($voteIds, rand(1,5));
             $teacher->votes()->attach($randomVoteIds);
 
-            $addressIndex = ($addressIndex + 1) % $addressCount;
+            
         }
     }
 }
