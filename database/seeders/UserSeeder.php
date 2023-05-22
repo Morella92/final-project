@@ -17,9 +17,6 @@ class UserSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-
-        
-
         $name=[
             'Lars Andersen', 
             'Alessandro Ferrari', 

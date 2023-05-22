@@ -22,7 +22,7 @@ class TeacherSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        $address = [
+        $addresses = [
             'Vesterbrogade 12, Copenaghen, Danimarca',
             'Via Maranello 20, Modena, Italia',
             'Mühlenstraße 8 Berlino, Germania',
@@ -41,7 +41,7 @@ class TeacherSeeder extends Seeder
             'Via serra 15, Como Italia'
         ];
 
-        $phone = [
+        $phones = [
             '+45 12345678',
             '+39 0123456789',
             '+49 1234567890',
@@ -60,23 +60,40 @@ class TeacherSeeder extends Seeder
             '+33 1234567891'
         ];
 
+        $pictures = [
+            '/img/volti/lars-andersen.png',
+            '/img/volti/alessandro-ferrari.png',
+            '/img/volti/anna-muller.png',
+            '/img/volti/gabriel-schmidt.png',
+            '/img/volti/elena-fisher.png',
+            '/img/volti/jackson-thompson.png',
+            '/img/volti/ethan-rodriguez.png',
+            '/img/volti/ava-smith.png',
+            '/img/volti/benjamin-brown.png',
+            '/img/volti/mia-clark.png',
+            '/img/volti/hiroshi-tanaka.png',
+            '/img/volti/sakura-yamamoto.png',
+            '/img/volti/mei-ling.png',
+            '/img/volti/raj-patel.png',
+            '/img/volti/giovanni-rotella.png',
+            '/img/volti/morena-piemontese.png'
+        ];
+
         $userIds = User::pluck('id')->all();
        
         $specializationIds = Specialization::all()->pluck('id')->all();
         $sponsorshipIds = Sponsorship::all()->pluck('id')->all();
         $voteIds = Vote::all()->pluck('id')->all();
               
-
-        
         foreach ($userIds as $userId){
         
             $teacher = new Teacher();
             $teacher->id = $userId;
             $teacher->user_id = $userId;
-            $teacher->address = $address[$userId - 1];
+            $teacher->address = $addresses[$userId - 1];
             $teacher->cv = $faker->text();
-            $teacher->picture = $faker->text();
-            $teacher->phone = $phone[$userId - 1];
+            $teacher->picture = $pictures[$userId - 1];
+            $teacher->phone = $phones[$userId - 1];
             $teacher->credit_card = $faker->creditCardNumber();
 
             
