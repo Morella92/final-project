@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->float('price')->required();
             $table->text('description')->required();
-            $table->date('duration')->required();
+            $table->integer('duration')->required();
             $table->softDeletes();
             $table->timestamps();
         });
