@@ -39,7 +39,7 @@ class TeacherSeeder extends Seeder
             'Patel Nagar 11, Mumbai, India',
             'Via Roma 148, Ravenna Italia',
             'Via serra 15, Como Italia'
-            ];
+        ];
           
            
 
