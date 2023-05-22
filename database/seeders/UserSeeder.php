@@ -40,13 +40,29 @@ class UserSeeder extends Seeder
         $nameCount = count($name);
         $index = 0;
 
-
+        $emails = [
+            'lars.andersen@post.tele.dk', 
+            'alessandro.ferrari@gmail.com', 
+            'anna.müller@versanet.de',
+            'gabriel.schmidt@mail.de',
+            'elena.fischer@bluemail.ch', 
+            'jackson.thompson@aol.com',
+            'ethan.rodriguez@yahoo.es', 
+            'ava.smith@virginmedia.com',
+            'benjaminbrown@icloud.com',
+            'miaclark@att.net',
+            'hiroshitanaka@ocn.ne.jp', 
+            'sakurayamamoto@biglobe.ne.jp',  
+            'meiling@wo.com.cn',
+            'rajipatel@zoo.com',
+            'giovanni.rotella@libero.it',
+        ];
 
         for($i=0; $i<15; $i++){
 
             User::create([
                 'name' => $name[$index],
-                'email' => $faker->unique()->email(),
+                'email' => $emails[$index],
                 'password' => Hash::make($faker->word(10))
 
             ]);

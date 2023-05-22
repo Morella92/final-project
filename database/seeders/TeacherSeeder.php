@@ -40,8 +40,25 @@ class TeacherSeeder extends Seeder
             'Via Roma 148, Ravenna Italia',
             'Via serra 15, Como Italia'
         ];
-          
-           
+
+        $phone = [
+            '+45 12345678',
+            '+39 0123456789',
+            '+49 1234567890',
+            '+49 9876543210',
+            '+41 7878787878',
+            '+1 2125556789',
+            '+34 612345678',
+            '+44 2071234567',
+            '+1 1619876543',
+            '+61 290123456',
+            '+81 345678901',
+            '+81 234567890',
+            '+86 13987654321',
+            '+91 9876543210',
+            '+39 3456789123',
+            '+33 1234567891'
+        ];
 
         $userIds = User::pluck('id')->all();
        
@@ -59,7 +76,7 @@ class TeacherSeeder extends Seeder
             $teacher->address = $address[$userId - 1];
             $teacher->cv = $faker->text();
             $teacher->picture = $faker->text();
-            $teacher->phone = $faker->phoneNumber();
+            $teacher->phone = $phone[$userId - 1];
             $teacher->credit_card = $faker->creditCardNumber();
 
             
@@ -73,8 +90,6 @@ class TeacherSeeder extends Seeder
 
             $randomVoteIds = $faker->randomElements($voteIds, rand(1,5));
             $teacher->votes()->attach($randomVoteIds);
-
-            
         }
     }
 }
