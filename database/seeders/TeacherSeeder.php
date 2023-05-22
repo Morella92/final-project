@@ -76,7 +76,7 @@ class TeacherSeeder extends Seeder
             '/img/volti/mei-ling.png',
             '/img/volti/raj-patel.png',
             '/img/volti/giovanni-rotella.png',
-            '/img/volti/morena-piemontese.png'
+            '/img/volti/morena-piemontese.png',
         ];
 
         $userIds = User::pluck('id')->all();

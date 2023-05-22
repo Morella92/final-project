@@ -21,5 +21,14 @@
                 <span class="fw-bold my-2">Numero:</span> {{$teacher->phone}};
             </p>
         </div>
+
+{{-- CURRICULUM VITAE --}}
+
+        {{-- <div>
+            <h3 class="text-uppercase">curriculum vitae</h3>
+           @foreach ($collection as $item)
+               
+           @endforeach
+        </div> --}}
     </div>
 @endsection
