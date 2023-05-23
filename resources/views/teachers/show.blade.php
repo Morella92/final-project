@@ -13,22 +13,33 @@
         @empty
             -
         @endforelse
-        <div>
-            <h3>Contatti</h3>
-            <p class="card-text">  
-                <span class="fw-bold my-2">Email:</span> {{$teacher->user->email}}; <br>
-                <span class="fw-bold my-2">Indirizzo:</span> {{$teacher->address}}; <br>
-                <span class="fw-bold my-2">Numero:</span> {{$teacher->phone}};
-            </p>
+        <div class="d-flex justify-content-around py-3">
+            <div>
+                <h3>Contatti</h3>
+                <p class="card-text">  
+                    <span class="fw-bold my-2">Email:</span> {{$teacher->user->email}}; <br>
+                    <span class="fw-bold my-2">Indirizzo:</span> {{$teacher->address}}; <br>
+                    <span class="fw-bold my-2">Numero:</span> {{$teacher->phone}};
+                </p>
+            </div>
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <h3>Curriculum Vitae</h3>
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <img src="{{$teacher->cv}}" alt="">
+                    </div>
+                  </div>
+                </div>
+            </div>
+            
         </div>
 
-{{-- CURRICULUM VITAE --}}
 
-        {{-- <div>
-            <h3 class="text-uppercase">curriculum vitae</h3>
-           @foreach ($collection as $item)
-               
-           @endforeach
-        </div> --}}
+
     </div>
 @endsection

@@ -79,6 +79,25 @@ class TeacherSeeder extends Seeder
             '/img/volti/morena-piemontese.png',
         ];
 
+        $cvs = [
+            '/img/cv/CV-1.png',
+            '/img/cv/CV-2.png',
+            '/img/cv/CV-3.png',
+            '/img/cv/CV-4.png',
+            '/img/cv/CV-5.png',
+            '/img/cv/CV-6.png',
+            '/img/cv/CV-7.png',
+            '/img/cv/CV-8.png',
+            '/img/cv/CV-9.png',
+            '/img/cv/CV-10.png',
+            '/img/cv/CV-11.png',
+            '/img/cv/CV-12.png',
+            '/img/cv/CV-13.png',
+            '/img/cv/CV-14.png',
+            '/img/cv/CV-15.png',
+            '/img/cv/CV-16.png',
+        ];
+
         $userIds = User::pluck('id')->all();
        
         $specializationIds = Specialization::all()->pluck('id')->all();
@@ -91,7 +110,7 @@ class TeacherSeeder extends Seeder
             $teacher->id = $userId;
             $teacher->user_id = $userId;
             $teacher->address = $addresses[$userId - 1];
-            $teacher->cv = $faker->text();
+            $teacher->cv = $cvs[$userId - 1];
             $teacher->picture = $pictures[$userId - 1];
             $teacher->phone = $phones[$userId - 1];
             $teacher->credit_card = $faker->creditCardNumber();
