@@ -1,4 +1,4 @@
-@extends('layouts.prova')
+@extends('layouts.auth')
 
 @section('content')
 {{-- NEW --}}
@@ -23,7 +23,7 @@
                       <span class="h1 fw-bold mb-0 text-white">Logo</span>
                     </div>
   
-                    <h5 class="fw-normal mb-3 pb-3  text-white" style="letter-spacing: 1px;">Accedi con il tuo account</h5>
+                    <h5 class="fw-normal mb-3 pb-3  text-white" style="letter-spacing: 1px;">Accedi al tuo pannello amministrazione</h5>
   {{-- email --}}
                     <label for="email" class="col-form-label text-md-right  text-white">{{ __('E-Mail Address') }}</label>
 
@@ -72,15 +72,11 @@
                     
 
 {{-- registrati --}}
-                    <p class="mb-5 pb-lg-2 mt-3  text-white" style="color: #393f81;">Non sei ancora registrato? 
+                    <p class="mb-5 pb-lg-2 mt-3  text-white" style="color: #393f81;">Non sei ancora registrato?  <br>
                         <button type="button" class="btn btn-outline-danger fw-bold mt-3"> <a class="nav-link" href="{{ route('register') }}">Crea account</a></button>
-
-
-
-
-
                        
-                       </p>
+                        <button type="button" class="btn btn-outline-warning fw-bold mt-3 ms-5"> <a class="nav-link" href="#">Prosegui navigazione</a></button>
+                       </p>           
                   </form>
   
                 </div>
