@@ -85,10 +85,10 @@
             </div>
         </nav>
 
-        <main class="">
-            @yield('content')
-        </main>
     </div>
+    <main class="">
+        @yield('content')
+    </main>
 </body>
 
 </html>
