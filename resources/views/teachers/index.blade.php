@@ -3,7 +3,9 @@
 @section('content')
 
     <div class="container py-5">
-        
+
+        <a href="{{ route('teachers.create')}}" class="btn btn-warning my-3">Crea il tuo profilo</a>
+
         <div class="row justify-content-around gy-5">
             @foreach($teachers as $teacher)
                 <div class="card col-5">
