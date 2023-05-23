@@ -92,7 +92,9 @@
                                     <div class="mb-4 row mb-0 d-flex justify-content-around">
                                         
                                         <button type="submit" class="col-4 btn btn-primary">
-                                            Registrati
+                                            <a class="nav-link" href="{{ __('teachers/create') }}">
+                                                Registrati
+                                            </a>
                                         </button>
                                         <button type="button" class="col-4 btn btn-outline-warning fw-bold">
                                             <a class="nav-link" href="{{ route('login') }}">

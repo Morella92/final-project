@@ -61,7 +61,7 @@
 {{-- login --}}
             <div class=>
                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
+                  {{ __('Login') }}
                 </button>
 
                  @if (Route::has('password.request'))
@@ -73,9 +73,14 @@
 
 {{-- registrati --}}
                     <p class="mb-5 pb-lg-2 mt-3  text-white" style="color: #393f81;">Non sei ancora registrato?  <br>
-                        <button type="button" class="btn btn-outline-danger fw-bold mt-3"> <a class="nav-link" href="{{ route('register') }}">Crea account</a></button>
+                        <button type="button" class="btn btn-outline-danger fw-bold mt-3"> 
+                          <a class="nav-link" href="{{ route('register') }}">
+                            Crea account</a>
+                          </button>
                        
-                        <button type="button" class="btn btn-outline-warning fw-bold mt-3 ms-5"> <a class="nav-link" href="#">Prosegui navigazione</a></button>
+                        <button type="button" class="btn btn-outline-warning fw-bold mt-3 ms-5"> 
+                          <a class="nav-link" href="#">Prosegui navigazione</a>
+                        </button>
                        </p>           
                   </form>
   
