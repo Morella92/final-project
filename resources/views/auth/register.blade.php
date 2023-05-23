@@ -88,11 +88,11 @@
                                         </div>
                                     </div>
 
-                                {{-- bottoni --}}
+                                    {{-- bottoni --}}
                                     <div class="mb-4 row mb-0 d-flex justify-content-around">
                                         
                                         <button type="submit" class="col-4 btn btn-primary">
-                                            <a class="nav-link" href="{{ route('teachers.create') }}">
+                                            <a class="nav-link">
                                                 Registrati
                                             </a>
                                         </button>
