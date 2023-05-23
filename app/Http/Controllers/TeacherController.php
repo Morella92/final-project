@@ -43,8 +43,13 @@ class TeacherController extends Controller
      */
     public function store(StoreTeacherRequest $request)
     {   
-        $data = $request->all();
+        $data = $request->validated();
 
+        // if ($request->hasFile('image')) {
+        //     $cover_path = Storage::put('uploads', $data['image']);
+        //     $data['cover_image'] = $cover_path;
+        // }
+            
         $new_teacher= Teacher::create($data);
 
         return to_route('teachers.create', $new_teacher);

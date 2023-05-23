@@ -13,7 +13,7 @@ class StoreTeacherRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class StoreTeacherRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            
+            'performance' => 'nullable|string|max:255',
+            'cv' => 'nullable|image|max:1024',
+            'picture' => 'nullable|image|max:1024',
+            'phone' =>  'nullable|string|max:50',
+            'credit_card' => 'nullable|integer|max:16'
         ];
     }
 }

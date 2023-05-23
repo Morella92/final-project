@@ -10,6 +10,19 @@ class Teacher extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $with = [
+
+        'specializations',
+    ];
+
+    protected $fillable = [
+        'performance',
+        'cv',
+        'picture',
+        'phone',
+        'credit_card'
+    ];
+
     public function user(){
         return $this->belongsTo(User::class);
     }

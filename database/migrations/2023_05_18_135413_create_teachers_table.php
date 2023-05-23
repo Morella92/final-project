@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->unique()->onDelete('CASCADE')->onUpdate('CASCADE');
-            // $table->string('address', 255)->require();
+            $table->string('performance', 255)->nullable();
             $table->string('cv', 255)->nullable();
             $table->string('picture', 255)->nullable();
             $table->string('phone', 50)->nullable();
