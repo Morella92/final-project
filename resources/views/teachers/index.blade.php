@@ -2,11 +2,11 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container py-5">
         
-        <div class="row gap-3">
+        <div class="row justify-content-around gy-5">
             @foreach($teachers as $teacher)
-                <div class="card col-4">
+                <div class="card col-5">
                     <img src="{{$teacher->picture}}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{$teacher->user->name}}</h5>
