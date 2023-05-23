@@ -18,7 +18,7 @@
                 <h3>Contatti</h3>
                 <p class="card-text">  
                     <span class="fw-bold my-2">Email:</span> {{$teacher->user->email}}; <br>
-                    <span class="fw-bold my-2">Indirizzo:</span> {{$teacher->address}}; <br>
+                    <span class="fw-bold my-2">Indirizzo:</span> {{$teacher->user->address}}; <br>
                     <span class="fw-bold my-2">Numero:</span> {{$teacher->phone}};
                 </p>
             </div>

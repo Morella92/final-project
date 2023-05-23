@@ -22,24 +22,7 @@ class TeacherSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        $addresses = [
-            'Vesterbrogade 12, Copenaghen, Danimarca',
-            'Via Maranello 20, Modena, Italia',
-            'Mühlenstraße 8 Berlino, Germania',
-            'Hauptstraße 15, Francoforte, Germania',
-            'Fischerweg 5, Zurigo, Svizzera',
-            'Thompson Street 7, New York, Stati Uniti',
-            'Calle Principal 23, Madrid, Spagna',
-            'Smith Street 10, Londra, Regno Unito',
-            'Brown Avenue 3, Boston, Stati Uniti',
-            'Clark Road 14, Sydney, Australia',
-            'Tanaka-cho 2, Tokyo, Giappone',
-            'Yamamoto-dori 6, Kyoto, Giappone',
-            'Ling Lane 9, Pechino, Cina',
-            'Patel Nagar 11, Mumbai, India',
-            'Via Roma 148, Ravenna Italia',
-            'Via serra 15, Como Italia'
-        ];
+        
 
         $phones = [
             '+45 12345678',
@@ -109,7 +92,6 @@ class TeacherSeeder extends Seeder
             $teacher = new Teacher();
             $teacher->id = $userId;
             $teacher->user_id = $userId;
-            $teacher->address = $addresses[$userId - 1];
             $teacher->cv = $cvs[$userId - 1];
             $teacher->picture = $pictures[$userId - 1];
             $teacher->phone = $phones[$userId - 1];
@@ -119,12 +101,15 @@ class TeacherSeeder extends Seeder
             $teacher->save();
 
             $randomSpecializationIds = $faker->randomElements($specializationIds, rand(1,2));
+
             $teacher->specializations()->attach($randomSpecializationIds);
 
             $randomSponsorshipIds = $faker->randomElements($sponsorshipIds, rand(1,2));
+
             $teacher->sponsorships()->attach($randomSponsorshipIds);
 
             $randomVoteIds = $faker->randomElements($voteIds, rand(1,5));
+
             $teacher->votes()->attach($randomVoteIds);
         }
     }

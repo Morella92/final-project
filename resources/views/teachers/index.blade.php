@@ -14,7 +14,7 @@
                         <h5 class="card-title">{{$teacher->user->name}}</h5>
                         <p class="card-text">
                             <span class="fw-bold">Email:</span> {{$teacher->user->email}}; <br>
-                            <span class="fw-bold">Address:</span> {{$teacher->address}}; <br>
+                            <span class="fw-bold">Address:</span> {{$teacher->user->address}}; <br>
                             <span class="fw-bold">Phone:</span> {{$teacher->phone}}
                         </p>
                         
