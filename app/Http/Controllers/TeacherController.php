@@ -21,7 +21,7 @@ class TeacherController extends Controller
     public function index()
     {   
         $teachers = Teacher::all();
-        $specializations= Specialization::all();
+        $specializations = Specialization::all();
 
         return view('teachers.index', compact('teachers'));
     }
@@ -33,7 +33,8 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        $specializations= Specialization::all();
+        $specializations = Specialization::all();
+
         return view('teachers.create', compact('specializations'));
     }
 
@@ -46,14 +47,18 @@ class TeacherController extends Controller
     public function store(StoreTeacherRequest $request)
     {   
         $data = $request->validated();
-
+        dd($request->input('specializations'));
         // if ($request->hasFile('image')) {
         //     $cover_path = Storage::put('uploads', $data['image']);
         //     $data['cover_image'] = $cover_path;
         // }
         $data['user_id'] = Auth::id();
 
-        $new_teacher= Teacher::create($data);
+        $new_teacher = Teacher::create($data);
+
+        if (isset($data['specializations'])) {
+            $new_teacher->specializations()->attach($data['specializations']);
+        }
 
         return to_route('teachers.show', $new_teacher);
     }
@@ -78,8 +83,8 @@ class TeacherController extends Controller
      */
     public function edit(Teacher $teacher)
     {
-        $specializations = Specialization::all(); 
-        // $specialization= Specialization:::orderBy('name', 'asc')->get();::orderBy('name', 'asc')->get();
+
+        $specializations = Specialization::orderBy('name', 'asc')->get(); 
   
 
         return view('teachers.edit', compact('teacher', 'specializations'));
@@ -94,9 +99,16 @@ class TeacherController extends Controller
      */
     public function update(UpdateTeacherRequest $request, Teacher $teacher)
     {   
-        $data = $request->all();
+        
+        $data = $request->validated();
 
         $teacher->update($data);
+
+        if(isset($data['specializations'])) {
+            $teacher->specializations()->sync($data['specializations']);
+        } else {
+            $teacher->specializations()->sync([]);
+        }
 
         return to_route('teachers.show', $teacher);
     }

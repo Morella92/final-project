@@ -31,7 +31,7 @@ class StoreTeacherRequest extends FormRequest
             'phone' =>  'nullable|string|max:50',
             'credit_card' => 'nullable|string|max:16',
             'user_id' => 'exists:user,id',
-            'specialization_id' => 'exists:specialization,id'
+            'specialization_id' => 'exists:specialization,id|array'
         ];
     }
 }

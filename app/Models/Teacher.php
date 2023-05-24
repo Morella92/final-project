@@ -22,7 +22,6 @@ class Teacher extends Model
         'picture',
         'phone',
         'credit_card',
-        'specialization_id',
         'user_id'
     ];
 
@@ -48,5 +47,10 @@ class Teacher extends Model
 
     public function review(){
         return $this->belongsTo(Review::class);
+    }
+
+    public function getSpecializationIds()
+    {
+        return $this->specializations->pluck('id')->all();
     }
 }

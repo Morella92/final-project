@@ -19,15 +19,24 @@
                 @enderror
             </div>
 
-            <div class="col-12">
-                <label for="specialization" class="form-label">Specializzazione *</label>
-                <input type="text" name="specialization" value=""
-                    class="form-control @error('specialization') is-invalid @enderror" id="specialization"
-                    placeholder="Inserisci la tua specializzazione">
-                @error('specialization')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
+            <div class="mb-3">
+                <label for="specializations" class="form-label">Specializzazione *</label>
+                <div class="d-flex @error('specializations') is-invalid @enderror flex-wrap gap-3">
+                  
+                  @foreach($specializations as $specialization)
+                    <div class="form-check">
+                      <input name="specializations[]" @checked( in_array($specialization->id, old('specializations',[]) ) )  class="form-check-input" type="checkbox" value="{{ $specialization->id }}" id="flexCheckDefault">
+                      <label class="form-check-label" for="flexCheckDefault">
+                        {{ $specialization->name }}
+                      </label>
+                    </div>
+                  @endforeach
+                </div>
+  
+                @error('specializations')
+                  <div class="invalid-feedback">
+                      {{ $message }}
+                  </div>
                 @enderror
             </div>
 
