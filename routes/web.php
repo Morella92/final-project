@@ -16,7 +16,7 @@ use App\Http\Controllers\TeacherController;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('welcome');
 });
 
 Route::get('/dashboard', function () {
