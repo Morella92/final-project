@@ -127,6 +127,6 @@ class TeacherController extends Controller
     {   
         $teacher->delete();
         
-        return back(); 
+        return to_route('teachers.index'); 
     }
 }

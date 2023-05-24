@@ -40,6 +40,13 @@
             </div>
 
         </div>
+        <div>
+            <form action="{{ route('teachers.destroy',$teacher) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <input class="btn btn-sm btn-danger" type="submit" value="Elimina">
+            </form>
+        </div>
 
 
 
