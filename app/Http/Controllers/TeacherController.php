@@ -8,6 +8,7 @@ use App\Models\Specialization;
 use App\Http\Requests\StoreTeacherRequest;
 use App\Http\Requests\UpdateTeacherRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class TeacherController extends Controller
@@ -49,10 +50,10 @@ class TeacherController extends Controller
         //     $cover_path = Storage::put('uploads', $data['image']);
         //     $data['cover_image'] = $cover_path;
         // }
-            
+        $data['user_id'] = Auth::id();
         $new_teacher= Teacher::create($data);
 
-        return to_route('teachers.create', $new_teacher);
+        return to_route('teachers.show', $new_teacher);
     }
 
     /**

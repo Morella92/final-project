@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('cv', 255)->nullable();
             $table->string('picture', 255)->nullable();
             $table->string('phone', 50)->nullable();
-            $table->string('credit_card', 16)->required();
+            $table->string('credit_card', 16)->nullable();
             $table->softDeletes();
             $table->timestamps();
 

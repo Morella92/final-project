@@ -13,6 +13,7 @@ class Teacher extends Model
     protected $with = [
 
         'specializations',
+        'user',
     ];
 
     protected $fillable = [
@@ -20,7 +21,9 @@ class Teacher extends Model
         'cv',
         'picture',
         'phone',
-        'credit_card'
+        'credit_card',
+        'specialization_id',
+        'user_id'
     ];
 
     public function user(){
