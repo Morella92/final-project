@@ -33,7 +33,8 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        return view('teachers.create');
+        $specializations= Specialization::all();
+        return view('teachers.create', compact('specializations'));
     }
 
     /**
@@ -51,6 +52,7 @@ class TeacherController extends Controller
         //     $data['cover_image'] = $cover_path;
         // }
         $data['user_id'] = Auth::id();
+
         $new_teacher= Teacher::create($data);
 
         return to_route('teachers.show', $new_teacher);
@@ -76,7 +78,11 @@ class TeacherController extends Controller
      */
     public function edit(Teacher $teacher)
     {
-        return view('teachers.edit', compact('teacher'));
+        $specializations = Specialization::all(); 
+        // $specialization= Specialization:::orderBy('name', 'asc')->get();::orderBy('name', 'asc')->get();
+  
+
+        return view('teachers.edit', compact('teacher', 'specializations'));
     }
 
     /**
