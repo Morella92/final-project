@@ -39,7 +39,7 @@
                   </div>
                 @enderror
             </div>
-
+        
             <div class="col-12">
                 <label for="performance" class="form-label">Prestazioni</label>
                 <input type="text" name="performance" value=""
