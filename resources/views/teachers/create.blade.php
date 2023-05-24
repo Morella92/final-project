@@ -23,7 +23,7 @@
                 <label for="specializations" class="form-label">Specializzazione *</label>
                 <div class="d-flex @error('specializations') is-invalid @enderror flex-wrap gap-3">
                   
-                  @foreach($specializations as $specialization)
+                  @foreach($specializations as $key => $specialization)
                     <div class="form-check">
                       <input name="specializations[]" @checked( in_array($specialization->id, old('specializations',[]) ) )  class="form-check-input" type="checkbox" value="{{ $specialization->id }}" id="flexCheckDefault">
                       <label class="form-check-label" for="flexCheckDefault">

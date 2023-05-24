@@ -47,7 +47,7 @@ class TeacherController extends Controller
     public function store(StoreTeacherRequest $request)
     {   
         $data = $request->validated();
-        dd($request->input('specializations'));
+        // dd($request);
         // if ($request->hasFile('image')) {
         //     $cover_path = Storage::put('uploads', $data['image']);
         //     $data['cover_image'] = $cover_path;
@@ -56,9 +56,15 @@ class TeacherController extends Controller
 
         $new_teacher = Teacher::create($data);
 
-        if (isset($data['specializations'])) {
-            $new_teacher->specializations()->attach($data['specializations']);
+        if($request->has('specializations')) {
+            $new_teacher->specializations()->attach($request->specializations);
         }
+
+        // if (isset($data['specializations'])) {
+        //     $new_teacher->specializations()->attach($data['specializations']);
+        // }
+
+        // dd($new_teacher);
 
         return to_route('teachers.show', $new_teacher);
     }
@@ -104,11 +110,9 @@ class TeacherController extends Controller
 
         $teacher->update($data);
 
-        if(isset($data['specializations'])) {
-            $teacher->specializations()->sync($data['specializations']);
-        } else {
-            $teacher->specializations()->sync([]);
-        }
+        if($request->has('specializations')) {
+            $teacher->specializations()->sync($request->specializations);
+        };
 
         return to_route('teachers.show', $teacher);
     }

@@ -11,7 +11,6 @@ class Teacher extends Model
     use HasFactory, SoftDeletes;
 
     protected $with = [
-
         'specializations',
         'user',
     ];
