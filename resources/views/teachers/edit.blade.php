@@ -99,7 +99,7 @@
                 @enderror
             </div>
             <div class="col-12">
-                <button type="submit" class="btn btn-primary">Crea profilo</button>
+                <button type="submit" class="btn btn-primary">Modifica profilo</button>
             </div>
         </form>
     </div>

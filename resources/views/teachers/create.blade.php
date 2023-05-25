@@ -3,7 +3,7 @@
 @section('content')
     <div class="container py-5">
 
-        <h2>Ciao {{ Auth::user()->name }}, completa il tuo profilo da!</h2>
+        <h2>Ciao {{ Auth::user()->name }}, completa il tuo profilo da professore!</h2>
         <p>I campi contrassegnati dall'*</p>
         <form class="row g-3" action="{{ route('teachers.store') }}" method="POST">
             @csrf
