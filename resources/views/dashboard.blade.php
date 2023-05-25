@@ -44,7 +44,9 @@
                 <div>
                     @if (isset(Auth::user()->teacher->specializations))
                         <a href="{{ route('teachers.index') }}" class="btn btn-primary text-uppercase fw-bolder"
-                            style="width: 100%;">lista insegnanti</a>
+                            style="width: 100%;">
+                            Lista insegnanti
+                        </a>
                     @endif
                 </div>
             </div>
