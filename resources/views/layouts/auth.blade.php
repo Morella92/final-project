@@ -18,9 +18,15 @@
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
 </head>
+<style>
+    body {
+        background-color: black !important;
+    }
+</style>
+
 <body>
     <main class="">
         @yield('content')
-    
+
 </body>
 </main>

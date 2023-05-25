@@ -1,1 +1,29 @@
-@import '~bootstrap/scss/bootstrap'
+@import "~bootstrap/scss/bootstrap";
+// **************************
+// STYLE RESET
+// **************************
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+img {
+    max-width: 100% !important;
+}
+
+// **************************
+// WELCOME E LARAVEL AUT PAGES
+// **************************
+.log-section {
+    background-color: black !important;
+    .log-card {
+        border: none;
+        background-color: black !important;
+        .log-btn {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+    }
+}
