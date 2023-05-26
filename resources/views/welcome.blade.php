@@ -7,20 +7,23 @@
             <div class="row d-flex justify-content-center align-items-center ">
                 <div class="col col-xl-10">
                     <div class="log-card card bg-transparent">
-                        <div class="row g-0">
-                            <div class="col-md-6 col-lg-5 d-none d-md-block">
-                                <img src="{{ asset('/img/varie/main.png') }}" alt="login form" class="img-fluid"
+                        <div class="row g-5">
+                            <div class="col-md-6 col-lg-5 d-none d-md-block log-script">
+                                <img src="{{ asset('/img/varie/main.png') }}" alt="login form" class="img-fluid log-img-form"
                                     style="border-radius: 1rem 0 0 1rem;" />
+                                <img class="log-text_logo" src="{{ asset('/img/varie/text_logo.png') }}" alt="">
                             </div>
-                            <div class="col-md-6 col-lg-7 d-flex align-items-center">
-                                <div class="card-body px-3 px-lg-4 text-black">
+                            <div class="col-md-6 col-lg-7 d-flex">
+                                <div class="card-body px-3 px-lg-4 text-black log-card_body">
 
                                     <form method="POST" action="{{ route('login') }}">
                                         @csrf
 
-                                        <div class="d-flex align-items-center mb-2">
+                                        <div class="d-flex justify-content-center align-items-center mb-2">
                                             <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
-                                            <span class="h1 fw-bold  text-white">Logo</span>
+                                            <div class="log-logo_small">
+                                                <img src="{{asset('/img/varie/logo_small.png')}}" alt="">
+                                            </div>
                                         </div>
 
                                         <h5 class="fw-bold text-center mb-3 pb-3  text-white text-uppercase"
