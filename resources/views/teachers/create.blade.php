@@ -22,38 +22,49 @@
             <div class="mb-3">
                 <label for="specializations" class="form-label">Specializzazione *</label>
                 <div class="d-flex @error('specializations') is-invalid @enderror flex-wrap gap-3">
-                  @foreach($specializations as $key => $specialization)
-                    <div class="form-check">
-                      <input name="specializations[]" @checked( in_array($specialization->id, old('specializations',[])))  
-                      class="form-check-input" type="checkbox" value="{{ $specialization->id }}" id="specializations[]"  
-                      {{ old('specializations[]') ? 'checked' : '' }}>
-                      <label class="form-check-label" for="flexCheckDefault">
-                        {{ $specialization->name }}
-                      </label>
-                    </div>
-                  @endforeach
+                    @foreach ($specializations as $key => $specialization)
+                        <div class="form-check">
+                            <input name="specializations[]" @checked(in_array($specialization->id, old('specializations', []))) class="form-check-input"
+                                type="checkbox" value="{{ $specialization->id }}" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                {{ $specialization->name }}
+                            </label>
+                        </div>
+                    @endforeach
                 </div>
-                @error('specializations[]')
-                  <div class="invalid-feedback">
-                      {{ $message }}
-                  </div>
+                @error('specializations')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
                 @enderror
             </div>
-        
-            <div class="col-12">
-                <label for="performance" class="form-label fw-bold text-uppercase">Prestazioni</label>
-                <div class="form-floating">
-                    <textarea class="form-control" name="performance" value=""
-                        class="form-control @error('performance') is-invalid @enderror" id="performance"
-                        placeholder="Inserisci la tua prestazione" style="height: 300px">
-                    </textarea>
+            {{--  --}}
+            <div>
+
+                <label class="text-black" for="performance">INSERISCI DESCRIZIONE</label>
+                <div class="form-floating mb-3">
+                    <textarea class="form-control @error('performance') is-invalid @enderror" placeholder="Insert performance here"
+                        id="performance" name="performance" style="height: 200px">{{ old('performance') }}</textarea>
                     @error('performance')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
                     @enderror
                 </div>
-            
+
+
+
+
+
+            </div>
+
+
+
+
+
+            {{--  --}}
+            <div class="col-12">
+
                 <div class="mt-2">
                     <label for="cv" class="form-label fw-bold text-uppercase">Carica Curriculum Vitae in formato
                         immagine</label>
