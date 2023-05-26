@@ -26,5 +26,3 @@ Route::get('/teachers', [TeacherController::class, 'index']);
 Route::get('/teachers/{id}', [TeacherController::class, 'show']);
 
 Route::post('/contacts', [LeadController::class, 'store']);
-
-Route::get('/specializations', [SpecializationController::class, 'index']);
