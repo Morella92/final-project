@@ -25,7 +25,7 @@
 
                                         <h5 class="fw-bold text-center mb-3 pb-3  text-white text-uppercase"
                                             style="letter-spacing: 1px;">Accedi
-                                            al'area riservata</h5>
+                                            all'area riservata</h5>
                                         {{-- email --}}
                                         <label for="email"
                                             class="col-form-label text-md-right  text-white">{{ __('E-Mail Address') }}</label>
