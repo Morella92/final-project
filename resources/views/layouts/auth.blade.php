@@ -20,7 +20,7 @@
 </head>
 <style>
     body {
-        background-color: black !important;
+        background-color: #2e5330 !important;
     }
 </style>
 

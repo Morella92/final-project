@@ -9,6 +9,9 @@ use App\Http\Requests\StoreTeacherRequest;
 use App\Http\Requests\UpdateTeacherRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
+
 
 
 class TeacherController extends Controller
@@ -47,12 +50,17 @@ class TeacherController extends Controller
     public function store(StoreTeacherRequest $request)
     {   
         $data = $request->validated();
-        // dd($request);
-        // if ($request->hasFile('image')) {
-        //     $cover_path = Storage::put('uploads', $data['image']);
-        //     $data['cover_image'] = $cover_path;
-        // }
         $data['user_id'] = Auth::id();
+
+        if($request->hasFile('image')){
+            $cv_path = $storage::put('uploads', $data['image']);
+            $data[$cv_path] = $cv_path;
+        }
+
+        if($request->hasFile('image')){
+            $picture_path = $storage::put('uploads', $data['image']);
+            $data[$picture_path] = $picture_path;
+        }
 
         $new_teacher = Teacher::create($data);
 
@@ -60,13 +68,12 @@ class TeacherController extends Controller
             $new_teacher->specializations()->attach($request->specializations);
         }
 
-        // if (isset($data['specializations'])) {
-        //     $new_teacher->specializations()->attach($data['specializations']);
-        // }
-
-        // dd($new_teacher);
+        $validator = Validator::make($request->all(), [
+            'specializations[]' => 'accepted',
+        ]);
 
         return to_route('teachers.show', $new_teacher);
+        
     }
 
     /**

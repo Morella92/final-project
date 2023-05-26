@@ -24,14 +24,13 @@ class StoreTeacherRequest extends FormRequest
     public function rules()
     {
         return [
-            
-            'performance' => 'nullable|string|max:255',
+            'performance' => 'nullable|text|min:10',
             'cv' => 'nullable|image|max:1024',
             'picture' => 'nullable|image|max:1024',
-            'phone' =>  'nullable|string|max:50',
+            'phone' =>  'nullable|string|max:20',
             'credit_card' => 'nullable|string|max:16',
             'user_id' => 'exists:user,id',
-            'specialization_id' => 'exists:specialization,id|array'
+            'specialization_id' => 'exists:specialization,id|array|required'
         ];
     }
 }
