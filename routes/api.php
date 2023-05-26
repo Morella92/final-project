@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\TeacherController;
+use App\Http\Controllers\Api\LeadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,4 @@ Route::get('/teachers', [TeacherController::class, 'index']);
 
 Route::get('/teachers/{id}', [TeacherController::class, 'show']);
 
+Route::post('/contacts', [LeadController::class, 'store']);
