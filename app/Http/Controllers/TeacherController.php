@@ -52,15 +52,16 @@ class TeacherController extends Controller
         $data = $request->validated();
         $data['user_id'] = Auth::id();
 
-        if($request->hasFile('cv')){
-            $cv_path = $storage::put('uploads', $data['cv']);
+        if($request->hasFile('image')){
+            $cv_path = Storage::put('uploads', $data['image']);
             $data['cv'] = $cv_path;
         }
 
         if($request->hasFile('image')){
-            $picture_path = $storage::put('uploads', $data['image']);
-            $data['cv'] = $picture_path;
+            $picture_path = Storage::put('uploads', $data['image']);
+            $data['picture'] = $picture_path;
         }
+
 
         $new_teacher = Teacher::create($data);
 

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Teacher extends Model
 {
@@ -52,4 +53,30 @@ class Teacher extends Model
     {
         return $this->specializations->pluck('id')->all();
     }
+
+    protected function cvPath(): Attribute
+    {
+        return Attribute::make(
+            get: function ($value, $attributes) {
+                return asset('storage/' . $attributes['cv']);
+            }
+        );
+    }
+
+    protected function picturePath(): Attribute
+    {
+        return Attribute::make(
+            get: function ($value, $attributes) {
+                return asset('storage/' . $attributes['picture']);
+            }
+        );
+    }
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['cv_path', 'picture_path'];
+
 }
