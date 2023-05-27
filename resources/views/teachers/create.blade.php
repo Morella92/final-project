@@ -7,7 +7,7 @@
         <p>I campi contrassegnati dall'*</p>
         <form class="row g-3" action="{{ route('teachers.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-
+            {{-- TELEFONO --}}
             <div class="col-md-6">
                 <label for="phone" class="form-label">Numero di telefono</label>
                 <input type="text" name="phone" value="" class="form-control @error('phone') is-invalid @enderror"
@@ -18,7 +18,7 @@
                     </span>
                 @enderror
             </div>
-
+            {{-- SPECIALIZZAZIONE --}}
             <div class="mb-3">
                 <label for="specializations" class="form-label">Specializzazione *</label>
                 <div class="d-flex @error('specializations') is-invalid @enderror flex-wrap gap-3">
@@ -38,7 +38,7 @@
                     </div>
                 @enderror
             </div>
-            {{--  --}}
+            {{-- PRESTAZIONI --}}
             <div>
 
                 <label class="text-black" for="performance">INSERISCI DESCRIZIONE</label>
@@ -51,18 +51,8 @@
                         </div>
                     @enderror
                 </div>
-
-
-
-
-
             </div>
-
-
-
-
-
-            {{--  --}}
+            {{-- UPLOAD --}}
             <div class="col-12">
 
                 <div class="mt-2">
@@ -80,22 +70,23 @@
                     </div>
                 </div>
 
-                <div>
-                    <label for="picture" class="form-label fw-bold text-uppercase">Carica immagine di profilo</label>
+                <div class="mt-2">
+                    <label for="cv" class="form-label fw-bold text-uppercase">Carica l'immagine di profilo</label>
                     <div class="input-group mb-3">
-                        <input type="file" value="picture" class="form-control @error('image') is-invalid @enderror"
-                            id="inputGroupFile02">
-                        @error('image')
+                        <input type="file" name="picture" value=""
+                            class="form-control @error('picture') is-invalid @enderror" id="inputGroupFile02">
+
+                        @error('picture')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
                 </div>
-            </div>
-            <div class="col-12">
-                <button type="submit" class="btn btn-primary">Crea profilo</button>
-            </div>
+                {{-- SUBMIT --}}
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Crea profilo</button>
+                </div>
 
         </form>
     </div>

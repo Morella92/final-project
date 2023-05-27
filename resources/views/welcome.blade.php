@@ -22,7 +22,7 @@
                                         <div class="d-flex justify-content-center align-items-center mb-2">
                                             <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
                                             <div class="log-logo_small">
-                                                <img src="{{asset('/img/varie/logo_small.png')}}" alt="">
+                                                <img src="{{ asset('/img/varie/logo_small.png') }}" alt="">
                                             </div>
                                         </div>
 
@@ -81,8 +81,6 @@
                                                     dimenticata</a>
                                             @endif
                                         </div>
-
-
 
                                         {{-- registrati --}}
                                         <p class=" pb-lg-2 mt-3  text-white" style="color: #393f81;">Non sei ancora

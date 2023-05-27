@@ -49,17 +49,18 @@ class TeacherController extends Controller
      */
     public function store(StoreTeacherRequest $request)
     {   
+       
         $data = $request->validated();
         $data['user_id'] = Auth::id();
-
-        if($request->hasFile('image')){
-            $cv_path = Storage::put('uploads', $data['image']);
-            $data['cv'] = $cv_path;
+    //    UPLOAD CV
+        if($request->hasFile('cv')){
+           $cv = Storage::put('uploads', $data['cv']);
+            $data['cv'] = $cv;
         }
-
-        if($request->hasFile('image')){
-            $picture_path = Storage::put('uploads', $data['image']);
-            $data['picture'] = $picture_path;
+// UPLOAD IMG DI PROFILO
+        if($request->hasFile('picture')){
+           $picture = Storage::put('uploads', $data['picture']);
+            $data['picture'] = $picture;
         }
 
 

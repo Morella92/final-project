@@ -14,16 +14,34 @@ img {
 // **************************
 // WELCOME E LARAVEL AUT PAGES
 // **************************
-.log-section {
+log-section {
     background-color: #2e5330 !important;
     .log-card {
         border: none;
         background-color: #3e693c !important;
+        border-radius: 20px;
+        box-shadow: 7px 7px 3px #203a22;
         .log-btn {
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 30px;
+        }
+        .log-script {
+            position: relative;
+            width: 420px;
+        }
+        .log-text_logo {
+            position: absolute;
+            top: 50px;
+            left: 40px;
+            width: 270px;
+            z-index: 100;
+        }
+
+        .log-logo_small {
+            width: 170px;
+            margin-bottom: 20px;
         }
     }
 }

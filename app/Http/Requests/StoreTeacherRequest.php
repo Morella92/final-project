@@ -24,7 +24,7 @@ class StoreTeacherRequest extends FormRequest
     public function rules()
     {
         return [
-            'performance' => 'required|string|min:10',
+            'performance' => 'nullable|string|min:10',
             'cv' => 'nullable|image|max:1024',
             'picture' => 'nullable|image|max:1024',
             'phone' =>  'nullable|string|max:20',
