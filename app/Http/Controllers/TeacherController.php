@@ -117,6 +117,26 @@ class TeacherController extends Controller
         
         $data = $request->validated();
 
+        //    UPDATE CV
+        if($request->hasFile('cv')){
+            $cv = Storage::put('uploads', $data['cv']);
+             $data['cv'] = $cv;
+             if($teacher->cv && Storage::exists($teacher->cv)){
+                 //  elimino il vecchio cv
+                 Storage::delete($teacher->cv);
+             }
+         }
+
+         // UPDATE IMG DI PROFILO
+         if($request->hasFile('picture')){
+            $picture = Storage::put('uploads', $data['picture']);
+             $data['picture'] = $picture;
+             if($teacher->picture && Storage::exists($teacher->picture)){
+                //  elimino il vecchio cv
+                Storage::delete($teacher->picture);
+            }
+         }
+
         $teacher->update($data);
 
         if($request->has('specializations')) {

@@ -76,41 +76,43 @@
                 </div>
             </div>
 
-            {{-- CURRICULUM VITAE --}}
+            {{-- MODIFICA CV E IMG DI PROFILO --}}
 
-            <div class="mt-2">
-                <label for="cv" class="form-label fw-bold text-uppercase">Carica Curriculum Vitae in formato
-                    immagine</label>
-                <div class="input-group mb-3">
-                    <input type="file" name="cv" value=""
-                        class="form-control @error('cv') is-invalid @enderror" id="inputGroupFile02">
-
-                    @error('cv')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-            </div>
-
-            {{-- IMMAGINE DI PROFILO  --}}
-            <div>
-                <label for="picture" class="form-label fw-bold text-uppercase">Carica immagine di profilo</label>
-                <div class="input-group mb-3">
-                    <input type="file" value="picture" class="form-control @error('image') is-invalid @enderror"
-                        id="inputGroupFile02">
-                    @error('image')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-            </div>
-            {{-- SUBMIT --}}
             <div class="col-12">
 
-                <button type="submit" class="btn btn-primary">Modifica profilo</button>
-            </div>
+                <div class="mt-2">
+                    <label for="cv" class="form-label fw-bold text-uppercase">Carica Curriculum Vitae in formato
+                        immagine</label>
+                    <div class="input-group mb-3">
+                        <input type="file" name="cv" value=""
+                            class="form-control @error('cv') is-invalid @enderror" id="inputGroupFile02">
+
+                        @error('cv')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="mt-2">
+                    <label for="cv" class="form-label fw-bold text-uppercase">Carica l'immagine di profilo</label>
+                    <div class="input-group mb-3">
+                        <input type="file" name="picture" value=""
+                            class="form-control @error('picture') is-invalid @enderror" id="inputGroupFile02">
+
+                        @error('picture')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+                {{-- SUBMIT --}}
+                <div class="col-12">
+
+                    <button type="submit" class="btn btn-primary">Modifica profilo</button>
+                </div>
         </form>
     </div>
 @endsection
