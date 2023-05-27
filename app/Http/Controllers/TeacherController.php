@@ -132,7 +132,7 @@ class TeacherController extends Controller
             $picture = Storage::put('uploads', $data['picture']);
              $data['picture'] = $picture;
              if($teacher->picture && Storage::exists($teacher->picture)){
-                //  elimino il vecchio cv
+                //  elimino la vecchi img di profilo
                 Storage::delete($teacher->picture);
             }
          }
@@ -154,6 +154,28 @@ class TeacherController extends Controller
      */
     public function destroy(Teacher $teacher)
     {   
+
+        if ($teacher->trashed()) {
+
+           
+            // prima di eliminare il teacher definitivamente elimino il file del cv che è stato caricato
+            if($teacher->cv && Storage::exists($teacher->cv)){
+                //  elimino il vecchio cv
+                Storage::delete($teacher->cv);
+            }
+
+            if($teacher->cv && Storage::exists($teacher->cv)){
+                //  elimino il vecchio cv
+                Storage::delete($teacher->cv);
+            }
+            
+            $teacher->forceDelete(); // eliminazione definitiva
+        
+        } else {
+            $teacher->delete(); //eliminazione soft
+        }
+
+
         $teacher->delete();
         
         return to_route('teachers.index'); 
