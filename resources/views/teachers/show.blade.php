@@ -53,6 +53,11 @@
 
         </div>
         <div>
+            <p>
+                @php
+                    echo $teacher->performance;
+                @endphp
+            </p>
             {{-- DELETE --}}
             <form action="{{ route('teachers.destroy', $teacher) }}" method="POST">
                 @csrf

@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+    {{-- CK EDITITOR CONFIGURATION --}}
+    <script src="https://cdn.ckeditor.com/4.16.2/full/ckeditor.js"></script>
+    >
+    <style type="text/css">
+        .ck-editor__editable_inline {
+            height: 300px;
+        }
+    </style>
     <div class="container py-5">
 
         <h2>Ciao {{ Auth::user()->name }}, modifica il tuo profilo!</h2>
@@ -67,7 +75,7 @@
                 <label class="text-black form-label fw-bold text-uppercase" for="performance">prestazioni</label>
                 <div class="form-floating mb-3">
                     <textarea class="form-control @error('performance') is-invalid @enderror" placeholder="Insert performance here"
-                        id="performance" name="performance" style="height: 200px">{{ old('performance') }}</textarea>
+                        id="performance" name="performance" style="height: 200px">{{ old('performance') ?? $teacher->performance }}</textarea>
                     @error('performance')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -115,4 +123,42 @@
                 </div>
         </form>
     </div>
+
+    <script>
+        CKEDITOR.replace('performance', {
+            toolbar: [{
+                    name: 'clipboard',
+                    items: ['Cut', 'Copy', 'Paste', '-', 'Undo', 'Redo']
+                },
+
+                {
+                    name: 'basicstyles',
+                    items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript']
+                },
+                {
+                    name: 'paragraph',
+                    items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote',
+                        '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr',
+                        'BidiRtl'
+                    ]
+                },
+                {
+                    name: 'links',
+                    items: ['Link', 'Unlink', 'Anchor']
+                },
+                {
+                    name: 'insert',
+                    items: ['Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe']
+                },
+                {
+                    name: 'styles',
+                    items: ['Styles', 'Format', 'Font', 'FontSize']
+                },
+                {
+                    name: 'colors',
+                    items: ['TextColor', 'BGColor']
+                }
+            ]
+        });
+    </script>
 @endsection

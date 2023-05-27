@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TeacherController;
 use App\Mail\NewLead;
 use App\Models\Lead;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,8 @@ Route::middleware('auth')->group(function () {
         $lead = Lead::first();
         return new NewLead($lead);
     });
+
 });
 
+Route::post('/upload', [HomeController::class,'upload'])->name('ckeditor.upload');
 require __DIR__.'/auth.php';
