@@ -9,8 +9,8 @@
                     <div class="log-card card bg-transparent">
                         <div class="row d-flex">
                             <div class="col-md-6 col-lg-5 d-none d-md-block log-script">
-                                <img src="{{ asset('/img/varie/main.png') }}" alt="login form" class="img-fluid log-img-form"
-                                    style="border-radius: 1rem 0 0 1rem;" />
+                                <img src="{{ asset('/img/varie/create.webp') }}" alt="login form"
+                                    class="img-fluid log-img-form" style="border-radius: 1rem 0 0 1rem;" />
                                 <img class="log-text_logo" src="{{ asset('/img/varie/text_logo.png') }}" alt="">
                             </div>
                             <div class="col-md-6 col-lg-7 d-flex">

@@ -44,11 +44,12 @@
                     <div id="collapseOne" class="accordion-collapse collapse cv-accordion"
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            @if ($teacher->id <= 16)
+                            <img src="{{ $teacher->picture_path }}" alt="">
+                            {{-- @if ($teacher->id <= 16)
                                 <img src="{{ $teacher->cv }}" class="align-self-center mb-4" alt="...">
                             @else
                                 <img src="{{ asset('storage/' . $teacher->cv) }}" alt="">
-                            @endif
+                            @endif --}}
                         </div>
                     </div>
                 </div>
