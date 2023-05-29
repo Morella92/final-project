@@ -40,9 +40,45 @@ img {
         }
 
         .log-logo_small {
-            width: 50px;
+            width: 150px;
             margin-bottom: 20px;
         }
+        .log-btn-front {
+            color: rgba(246, 234, 107, 0.94);
+            border: 1px solid rgba(246, 234, 107, 0.94);
+            &:hover {
+                color: #67696a;
+                border: 1px solid #ffd700;
+                background-color: #ffd700;
+            }
+        }
+        .log-btn-create {
+            color: rgba(255, 252, 217, 0.94);
+            border: 1px solid rgba(255, 252, 217, 0.94);
+            &:hover {
+                color: #ffd700;
+                border: 1 px solid #67696a;
+                background-color: #67696a;
+            }
+        }
+        .log-link {
+            color: rgba(246, 234, 107, 0.94);
+            &:hover {
+                color: rgba(255, 252, 217, 0.94);
+            }
+        }
+        .log-login-btn {
+            background-color: #d1bb41;
+            font-weight: 300;
+
+            &:hover {
+                background-color: rgba(255, 252, 217, 0.94);
+                font-weight: 600;
+            }
+        }
+    }
+    .log-logo_small-reg {
+        width: 50px;
     }
 }
 

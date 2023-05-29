@@ -1,35 +1,34 @@
 @extends('layouts.auth')
 
 @section('content')
-    {{-- NEW --}}
-    <section class="vh-100" style="background-color: black;">
-
-        <div class="container py-5 h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col col-xl-10">
-                    <div class="card bg-transparent" style="border-radius: 1rem;">
-                        <div class="row g-0">
-                            <div class="col-md-6 col-lg-5 d-none d-md-block">
-                                <img src="{{ asset('/img/varie/main.png') }}" alt="login form" class="img-fluid"
+    <section class="log-section">
+        <div class="container py-3 log-container">
+            <div class="row">
+                <div class="col col-xl-10 ">
+                    <div class="log-card card bg-transparent">
+                        <div class="row d-flex">
+                            <div class="col-md-6 col-lg-5 d-none d-md-block log-script">
+                                <img src="{{ asset('/img/varie/main.png') }}" alt="login form" class="img-fluid log-img-form"
                                     style="border-radius: 1rem 0 0 1rem;" />
+                                <img class="log-text_logo" src="{{ asset('/img/varie/text_logo.png') }}" alt="">
                             </div>
-                            <div class="col-md-6 col-lg-7 d-flex align-items-center">
-                                <div class="card-body p-4 p-lg-5 text-black">
+                            <div class="col-md-6 col-lg-7 d-flex">
+                                <div class="card-body px-3 px-lg-4 text-black log-card_body">
 
-                                    <form method="POST" action="{{ route('register') }}">
+                                    <form method="POST" action="{{ route('login') }}">
                                         @csrf
 
-                                        <div class="d-flex align-items-center mb-2">
+                                        <div class="d-flex justify-content-center align-items-center ">
                                             <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
-                                            <span class="h1 fw-bold  text-white">Logo</span>
+                                            <div class="log-logo_small log-logo_small-reg">
+                                                <img src="{{ asset('/img/varie/logo_small.png') }}" alt="">
+                                            </div>
                                         </div>
 
-                                        <h5 class="fw-bold text-center mb-3 pb-3  text-white text-uppercase"
-                                            style="letter-spacing: 1px;">
-                                            crea account</h5>
-
-                                        {{-- name --}}
-                                        <div class="mb-4 row">
+                                        <h5 class="fw-bold text-center mb-2 pb-2  text-white text-uppercase"
+                                            style="letter-spacing: 1px;">Crea Account</h5>
+                                        {{-- nome e cognome --}}
+                                        <div class="mb-2 row">
                                             <label for="name" class="col-form-label text-md-right text-white">Nome e
                                                 cognome</label>
 
@@ -47,45 +46,37 @@
                                         </div>
 
                                         {{-- email --}}
-                                        <div class="mb-4 row">
-                                            <label for="email"
-                                                class="col-md-4 col-form-label text-white text-md-right">Indirizzo
-                                                E-mail</label>
+                                        <label for="email"
+                                            class="col-form-label text-md-right  text-white">{{ __('E-Mail Address') }}</label>
 
-                                            <div class="">
-                                                <input id="email" type="email"
-                                                    class="form-control @error('email') is-invalid @enderror" name="email"
-                                                    value="{{ old('email') }}" required autocomplete="email">
+                                        <div class="">
+                                            <input id="email" type="email"
+                                                class="form-control @error('email') is-invalid @enderror" name="email"
+                                                value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-                                                @error('email')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
+                                            @error('email')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
-
                                         {{-- password --}}
-                                        <div class="mb-4 row">
-                                            <label for="password"
-                                                class="col-form-label text-md-right text-white">Password</label>
+                                        <label for="password"
+                                            class=" text-white col-form-label text-md-right">{{ __('Password') }}</label>
 
-                                            <div class="">
-                                                <input id="password" type="password"
-                                                    class="form-control @error('password') is-invalid @enderror"
-                                                    name="password" required autocomplete="new-password">
+                                        <div class="">
+                                            <input id="password" type="password"
+                                                class="form-control @error('password') is-invalid @enderror" name="password"
+                                                required autocomplete="current-password">
 
-                                                @error('password')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-
-                                            </div>
+                                            @error('password')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
-
                                         {{-- conferma password --}}
-                                        <div class="mb-4 row">
+                                        <div class="mb-2 row">
                                             <label for="password-confirm"
                                                 class="col-form-label text-md-right text-white">Conferma Password</label>
 
@@ -111,21 +102,19 @@
                                                 @enderror
                                             </div>
                                         </div>
-
                                         {{-- bottoni --}}
-                                        <div class="mb-4 row mb-0 d-flex justify-content-around">
+                                        <div class="row d-flex justify-content-around">
 
-                                            <button type="submit" class="col-4 btn btn-primary">
+                                            <button type="submit" class="col-4 btn log-btn-create fw-bold">
                                                 <a class="nav-link">
                                                     Registrati
                                                 </a>
                                             </button>
-                                            <button type="button" class="col-4 btn btn-outline-warning fw-bold">
+                                            <button type="button" class="col-4 btn log-btn-front fw-bold">
                                                 <a class="nav-link" href="{{ route('login') }}">
                                                     Torna indietro
                                                 </a>
                                             </button>
-
                                         </div>
                                     </form>
                                 </div>

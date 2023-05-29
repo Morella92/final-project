@@ -72,13 +72,13 @@
                                         </div>
                                         {{-- login --}}
                                         <div class=>
-                                            <button type="submit" class="btn btn-primary">
+                                            <button type="submit" class="btn log-login-btn">
                                                 {{ __('Login') }}
                                             </button>
 
                                             @if (Route::has('password.request'))
-                                                <a class="btn btn-link" href="{{ route('password.request') }}">Password
-                                                    dimenticata</a>
+                                                <a class="btn log-link" href="{{ route('password.request') }}">Password
+                                                    dimenticata?</a>
                                             @endif
                                         </div>
 
@@ -88,14 +88,15 @@
                                         </p>
                                         <div class="log-btn">
                                             <div>
-                                                <button type="button" class="btn btn-outline-danger fw-bold">
+                                                <button type="button" class="btn log-btn-create fw-bold">
                                                     <a class="nav-link" href="{{ route('register') }}">
                                                         Crea account</a>
                                                 </button>
                                             </div>
                                             <div>
-                                                <button type="button" class="btn btn-outline-warning fw-bold">
-                                                    <a class="nav-link" href="#">Prosegui navigazione</a>
+                                                <button type="button" class="btn log-btn-front fw-bold">
+                                                    <a class="nav-link" href="localhost:5174/">Prosegui
+                                                        navigazione</a>
                                                 </button>
                                             </div>
 
