@@ -109,10 +109,10 @@
                                         {{-- registrati --}}
                                         <div class="log-btn">
                                             <div>
-                                                <div class="log-btn d-flex">
-                                                    <div class="offset">
+                                                <div class="log-btn d-flex justify-content-between">
+                                                    <div class="">
                                                         <button type="submit" class="btn log-btn-create fw-bold">
-                                                            {{ __('Register') }}
+                                                            {{ __('Crea Account') }}
                                                         </button>
                                                     </div>
                                                     <div>
