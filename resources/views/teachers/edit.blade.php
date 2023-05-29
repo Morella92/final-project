@@ -39,13 +39,13 @@
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Seleziona una o più specializzazioni <span class="fw-bolder text-danger">*</span>
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="specializationsDropdown">
+                    <div class="dropdown-menu dd-create" aria-labelledby="specializationsDropdown">
                         @foreach ($specializations as $key => $specialization)
                             <div class="form-check">
                                 <input name="specializations[]" @if (in_array($specialization->id, old('specializations', $teacher->getSpecializationIds()))) checked @endif
                                     class="form-check-input" type="checkbox" value="{{ $specialization->id }}"
                                     id="specialization_{{ $specialization->id }}">
-                                <label class="form-check-label" for="specialization_{{ $specialization->id }}">
+                                <label class="form-check-label me-3" for="specialization_{{ $specialization->id }}">
                                     {{ $specialization->name }}
                                 </label>
                             </div>
