@@ -5,12 +5,7 @@
         {{-- NOME --}}
         <h1 class="text-center">{{ $teacher->user->name }}</h1>
         {{-- IMG PROFILO --}}
-        @if ($teacher->id <= 16)
-            <img src="{{ $teacher->picture }}" class="align-self-center mb-4" alt="...">
-        @else
-            <img src="{{ asset('storage/' . $teacher->picture) }}" alt="">
-        @endif
-        {{-- SPECIALIZZAZIONI --}}
+        <img src="{{ $teacher->picture_path }}" alt="">
         @forelse ($teacher->specializations()->get() as $specialization)
             <p class="card-text">
                 <span class="fw-bold"> {{ $specialization->name }}</span>
@@ -44,12 +39,7 @@
                     <div id="collapseOne" class="accordion-collapse collapse cv-accordion"
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <img src="{{ $teacher->picture_path }}" alt="">
-                            {{-- @if ($teacher->id <= 16)
-                                <img src="{{ $teacher->cv }}" class="align-self-center mb-4" alt="...">
-                            @else
-                                <img src="{{ asset('storage/' . $teacher->cv) }}" alt="">
-                            @endif --}}
+                            <img src="{{ $teacher->cv_path }}" alt="">
                         </div>
                     </div>
                 </div>
