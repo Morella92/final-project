@@ -27,19 +27,22 @@
                 <p class="card-text">
                     <span class="fw-bold my-2">Email:</span> {{ $teacher->user->email }}; <br>
                     <span class="fw-bold my-2">Indirizzo:</span> {{ $teacher->user->address }}; <br>
-                    <span class="fw-bold my-2">Numero:</span> {{ $teacher->phone }};
+                    @if ($teacher->phone)
+                        <span class="fw-bold my-2">Numero:</span> {{ $teacher->phone }};
+                    @endif
                 </p>
             </div>
             {{-- CV --}}
             <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        <button class="accordion-button cv-button" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                             <h3>Curriculum Vitae</h3>
                         </button>
                     </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div id="collapseOne" class="accordion-collapse collapse cv-accordion"
+                        data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             @if ($teacher->id <= 16)
                                 <img src="{{ $teacher->cv }}" class="align-self-center mb-4" alt="...">
