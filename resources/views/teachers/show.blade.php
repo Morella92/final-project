@@ -8,7 +8,7 @@
         @if ($teacher->id <= 16)
             <img src="{{ $teacher->picture }}" class="align-self-center mb-4" alt="...">
         @else
-            <img src="{{ asset('storage/' . $teacher->picture) }}" alt="">
+            <img src="{{ asset('storage/' . $teacher->picture) }}" alt="" class="show-profile-img">
         @endif
         {{-- SPECIALIZZAZIONI --}}
         @forelse ($teacher->specializations()->get() as $specialization)
@@ -44,7 +44,11 @@
                     <div id="collapseOne" class="accordion-collapse collapse cv-accordion"
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <img src="{{ $teacher->cv_path }}" alt="">
+                            @if ($teacher->id <= 16)
+                                <img src="{{ $teacher->cv }}" class="align-self-center mb-4" alt="...">
+                            @else
+                                <img src="{{ asset('storage/' . $teacher->cv) }}" alt="">
+                            @endif
                         </div>
                     </div>
                 </div>

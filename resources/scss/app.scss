@@ -12,6 +12,26 @@ img {
 }
 
 // **************************
+// GENERALE
+// **************************
+.home-link {
+    text-decoration: none;
+    // font-weight: bold;
+    color: black;
+    &:hover {
+        color: red;
+    }
+}
+.auth-picture {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+.dd-create {
+    border: none;
+    background-color: #d0d4d8;
+}
+// **************************
 // WELCOME E LARAVEL AUT PAGES
 // **************************
 .log-section {
@@ -81,6 +101,9 @@ img {
         width: 40px;
     }
 }
+// **************************
+// DASHBOARD
+// **************************
 
 // **************************
 // SHOW
@@ -92,5 +115,9 @@ img {
     background-color: transparent !important;
     .cv-accordion {
         border: none !important;
+    }
+    .show-profile-img {
+        max-width: 468px;
+        aspect-ratio: 1/1;
     }
 }

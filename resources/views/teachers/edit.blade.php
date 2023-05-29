@@ -3,19 +3,21 @@
 @section('content')
     {{-- CK EDITITOR CONFIGURATION --}}
     <script src="https://cdn.ckeditor.com/4.16.2/full/ckeditor.js"></script>
-    >
+
     <style type="text/css">
         .ck-editor__editable_inline {
             height: 300px;
         }
     </style>
     <div class="container py-5">
-
+        {{-- intestazione --}}
         <h2>Ciao {{ Auth::user()->name }}, modifica il tuo profilo!</h2>
+        <p>I campi contrassegnati dall'<span class="fw-bolder text-danger">*</span> sono obbligatori</p>
+        {{-- form --}}
         <form class="row g-3" action="{{ route('teachers.update', $teacher) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-
+            {{-- telefono --}}
             <div class="col-md-6">
                 <label for="phone" class="form-label">Numero di telefono</label>
                 <input type="text" name="phone" value="{{ old('phone', $teacher->phone) }}"
@@ -28,39 +30,28 @@
                 @enderror
             </div>
 
-            <div class="col-md-6">
-                <label for="address" class="form-label">Indirizzo</label>
-                <input type="text" name="address" value="{{ Auth::user()->address }}"
-                    class="form-control @error('address') is-invalid @enderror" id="address"
-                    placeholder="Inserisci il tuo contatto">
-                @error('address')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-
-            {{-- CHECKBOX --}}
+            {{-- multiselect specializzazioni --}}
             <div class="mb-3">
-                <label for="specializations" class="form-label">Specializzazione *</label>
-                <div class="d-flex @error('specializations') is-invalid @enderror flex-wrap gap-3">
-
-                    @foreach ($specializations as $key => $specialization)
-                        <div class="form-check">
-                            <input name="specializations[]" @checked(in_array($specialization->id, old('specializations[]', $teacher->getSpecializationIds()))) class="form-check-input"
-                                type="checkbox" value="{{ $specialization->id }}" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
-                                {{ $specialization->name }}
-                            </label>
-                        </div>
-                    @endforeach
-                </div>
-                @error('specializations ')
-                    <div class="invalid-feedback">
-                        {{ $message }}
+                <label for="specializations" class="form-label fw-bold text-uppercase">Specializzazione / i <span
+                        class="fw-bolder text-danger">*</span></label>
+                <div class="dropdown @error('specializations') is-invalid @enderror">
+                    <button class="btn btn-white dropdown-toggle" type="button" id="specializationsDropdown"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Seleziona una o più specializzazioni <span class="fw-bolder text-danger">*</span>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="specializationsDropdown">
+                        @foreach ($specializations as $key => $specialization)
+                            <div class="form-check">
+                                <input name="specializations[]" @if (in_array($specialization->id, old('specializations', $teacher->getSpecializationIds()))) checked @endif
+                                    class="form-check-input" type="checkbox" value="{{ $specialization->id }}"
+                                    id="specialization_{{ $specialization->id }}">
+                                <label class="form-check-label" for="specialization_{{ $specialization->id }}">
+                                    {{ $specialization->name }}
+                                </label>
+                            </div>
+                        @endforeach
                     </div>
-                @enderror
-
+                </div>
                 @error('specializations')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -159,6 +150,26 @@
                     items: ['TextColor', 'BGColor']
                 }
             ]
+        });
+    </script>
+
+    <script>
+        // Aggiorno il testo del pulsante con il numero di specializzazioni selezionate
+        function updateSelectedCount() {
+            const selectedCount = document.querySelectorAll('input[name="specializations[]"]:checked').length;
+            const dropdownButton = document.getElementById('specializationsDropdown');
+            dropdownButton.textContent = `Seleziona specializzazioni (${selectedCount})`;
+        }
+
+        // Aggiorno il conteggio iniziale
+        updateSelectedCount();
+
+        // Aggiorno il conteggio quando una checkbox viene selezionata/deselezionata
+        const checkboxes = document.querySelectorAll('input[name="specializations[]"]');
+        checkboxes.forEach(function(checkbox) {
+            checkbox.addEventListener('change', function() {
+                updateSelectedCount();
+            });
         });
     </script>
 @endsection

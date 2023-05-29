@@ -13,33 +13,42 @@
     <div class="container py-5">
 
         <h2>Ciao {{ Auth::user()->name }}, completa il tuo profilo da professore!</h2>
-        <p>I campi contrassegnati dall'*</p>
+        <p>I campi contrassegnati dall'<span class="fw-bolder text-danger">*</span> sono obbligatori</p>
         <form class="row g-3" action="{{ route('teachers.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             {{-- TELEFONO --}}
             <div class="col-md-6">
-                <label for="phone" class="form-label">Numero di telefono</label>
-                <input type="text" name="phone" value="" class="form-control @error('phone') is-invalid @enderror"
-                    id="phone" placeholder="Inserisci il tuo contatto">
+                <label for="phone" class="form-label fw-bold text-uppercase">Numero di telefono</label>
+                <input type="text" name="phone" value=""
+                    class="form-control @error('phone') is-invalid @enderror" id="phone"
+                    placeholder="Inserisci il tuo contatto">
                 @error('phone')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
             </div>
-            {{-- SPECIALIZZAZIONE --}}
+            {{-- multiselect specializzazioni --}}
             <div class="mb-3">
-                <label for="specializations" class="form-label">Specializzazione *</label>
-                <div class="d-flex @error('specializations') is-invalid @enderror flex-wrap gap-3">
-                    @foreach ($specializations as $key => $specialization)
-                        <div class="form-check">
-                            <input name="specializations[]" @checked(in_array($specialization->id, old('specializations', []))) class="form-check-input"
-                                type="checkbox" value="{{ $specialization->id }}" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
-                                {{ $specialization->name }}
-                            </label>
-                        </div>
-                    @endforeach
+                <label for="specializations" class="form-label fw-bold text-uppercase">Specializzazione / i <span
+                        class="fw-bolder text-danger">*</span></label>
+                <div class="dropdown @error('specializations') is-invalid @enderror">
+                    <button class="btn btn-white dropdown-toggle" type="button" id="specializationsDropdown"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                    </button>
+                    <div class="dropdown-menu dd-create" aria-labelledby="specializationsDropdown">
+                        @foreach ($specializations as $key => $specialization)
+                            <div class="form-check">
+                                <input name="specializations[]" @if (in_array($specialization->id, old('specializations', []))) checked @endif
+                                    class="form-check-input" type="checkbox" value="{{ $specialization->id }}"
+                                    id="specialization_{{ $specialization->id }}">
+                                <label class="form-check-label me-3" for="specialization_{{ $specialization->id }}">
+                                    {{ $specialization->name }}
+                                </label>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
                 @error('specializations')
                     <div class="invalid-feedback">
@@ -47,6 +56,12 @@
                     </div>
                 @enderror
             </div>
+
+
+
+
+
+
             {{-- PRESTAZIONI --}}
             <div>
 
@@ -135,6 +150,26 @@
                     items: ['TextColor', 'BGColor']
                 }
             ]
+        });
+    </script>
+
+    <script>
+        // Aggiorno il testo del pulsante con il numero di specializzazioni selezionate
+        function updateSelectedCount() {
+            const selectedCount = document.querySelectorAll('input[name="specializations[]"]:checked').length;
+            const dropdownButton = document.getElementById('specializationsDropdown');
+            dropdownButton.textContent = `Seleziona specializzazioni (${selectedCount})`;
+        }
+
+        // Aggiorno il conteggio iniziale
+        updateSelectedCount();
+
+        // Aggiorno il conteggio quando una checkbox viene selezionata/deselezionata
+        const checkboxes = document.querySelectorAll('input[name="specializations[]"]');
+        checkboxes.forEach(function(checkbox) {
+            checkbox.addEventListener('change', function() {
+                updateSelectedCount();
+            });
         });
     </script>
 @endsection
