@@ -1,6 +1,7 @@
 @extends('layouts.auth')
 
 @section('content')
+    {{-- NEW --}}
     <section class="log-section">
         <div class="container py-3 log-container">
             <div class="row">
@@ -15,24 +16,25 @@
                             <div class="col-md-6 col-lg-7 d-flex">
                                 <div class="card-body px-3 px-lg-4 text-black log-card_body">
 
-                                    <form method="POST" action="{{ route('login') }}">
+                                    <form method="POST" action="{{ route('register') }}">
                                         @csrf
-
-                                        <div class="d-flex justify-content-center align-items-center ">
+                                        {{-- Logo --}}
+                                        <div class="d-flex justify-content-center align-items-center">
                                             <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
                                             <div class="log-logo_small">
                                                 <img src="{{ asset('/img/varie/logo_small.png') }}" alt="">
                                             </div>
                                         </div>
+                                        {{-- titolo --}}
 
-                                        <h5 class="fw-bold text-center   text-white text-uppercase"
+                                        <h5 class="fw-bold text-center text-white text-uppercase"
                                             style="letter-spacing: 1px;">Accedi
-                                            all'area riservata</h5>
-                                        {{-- nome e cognome --}}
-                                        <div class="col-md-12 col-form-label text-md-right text-white">
-                                            <label for="name" class="col-form-label text-md-right  text-white">Nome e
+                                            all'area riservata
+                                        </h5>
+                                        {{-- User name --}}
+                                        <div class="row">
+                                            <label for="name" class="ccol-form-label text-md-right  text-white">Nome e
                                                 Cognome</label>
-
                                             <div class="col-md-12">
                                                 <input id="name" type="text"
                                                     class="form-control @error('name') is-invalid @enderror" name="name"
@@ -45,44 +47,42 @@
                                                 @enderror
                                             </div>
                                         </div>
+
                                         {{-- email --}}
-                                        <div class="mb-2 row">
-                                            <label for="email" class="col-form-label text-md-right  text-white">Indirizzo
-                                                E-mail</label>
+                                        <label for="email" class="col-form-label text-md-right  text-white">Indirizzo
+                                            E-mail</label>
 
-                                            <div class="col-md-12">
-                                                <input id="email" type="email"
-                                                    class="form-control @error('email') is-invalid @enderror" name="email"
-                                                    value="{{ old('email') }}" required autocomplete="email">
+                                        <div class="">
+                                            <input id="email" type="email"
+                                                class="form-control @error('email') is-invalid @enderror" name="email"
+                                                value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-                                                @error('email')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
+                                            @error('email')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                         {{-- password --}}
-                                        <div class="mb-2 row">
-                                            <label for="password"
-                                                class="col-form-label text-md-right  text-white">{{ __('Password') }}</label>
+                                        <label for="password"
+                                            class=" text-white col-form-label text-md-right">{{ __('Password') }}</label>
 
-                                            <div class="col-md-12">
-                                                <input id="password" type="password"
-                                                    class="form-control @error('password') is-invalid @enderror"
-                                                    name="password" required autocomplete="new-password">
+                                        <div class="">
+                                            <input id="password" type="password"
+                                                class="form-control @error('password') is-invalid @enderror" name="password"
+                                                required autocomplete="current-password">
 
-                                                @error('password')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
+                                            @error('password')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
+
                                         {{-- conferma password --}}
-                                        <div class="mb-2 row">
+                                        <div class=" row">
                                             <label for="password-confirm"
-                                                class="col-form-label text-md-right  text-white">Conderma Password</label>
+                                                class=" text-white col-form-label text-md-right">Conferma Password</label>
 
                                             <div class="col-md-12">
                                                 <input id="password-confirm" type="password" class="form-control"
@@ -90,10 +90,10 @@
                                             </div>
                                         </div>
                                         {{-- address --}}
-                                        <div class="mb-2 row">
+                                        <div class="row">
                                             <label for="address"
                                                 class="col-md-4 col-form-label text-md-right text-white">Indirizzo</label>
-                                            <div class="">
+                                            <div class="mb-3">
                                                 <input id="address" type="text"
                                                     class="form-control @error('address') is-invalid @enderror"
                                                     name="address" value="{{ old('address') }}" autofocus>
@@ -106,22 +106,29 @@
                                             </div>
                                         </div>
 
-                                        <div class="d-flex justify-content-between mt-3">
-                                            <div class=" ">
-                                                <button type="submit" class="btn log-btn-create fw-bold">
-                                                    Registrati
-                                                </button>
-                                            </div>
+                                        {{-- registrati --}}
+                                        <div class="log-btn">
                                             <div>
-                                                <button type="button" class="btn log-btn-front fw-bold">
-                                                    <a class="nav-link" href="{{ route('login') }}">Torna Indietro</a>
-                                                </button>
-                                            </div>
-                                        </div>
+                                                <div class="log-btn d-flex">
+                                                    <div class="offset">
+                                                        <button type="submit" class="btn log-btn-create fw-bold">
+                                                            {{ __('Register') }}
+                                                        </button>
+                                                    </div>
+                                                    <div>
+                                                        <button type="button" class="btn log-btn-front fw-bold">
+                                                            <a class="nav-link" href="{{ route('login') }}">Torna
+                                                                indieto</a>
+                                                        </button>
+                                                    </div>
+                                                </div>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            @endsection
+            </div>
+        </div>
+    </section>
+@endsection
