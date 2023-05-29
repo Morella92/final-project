@@ -8,13 +8,13 @@
     box-sizing: border-box;
 }
 img {
-    max-width: 100% !important;
+    max-width: 100%;
 }
 
 // **************************
 // WELCOME E LARAVEL AUT PAGES
 // **************************
-log-section {
+.log-section {
     background-color: #2e5330 !important;
     .log-card {
         border: none;
@@ -29,7 +29,7 @@ log-section {
         }
         .log-script {
             position: relative;
-            width: 420px;
+            //width: 420px;
         }
         .log-text_logo {
             position: absolute;
@@ -40,7 +40,7 @@ log-section {
         }
 
         .log-logo_small {
-            width: 170px;
+            width: 50px;
             margin-bottom: 20px;
         }
     }

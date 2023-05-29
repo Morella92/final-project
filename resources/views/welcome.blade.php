@@ -4,10 +4,10 @@
     {{-- NEW --}}
     <section class="log-section">
         <div class="container py-3 log-container">
-            <div class="row d-flex justify-content-center align-items-center ">
-                <div class="col col-xl-10">
+            <div class="row">
+                <div class="col col-xl-10 ">
                     <div class="log-card card bg-transparent">
-                        <div class="row g-5">
+                        <div class="row d-flex">
                             <div class="col-md-6 col-lg-5 d-none d-md-block log-script">
                                 <img src="{{ asset('/img/varie/main.png') }}" alt="login form" class="img-fluid log-img-form"
                                     style="border-radius: 1rem 0 0 1rem;" />
