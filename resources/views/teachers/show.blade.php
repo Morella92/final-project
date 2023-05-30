@@ -38,7 +38,7 @@
                     <h2 class="accordion-header">
                         <button class="accordion-button cv-button" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            <h3>Curriculum Vitae</h3>
+                            <h3 class="fs-4">Curriculum Vitae</h3>
                         </button>
                     </h2>
                     <div id="collapseOne" class="accordion-collapse collapse cv-accordion"
@@ -61,12 +61,17 @@
                     echo $teacher->performance;
                 @endphp
             </p>
+            <button >
+                <a class="edit-button" href="{{ route('teachers.edit', Auth::user()->teacher->id) }}">
+                    Modifica il tuo profilo
+                </a>
+            </button>
             {{-- DELETE --}}
-            <form action="{{ route('teachers.destroy', $teacher) }}" method="POST">
+            {{-- <form action="{{ route('teachers.destroy', $teacher) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <input class="btn btn-sm btn-danger" type="submit" value="Elimina">
-            </form>
+            </form> --}}
         </div>
 
 

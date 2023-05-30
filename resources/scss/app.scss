@@ -14,6 +14,9 @@ img {
     max-width: 100%;
 }
 
+a{
+    text-decoration: none;
+}
 // **************************
 // GENERALE
 // **************************
@@ -148,3 +151,9 @@ img {
     background-color: rgba(246, 234, 107);
 }
 
+.edit-button{
+    background-color: #203a22;
+    color: rgba(255, 252, 217, 0.94);
+    border-radius: 5%;
+    border: none;
+}
