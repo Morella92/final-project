@@ -7,6 +7,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+.container{
+    margin: 0 auto;
+}
 img {
     max-width: 100%;
 }
@@ -121,3 +124,27 @@ img {
         aspect-ratio: 1/1;
     }
 }
+
+.navbar-style{
+    background-color: #2e5330;
+    padding: 5px 0;
+}
+
+.logo_navbar_small{
+    width: 70px;
+}
+.logo_navbar_text{
+    width: 150px;
+}
+
+.link-style{
+    color:rgba(255, 252, 217, 0.94);
+    &:hover{
+        color: rgba(239, 229, 115, 0.94);
+    }
+}
+
+.dropdown-style{
+    background-color: rgba(246, 234, 107);
+}
+
