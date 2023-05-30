@@ -61,8 +61,8 @@
                     echo $teacher->performance;
                 @endphp
             </p>
-            <button >
-                <a class="edit-button" href="{{ route('teachers.edit', Auth::user()->teacher->id) }}">
+            <button class="edit-button">
+                <a class="edit-link" href="{{ route('teachers.edit', Auth::user()->teacher->id) }}">
                     Modifica il tuo profilo
                 </a>
             </button>
