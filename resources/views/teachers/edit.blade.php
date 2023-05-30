@@ -110,7 +110,7 @@
                 {{-- SUBMIT --}}
                 <div class="col-12">
 
-                    <button type="submit" class="btn btn-primary">Modifica profilo</button>
+                    <button type="submit" class="edit-button edit-link">Modifica profilo</button>
                 </div>
         </form>
     </div>
