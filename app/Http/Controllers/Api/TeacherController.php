@@ -10,7 +10,7 @@ class TeacherController extends Controller
 {
     public function index(){
 
-        $results = Teacher::with('specializations.teachers', 'user.teacher', 'votes.teachers', 'review.teacher. text', 'sponsorships.teachers' )->get();
+        $results = Teacher::with('specializations.teachers', 'user.teacher', 'votes.teachers',  'sponsorships.teachers' )->get();
         
 
         return response()->json([

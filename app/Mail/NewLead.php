@@ -20,9 +20,10 @@ class NewLead extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Lead $new_lead)
     {
         $this->lead = $new_lead;
+
     }
 
     /**
