@@ -172,4 +172,50 @@
             });
         });
     </script>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            var specializationCheckboxes = document.querySelectorAll('input[name="specializations[]"]');
+            var specializationError = document.getElementById('specializationsError');
+            var hasCheckedSpecialization = false;
+
+            for (var i = 0; i < specializationCheckboxes.length; i++) {
+                if (specializationCheckboxes[i].checked) {
+                    hasCheckedSpecialization = true;
+                    break;
+                }
+            }
+
+            if (!hasCheckedSpecialization) {
+                event.preventDefault();
+                specializationError.style.display = 'block';
+            } else {
+                specializationError.style.display = 'none';
+            }
+        });
+    </script>
+
+    <script>
+        var specializationCheckboxes = document.querySelectorAll('input[name="specializations[]"]');
+        var specializationError = document.getElementById('specializationsError');
+
+        for (var i = 0; i < specializationCheckboxes.length; i++) {
+            specializationCheckboxes[i].addEventListener('change', function() {
+                var hasCheckedSpecialization = false;
+
+                for (var j = 0; j < specializationCheckboxes.length; j++) {
+                    if (specializationCheckboxes[j].checked) {
+                        hasCheckedSpecialization = true;
+                        break;
+                    }
+                }
+
+                if (!hasCheckedSpecialization) {
+                    specializationError.style.display = 'block';
+                } else {
+                    specializationError.style.display = 'none';
+                }
+            });
+        }
+    </script>
 @endsection

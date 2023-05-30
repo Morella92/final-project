@@ -11,7 +11,7 @@
                             <div class="col-md-6 col-lg-5 d-none d-md-block log-script">
                                 <img src="{{ asset('/img/varie/create.webp') }}" alt="login form"
                                     class="img-fluid log-img-form" style="border-radius: 1rem 0 0 1rem;" />
-                                <img class="log-text_logo" src="{{ asset('/img/varie/text_logo.png') }}" alt="">
+                                <img class="log-text_logo" src="{{ asset('/img/varie/text_logo.png') }}" alt="">    
                             </div>
                             <div class="col-md-6 col-lg-7 d-flex">
                                 <div class="card-body px-3 px-lg-4 text-black log-card_body">
@@ -94,7 +94,7 @@
                                             <label for="address"
                                                 class="col-md-4 col-form-label text-md-right text-white">Indirizzo</label>
                                             <div class="mb-3">
-                                                <input id="address" type="text"
+                                                <input id="address" required type="text"
                                                     class="form-control @error('address') is-invalid @enderror"
                                                     name="address" value="{{ old('address') }}" autofocus>
 
