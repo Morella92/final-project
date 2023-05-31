@@ -30,7 +30,9 @@
                             -
                         @endforelse
 
-                        <a href="{{ route('teachers.show', $teacher) }}" class="btn btn-primary">Guarda il profilo</a>
+                        <button class="edit-button">
+                            <a class="edit-link" href="{{ route('teachers.show', $teacher) }}">Guarda il profilo</a>
+                        </button>
                     </div>
                 </div>
             @endforeach

@@ -7,6 +7,7 @@
         <table class="table table-striped table-inverse table-responsive bg-white message-style">
             <thead>
                 <tr>
+                    <th>N.</th>
                     <th scope="col">Data</th>
                     <th scope="col">Recensione</th>
                 </tr>
@@ -15,6 +16,7 @@
             <tbody>
                 @foreach ($reviews as $review)
                     <tr>
+                        <td>{{ $loop->iteration }}</td>
                         <td>{{ $review->created_at->format('d/m/y')}}</td>
                         <td>{{ $review->text }}</td>
                     </tr>
