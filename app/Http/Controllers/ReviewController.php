@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreReviewRequest;
 use App\Http\Requests\UpdateReviewRequest;
 use App\Models\Review;
+use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
@@ -15,7 +16,10 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        //
+        $user_id = Auth::user()->id;
+        $reviews = Review::where('teacher_id', $user_id)->get();
+
+        return view('reviews.index', compact('reviews'));
     }
 
     /**
@@ -47,7 +51,12 @@ class ReviewController extends Controller
      */
     public function show(Review $review)
     {
-        //
+        if($review->teacher_id == Auth::id()){
+    
+            return view('reviews.show', compact('review'));
+        }else{
+            return redirect()->route('dashboard')->with(['error' => 'Spiacente ma non sei autorizzato a visualizzare la pagina', 'error_expiry' => time() + 2]);
+        }
     }
 
     /**

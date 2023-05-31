@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h2 class="fs-4 text-secondary my-4">
+        <h2 class="fs-4 text-secondary my-4 text-white">
             {{-- {{ __('Dashboard') }}  --}}
             Pannello di amministrazione dell'Insegnante <span class="fw-bold text-uppercase">{{ Auth::user()->name }}</span>
         </h2>

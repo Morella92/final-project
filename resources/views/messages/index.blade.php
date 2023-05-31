@@ -31,9 +31,7 @@
                         <td class=" text-center"><a href="#"><i class="fa-solid fa-trash text-danger"></i></a></td>
                     </tr>
                 @endforeach
-            </tbody>
-            
+            </tbody>  
         </table>
-    
     </div>
 @endsection

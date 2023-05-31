@@ -8,6 +8,7 @@ use App\Models\Message;
 use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+
 class MessageController extends Controller
 {
     /**

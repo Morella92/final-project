@@ -7,6 +7,7 @@ use App\Mail\NewLead;
 use App\Models\Lead;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('teachers', TeacherController::class)->parameters(['teachers'=> 'teacher:id']);
 
     Route::resource('messages', MessageController::class);
+    Route::resource('reviews', ReviewController::class);
     
     Route::get('/new-lead-mail', function(){
         $lead = Lead::first();

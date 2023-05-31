@@ -5,7 +5,7 @@
 
         <div class="row justify-content-around gy-5">
             @foreach ($teachers as $teacher)
-                <div class="card col-5">
+                <div class="card col-5 message-style">
                     @if ($teacher->id <= 16)
                         <img src="{{ $teacher->picture }}" class="align-self-center mb-4" alt="...">
                     @else
