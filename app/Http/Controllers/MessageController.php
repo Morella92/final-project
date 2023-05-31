@@ -124,6 +124,7 @@ class MessageController extends Controller
     public function restoreAll()
         {
             Message::onlyTrashed()->restore();
+
             return redirect()->route('messages.index')->with('alert-message', "All messages restored successfully")->with('alert-type', 'success');
         }
 
@@ -132,5 +133,16 @@ class MessageController extends Controller
         {
             Message::where('id', $id)->withTrashed()->forceDelete();
             return redirect()->route('messages.trashed')->with('alert-message', "Delete definitely")->with('alert-type', 'success');
+        }
+
+
+        public function destroyAll(Request $request)
+        {
+    
+             $messages= Message::onlyTrashed()->forceDelete();
+             $request->session()->flash('message', 'Il cestino è stato svuotato correttamente.');
+            
+    
+             return to_route('messages.index');
         }
 }

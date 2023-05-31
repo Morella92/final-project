@@ -11,15 +11,24 @@
                     </div>
                     <div class="col-6 text-end">
                         @if (count($messages))
+                            {{-- RESTORE ALL --}}
                             <form class="d-inline delete double-confirm" action="{{ route('messages.restore-all') }}"
                                 method="POST">
                                 @csrf
                                 <button type="submit" class="btn btn-primary" title="restore all"><i
                                         class="fa-solid fa-recycle"></i>&nbsp;Ripristina tutti</button>
                             </form>
+                            {{-- SVUOTA CESTINO --}}
+                            <form class="d-inline delete double-confirm" action="{{ route('messages.destroy.all') }}"
+                                method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit" class="my-2 btn btn-outline-danger btn fw-bolder text-end"
+                                    value="SVUOTA CESTINO">
+                            </form>
                         @endif
                     </div>
-
+                    {{-- TABELLA --}}
                     <table class="table table-striped table-inverse table-responsive bg-white message-style">
                         <thead>
                             <tr>
@@ -48,6 +57,7 @@
                                         </form>
                                     </td>
                                     <td class=" text-center">
+                                        {{-- FORCE DELETE SINGOLO --}}
                                         <form class="d-inline delete double-confirm"
                                             action="{{ route('messages.force-delete', $message->id) }}" method="POST">
                                             @csrf
@@ -66,12 +76,88 @@
                         </tbody>
                     </table>
                 </div>
+                {{-- COUNTER --}}
                 <div class="card-footer text-end">
                     <b>{{ count($messages) }}</b> messaggio/i
                 </div>
+                {{-- GO BACK --}}
+                <button>
+                    <a href="{{ route('messages.index') }}">
+                        INDIETRO
+                    </a>
+                </button>
             </div>
         </div>
     </section>
+
+    <script>
+        var popup = document.getElementById('popup_message');
+        if (popup) {
+            // show a message in a toast
+            Swal.fire({
+                toast: true,
+                animation: false,
+                icon: popup.dataset.type,
+                title: popup.dataset.message,
+                type: popup.dataset.type,
+                position: 'top-right',
+                timer: 3000,
+                showConfirmButton: false,
+            });
+        }
+
+        const deleteBtns = document.querySelectorAll('form.delete');
+
+        deleteBtns.forEach((formDelete) => {
+            formDelete.addEventListener('submit', function(event) {
+                event.preventDefault();
+                var doubleconfirm = event.target.classList.contains('double-confirm');
+                Swal.fire({
+                    title: 'Sei sicuro? ',
+                    text: "Per favore conferma la tua richiesta !",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: 'ANNULLA',
+                    confirmButtonText: 'CONFERMA'
+                }).then((result) => {
+                    if (result.value) {
+
+                        // if double confirm
+                        if (doubleconfirm) {
+
+                            Swal.fire({
+                                title: 'L\'operazione che stai per eseguire non sarà reversibile, sei sicuro di voler procedere?',
+                                html: "Digita <b>CONFIRM</b> nel box sottostante",
+                                input: 'text',
+                                type: 'warning',
+                                inputPlaceholder: 'CONFIRM',
+                                showCancelButton: true,
+                                confirmButtonText: 'CONFERMA',
+                                cancelButtonText: 'ANNULLA',
+                                showLoaderOnConfirm: true,
+                                allowOutsideClick: () => !Swal.isLoading(),
+                                preConfirm: (txt) => {
+                                    return (txt.toUpperCase() == "CONFIRM");
+                                },
+
+                            }).then((result) => {
+                                if (result.value) this.submit();
+                            })
+                        } else {
+                            this.submit();
+                        }
+
+
+                    }
+                });
+
+
+            });
+
+        });
+    </script>
 @endsection
 
 @section('script')

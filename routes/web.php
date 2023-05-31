@@ -44,6 +44,7 @@ Route::middleware('auth')->group(function () {
         Route::delete('/{message}/force-delete', [MessagesController::class, 'forceDelete'])->name('force-delete');
         Route::post('/restore-all', [MessagesController::class, 'restoreAll'])->name('restore-all');
     });
+    Route::delete('/messages', [MessagesController::class, 'destroyAll'])->name('messages.destroy.all');
 
     Route::resource('messages', MessagesController::class);
     Route::resource('reviews', ReviewController::class);
