@@ -8,7 +8,7 @@
         </h2>
 
         <div class="d-flex gap-3 flex-wrap">
-
+            {{-- MESSAGGI DI ERRORE IN SESSIONE --}}
             @if (session('error') && session('error_expiry') > time())
                 <div class="alert alert-danger">
                     {{ session('error') }}
@@ -16,7 +16,7 @@
                 <script>
                     setTimeout(function() {
                         document.querySelector('.alert').remove();
-                    }, 2000);
+                    }, 5000);
                 </script>
             @endif
 
@@ -64,7 +64,13 @@
             {{-- MESSAGGI --}}
             <button>
                 <a href="{{ route('messages.index') }}">
-                    Leggi i tuoi messaggi
+                    MESSAGGI
+                </a>
+            </button>
+            {{-- REVIEWS --}}
+            <button>
+                <a href="{{ route('reviews.index') }}">
+                    RECENSIONI
                 </a>
             </button>
         </div>

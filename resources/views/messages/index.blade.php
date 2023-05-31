@@ -3,6 +3,12 @@
 @section('content')
     <div class="container py-5">
         <h1 class="text-white">Messaggi ricevuti</h1>
+        {{-- cestino --}}
+        @if ($trashed)
+            <a class="btn btn-primary" href="{{ route('messages.trashed') }}"><b>{{ $trashed }}</b> messaggio/i nel
+                cestino</a>
+        @endif
+
 
         <table class="table table-striped table-inverse table-responsive bg-white message-style">
             <thead>
@@ -15,13 +21,13 @@
                     <th scope="col" class=" text-center">Cancella</th>
                 </tr>
             </thead>
-            
+
             <tbody>
                 @foreach ($messages as $message)
                     <tr>
-                        <td>{{ $message->created_at->format('d/m/y')}}</td>
+                        <td>{{ $message->created_at->format('d/m/y') }}</td>
                         <td>{{ $message->ui_name }}</td>
-                        <td>{{ $message->ui_email }}</td>  
+                        <td>{{ $message->ui_email }}</td>
                         <td>{{ $message->title }}</td>
                         <td class=" text-center">
                             <a class="text-success" href="{{ route('messages.show', ['message' => $message->id]) }}">
@@ -29,15 +35,21 @@
                             </a>
                         </td>
                         <td class=" text-center">
-                            <form class="d-inline delete" action="{{route('messages.destroy', $message->id)}}" method="POST" data-element-name="{{ $message->title }}">
+                            <form class="d-inline delete" action="{{ route('messages.destroy', $message->id) }}"
+                                method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <a href="#"><i class="fa-solid fa-trash text-danger"></i></a> 
+                                <button type="submit" class="btn btn-danger" title="delete"><i
+                                        class="fa-solid fa-trash"></i></button>
                             </form>
                         </td>
                     </tr>
                 @endforeach
-            </tbody>  
+            </tbody>
         </table>
     </div>
+@endsection
+
+@section('script')
+    @vite('resources/js/confirmDelete.js')
 @endsection

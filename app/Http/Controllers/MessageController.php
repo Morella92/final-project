@@ -8,6 +8,7 @@ use App\Models\Message;
 use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class MessageController extends Controller
 {
@@ -16,18 +17,17 @@ class MessageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // recupero tutti i messaggi
-        // $messaggi = Message::all();
-    // return view('messages.index', compact('messaggi'));
-
+    
         // recupero messaggi in base ad id
         $user_id = Auth::user()->id;
         $messages = Message::where('teacher_id', $user_id)->get();
-        // dd($messaggi);
+        
+        // CESTINO
+        $trashed = Message::onlyTrashed()->get()->count();
 
-        return view('messages.index', compact('messages'));
+        return view('messages.index', compact('messages', 'trashed'));
     }
 
     /**
@@ -108,22 +108,29 @@ class MessageController extends Controller
         return redirect()->route('messages.index')->with('alert-message', 'Moved to recycled bin')->with('alert-type', 'info');
     }
 
+    public function trashed()
+    {
+
+        $messages = Message::onlyTrashed()->get();
+        return view('messages.trashed', compact('messages'));
+    }
+
     public function restore($id)
     {
-        Book::where('id', $id)->withTrashed()->restore();
+        Message::where('id', $id)->withTrashed()->restore();
         return redirect()->route('messages.index')->with('alert-message', "Restored successfully")->with('alert-type', 'success');
     }
 
     public function restoreAll()
         {
-            Book::onlyTrashed()->restore();
+            Message::onlyTrashed()->restore();
             return redirect()->route('messages.index')->with('alert-message', "All messages restored successfully")->with('alert-type', 'success');
         }
 
 
     public function forceDelete($id)
         {
-            Book::where('id', $id)->withTrashed()->forceDelete();
+            Message::where('id', $id)->withTrashed()->forceDelete();
             return redirect()->route('messages.trashed')->with('alert-message', "Delete definitely")->with('alert-type', 'success');
         }
 }

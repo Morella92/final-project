@@ -6,7 +6,7 @@ use App\Http\Controllers\TeacherController;
 use App\Mail\NewLead;
 use App\Models\Lead;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\MessageController;
+use App\Http\Controllers\MessageController as MessagesController;
 use App\Http\Controllers\ReviewController;
 
 /*
@@ -36,7 +36,16 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('teachers', TeacherController::class)->parameters(['teachers'=> 'teacher:id']);
 
-    Route::resource('messages', MessageController::class);
+
+
+    Route::name('messages.')->prefix('messages')->group(function () {
+        Route::get('/trashed', [MessagesController::class, 'trashed'])->name('trashed');
+        Route::post('/{message}/restore', [MessagesController::class, 'restore'])->name('restore');
+        Route::delete('/{message}/force-delete', [MessagesController::class, 'forceDelete'])->name('force-delete');
+        Route::post('/restore-all', [MessagesController::class, 'restoreAll'])->name('restore-all');
+    });
+
+    Route::resource('messages', MessagesController::class);
     Route::resource('reviews', ReviewController::class);
     
     Route::get('/new-lead-mail', function(){

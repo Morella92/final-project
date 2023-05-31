@@ -17,9 +17,14 @@
     <script src="https://kit.fontawesome.com/113dcf80a9.js" crossorigin="anonymous"></script>
 
     <!-- Usando Vite -->
-    @vite(['resources/js/app.js'])
-    <script src="sweetalert2.min.js"></script>
-    <link rel="stylesheet" href="sweetalert2.min.css">
+    @vite('resources/js/app.js')
+    <script src="
+            https://cdn.jsdelivr.net/npm/sweetalert2@11.7.10/dist/sweetalert2.all.min.js
+            "></script>
+    <link href="
+    https://cdn.jsdelivr.net/npm/sweetalert2@11.7.10/dist/sweetalert2.min.css
+    " rel="stylesheet">
+
 </head>
 
 <body>
@@ -30,14 +35,14 @@
             <div class="container">
                 @if (Request::url() != route('dashboard'))
                     <a class="navbar-brand d-flex align-items-center" href="{{ url('/dashboard') }}">
-                        <div >
+                        <div>
                             <img class="logo_navbar_small" src="/img/varie/logo_small.png" alt="">
                             <img class="logo_navbar_text" src="/img/varie/text_logo.png" alt="">
                         </div>
                     </a>
                 @else
                     <a class="navbar-brand d-flex align-items-center" href="#">
-                        <div >
+                        <div>
                             <img class="logo_navbar_small" src="/img/varie/logo_small.png" alt="">
                             <img class="logo_navbar_text" src="/img/varie/text_logo.png" alt="">
                         </div>
@@ -76,12 +81,14 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle link-style" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle link-style" href="#"
+                                    role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                    v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right dropdown-style" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu-right dropdown-style"
+                                    aria-labelledby="navbarDropdown">
                                     {{-- <a class="dropdown-item" href="{{ url('dashboard') }}">{{ __('Dashboard') }}</a> --}}
                                     <a class="dropdown-item" href="{{ url('profile') }}">{{ __('Profile') }}</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
