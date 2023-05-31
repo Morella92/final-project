@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="container py-5">
-        <h1>Messaggi ricevuti</h1>
+        <h1 class="text-white">Messaggi ricevuti</h1>
 
-        <table class="table table-striped table-inverse table-responsive">
+        <table class="table table-striped table-inverse table-responsive bg-white message-style">
             <thead>
                 <tr>
                     <th scope="col">Data</th>
