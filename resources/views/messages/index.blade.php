@@ -1,17 +1,39 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>INDEX Messaggi</h1>
+    <div class="container py-5">
+        <h1>Messaggi ricevuti</h1>
 
-    @foreach ($messaggi as $messaggio)
-        <ul>
-            <li>DA: {{ $messaggio->ui_name }}</li>
-            <li>PER: {{ $messaggio->teacher_id }}</li>
-            <li>EMAIL: {{ $messaggio->ui_email }}</li>
-            <li>TEL:{{ $messaggio->ui_phone }}</li>
-            <li>TITOLO: {{ $messaggio->title }}</li>
-            <li>TESTO: {{ $messaggio->text }}</li>
-
-        </ul>
-    @endforeach
+        <table class="table table-striped table-inverse table-responsive">
+            <thead>
+                <tr>
+                    <th scope="col">Data</th>
+                    <th scope="col">Mittente</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Oggetto</th>
+                    <th scope="col" class=" text-center">Leggi</th>
+                    <th scope="col" class=" text-center">Cancella</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                @foreach ($messages as $message)
+                    <tr>
+                        <td>{{ $message->created_at->format('d/m/y')}}</td>
+                        <td>{{ $message->ui_name }}</td>
+                        <td>{{ $message->ui_email }}</td>  
+                        <td>{{ $message->title }}</td>
+                        <td class=" text-center">
+                            <a class="text-success" href="{{ route('messages.show', ['message' => $message->id]) }}">
+                                <i class="fa-solid fa-eye text-center"></i>
+                            </a>
+                        </td>
+                        <td class=" text-center"><a href="#"><i class="fa-solid fa-trash text-danger"></i></a></td>
+                    </tr>
+                @endforeach
+            </tbody>
+            
+        </table>
+    
+    </div>
 @endsection

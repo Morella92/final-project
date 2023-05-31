@@ -48,6 +48,13 @@
                     @endif
                 </div>
             </div>
+
+            {{-- MESSAGGI --}}
+            <button>
+                <a href="{{route('messages.index')}}">
+                    Leggi i tuoi messaggi
+                </a>
+            </button>
         </div>
     </div>
 @endsection

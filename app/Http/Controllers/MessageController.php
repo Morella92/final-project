@@ -23,10 +23,10 @@ class MessageController extends Controller
 
         // recupero messaggi in base ad id
         $user_id = Auth::user()->id;
-        $messaggi = Message::where('teacher_id', $user_id)->get();
+        $messages = Message::where('teacher_id', $user_id)->get();
         // dd($messaggi);
 
-        return view('messages.index', compact('messaggi'));
+        return view('messages.index', compact('messages'));
     }
 
     /**
@@ -59,15 +59,24 @@ class MessageController extends Controller
     public function show($id)
     {
     // Recupero il messaggio in base all'ID e alla relazione con il teacher
-    // $messaggio = Auth::user()->teacher->message()->find($id);
+    $message = Auth::user()->teacher->message()->find($id);
 
-    // if ($messaggio) {
-    //     return view('messages.show', compact('messaggio'));
-    // } else {
-    //     $messaggioNonTrovato = "Nessun messaggio trovato.";
-    //     return view('messages.show', compact('messaggioNonTrovato'));
-    // }
+    if ($message) {
+        return view('messages.show', compact('message'));
+    } else {
+        $messageNotFound = "Nessun messaggio trovato.";
+        return view('messages.show', compact('messageNotFound'));
     }
+        
+     }
+    // public function show($id)
+    // {
+    //     // Recupera il messaggio specifico in base all'ID
+    //     $message = Message::findOrFail($id);
+
+    //     // Passa il message alla vista 'messages.show'
+    //     return view('messages.show', compact('message'));
+    // }
 
     /**
      * Show the form for editing the specified resource.

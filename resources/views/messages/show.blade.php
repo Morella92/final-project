@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>SHOW Messaggi</h1>
+
+    <div class="container py-5">
+        <h1>Da: {{$message->ui_name}}</h1>
+    </div>
 @endsection
