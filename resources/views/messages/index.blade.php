@@ -28,7 +28,13 @@
                                 <i class="fa-solid fa-eye text-center"></i>
                             </a>
                         </td>
-                        <td class=" text-center"><a href="#"><i class="fa-solid fa-trash text-danger"></i></a></td>
+                        <td class=" text-center">
+                            <form class="d-inline delete" action="{{route('messages.destroy', $message->id)}}" method="POST" data-element-name="{{ $message->title }}">
+                                @csrf
+                                @method('DELETE')
+                                <a href="#"><i class="fa-solid fa-trash text-danger"></i></a> 
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>  

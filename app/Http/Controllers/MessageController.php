@@ -103,6 +103,8 @@ class MessageController extends Controller
      */
     public function destroy(Message $message)
     {
-        //
+        $message->delete();
+
+        return redirect()->route('messages.index')->with('alert-message', 'Moved to recycled bin')->with('alert-type', 'info');
     }
 }
