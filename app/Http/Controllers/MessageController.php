@@ -56,17 +56,18 @@ class MessageController extends Controller
      * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Message $message)
     {
     // Recupero il messaggio in base all'ID e alla relazione con il teacher
-    $message = Auth::user()->teacher->message()->find($id);
+    // $message = Auth::user()->teacher->message()->find($id);
 
-    if ($message) {
-        return view('messages.show', compact('message'));
-    } else {
-        $messageNotFound = "Nessun messaggio trovato.";
-        return view('messages.show', compact('messageNotFound'));
-    }
+    // if ($message) {
+    //     return view('messages.show', compact('message'));
+    // } else {
+    //     $messageNotFound = "Nessun messaggio trovato.";
+    //     return view('messages.show', compact('messageNotFound'));
+    // }
+    return view('messages.show', compact('message'));
         
      }
     // public function show($id)
