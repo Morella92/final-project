@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreMessageRequest;
 use App\Http\Requests\UpdateMessageRequest;
 use App\Models\Message;
-
+use App\Models\Teacher;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 class MessageController extends Controller
 {
     /**
@@ -15,7 +17,16 @@ class MessageController extends Controller
      */
     public function index()
     {
-        //
+        // recupero tutti i messaggi
+        // $messaggi = Message::all();
+    // return view('messages.index', compact('messaggi'));
+
+        // recupero messaggi in base ad id
+        $user_id = Auth::user()->id;
+        $messaggi = Message::where('teacher_id', $user_id)->get();
+        // dd($messaggi);
+
+        return view('messages.index', compact('messaggi'));
     }
 
     /**
@@ -45,9 +56,17 @@ class MessageController extends Controller
      * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function show(Message $message)
+    public function show($id)
     {
-        //
+    // Recupero il messaggio in base all'ID e alla relazione con il teacher
+    // $messaggio = Auth::user()->teacher->message()->find($id);
+
+    // if ($messaggio) {
+    //     return view('messages.show', compact('messaggio'));
+    // } else {
+    //     $messaggioNonTrovato = "Nessun messaggio trovato.";
+    //     return view('messages.show', compact('messaggioNonTrovato'));
+    // }
     }
 
     /**

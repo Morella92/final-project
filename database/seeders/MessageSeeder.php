@@ -46,20 +46,18 @@ class MessageSeeder extends Seeder
             ],
         ];
 
-        for($i=0; $i<15; $i++){
-
+        for ($i = 0; $i < 500; $i++) {
             $message = new Message();
-
-            foreach($messages as $mess){
-                $message->title = $mess['title'];
-                $message->text = $mess['text'];
-            }
-            
+        
+            $randomMessage = $messages[array_rand($messages)]; // Scegli un elemento casuale dall'array
+        
+            $message->title = $randomMessage['title'];
+            $message->text = $randomMessage['text'];
             $message->ui_name = $faker->name();
             $message->ui_email = $faker->email();
             $message->ui_phone = $faker->phoneNumber();
-
             $message->teacher_id = $faker->randomElement($teacherIds);
+        
             $message->save();
         }
     }

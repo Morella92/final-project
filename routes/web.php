@@ -6,6 +6,7 @@ use App\Http\Controllers\TeacherController;
 use App\Mail\NewLead;
 use App\Models\Lead;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('teachers', TeacherController::class)->parameters(['teachers'=> 'teacher:id']);
+
+    Route::resource('messages', MessageController::class);
+    
     Route::get('/new-lead-mail', function(){
         $lead = Lead::first();
         return new NewLead($lead);
