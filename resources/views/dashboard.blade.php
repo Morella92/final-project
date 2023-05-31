@@ -8,6 +8,18 @@
         </h2>
 
         <div class="d-flex gap-3 flex-wrap">
+
+            @if (session('error') && session('error_expiry') > time())
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+                <script>
+                    setTimeout(function() {
+                        document.querySelector('.alert').remove();
+                    }, 2000);
+                </script>
+            @endif
+
             {{-- GESTISTI IL TUO PROFILO --}}
             <div class="card" style="width: 20rem;">
 
@@ -51,7 +63,7 @@
 
             {{-- MESSAGGI --}}
             <button>
-                <a href="{{route('messages.index')}}">
+                <a href="{{ route('messages.index') }}">
                     Leggi i tuoi messaggi
                 </a>
             </button>

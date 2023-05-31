@@ -86,8 +86,14 @@ class TeacherController extends Controller
      */
     public function show(Teacher $teacher)
     {   
+        if($teacher->user_id == Auth::id()){
 
-        return view('teachers.show', compact('teacher'));
+            return view('teachers.show', compact('teacher'));
+        }else{
+            return redirect()->route('dashboard')->with(['error' => 'Spiacente ma non sei autorizzato a visualizzare la pagina', 'error_expiry' => time() + 2]);
+
+        }
+
     }
 
     /**
@@ -98,11 +104,17 @@ class TeacherController extends Controller
      */
     public function edit(Teacher $teacher)
     {
-
         $specializations = Specialization::orderBy('name', 'asc')->get(); 
+
+        if($teacher->user_id == Auth::id()){
+
+            return view('teachers.edit', compact('teacher', 'specializations'));
+        }else{
+            return redirect()->route('dashboard')->with(['error' => 'Spiacente ma non sei autorizzato a visualizzare la pagina', 'error_expiry' => time() + 2]);
+        }
   
 
-        return view('teachers.edit', compact('teacher', 'specializations'));
+        
     }
 
     /**
@@ -143,7 +155,15 @@ class TeacherController extends Controller
             $teacher->specializations()->sync($request->specializations);
         };
 
-        return to_route('teachers.show', $teacher);
+
+        if($teacher->user_id == Auth::id()){
+
+            return to_route('teachers.show', $teacher);
+        }else{
+            return redirect()->route('dashboard')->with(['error' => 'Spiacente ma non sei autorizzato a visualizzare la pagina', 'error_expiry' => time() + 2]);
+        }
+
+        
     }
 
     /**
@@ -177,7 +197,14 @@ class TeacherController extends Controller
 
 
         $teacher->delete();
+
+// AUTORIZZAZIONI UTENTE
+        if($teacher->user_id == Auth::id()){
+
+            return to_route('teachers.index');
+        }else{
+            return redirect()->route('dashboard')->with(['error' => 'Spiacente ma non sei autorizzato a visualizzare la pagina', 'error_expiry' => time() + 2]);
+        }
         
-        return to_route('teachers.index'); 
     }
 }

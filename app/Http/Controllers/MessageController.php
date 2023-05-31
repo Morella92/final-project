@@ -58,26 +58,18 @@ class MessageController extends Controller
      */
     public function show(Message $message)
     {
-    // Recupero il messaggio in base all'ID e alla relazione con il teacher
-    // $message = Auth::user()->teacher->message()->find($id);
+       // AUTORIZZAZIONI UTENTE
+       if($message->teacher_id == Auth::id()){
+        // dd($message);
 
-    // if ($message) {
-    //     return view('messages.show', compact('message'));
-    // } else {
-    //     $messageNotFound = "Nessun messaggio trovato.";
-    //     return view('messages.show', compact('messageNotFound'));
-    // }
-    return view('messages.show', compact('message'));
+        return view('messages.show', compact('message'));
+    }else{
+        return redirect()->route('dashboard')->with(['error' => 'Spiacente ma non sei autorizzato a visualizzare la pagina', 'error_expiry' => time() + 2]);
+    }
+    
         
      }
-    // public function show($id)
-    // {
-    //     // Recupera il messaggio specifico in base all'ID
-    //     $message = Message::findOrFail($id);
-
-    //     // Passa il message alla vista 'messages.show'
-    //     return view('messages.show', compact('message'));
-    // }
+   
 
     /**
      * Show the form for editing the specified resource.
