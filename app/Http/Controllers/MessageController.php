@@ -107,4 +107,23 @@ class MessageController extends Controller
 
         return redirect()->route('messages.index')->with('alert-message', 'Moved to recycled bin')->with('alert-type', 'info');
     }
+
+    public function restore($id)
+    {
+        Book::where('id', $id)->withTrashed()->restore();
+        return redirect()->route('messages.index')->with('alert-message', "Restored successfully")->with('alert-type', 'success');
+    }
+
+    public function restoreAll()
+        {
+            Book::onlyTrashed()->restore();
+            return redirect()->route('messages.index')->with('alert-message', "All messages restored successfully")->with('alert-type', 'success');
+        }
+
+
+    public function forceDelete($id)
+        {
+            Book::where('id', $id)->withTrashed()->forceDelete();
+            return redirect()->route('messages.trashed')->with('alert-message', "Delete definitely")->with('alert-type', 'success');
+        }
 }
