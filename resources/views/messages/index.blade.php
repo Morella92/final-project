@@ -13,13 +13,10 @@
         <table class="table table-striped table-inverse table-responsive bg-white message-style">
             <thead>
                 <tr>
-                    <th scope="col"><a class="btn btn-link" href="{{ route('messages.index', 'sort=Data') }}">Data</a></th>
-                    <th scope="col"><a class="btn btn-link"
-                            href="{{ route('messages.index', 'sort=Mittente') }}">Mittente</a></th>
-                    <th scope="col"><a class="btn btn-link" href="{{ route('messages.index', 'sort=Email') }}">Email</a>
-                    </th>
-                    <th scope="col"><a class="btn btn-link"
-                            href="{{ route('messages.index', 'sort=Oggetto') }}">Oggetto</a></th>
+                    <th scope="col">Ricezione</th>
+                    <th scope="col">Mittente</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Oggetto</a></th>
                     <th scope="col" class=" text-center">Leggi</th>
                     <th scope="col" class=" text-center">Cancella</th>
                 </tr>

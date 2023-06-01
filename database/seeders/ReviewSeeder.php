@@ -64,12 +64,14 @@ class ReviewSeeder extends Seeder
             Consiglio vivamente questo corso a chiunque desideri ottenere una formazione di qualità!",
         ];
 
-        for($i = 0; $i < 500; $i++){
+        for($i = 0; $i < 100; $i++){
 
             $review = new Review();
             $randomReview = $reviews[array_rand($reviews)];
+            $review->user = $faker->firstName();
             $review->text = $randomReview;
             $review->teacher_id = $faker->randomElement($teacherIds);
+            $review->date_fake = $faker->dateTimeBetween('2015-01-01', '2023-12-31');
             $review->save();
         }
         

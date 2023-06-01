@@ -53,7 +53,7 @@ class MessageSeeder extends Seeder
             ],
         ];
 
-        for ($i = 0; $i < 500; $i++) {
+        for ($i = 0; $i < 100; $i++) {
             $message = new Message();
         
             $randomMessage = $messages[array_rand($messages)]; // Scegli un elemento casuale dall'array
