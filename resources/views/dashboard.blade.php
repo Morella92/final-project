@@ -74,5 +74,48 @@
                 </a>
             </button>
         </div>
+
+        {{-- stelle --}}
+        {{-- @php
+            $teacher = Auth::user()->teacher;
+            $votes = $teacher->votes;
+        @endphp
+
+        <div>
+            Media dei voti: {{ $votes }}
+        </div> --}}
+        <div>
+            @php
+                $user = Auth::user();
+                $teacher = $user->teacher;
+                
+                if ($teacher) {
+                    $votes = $teacher->votes;
+                    $prova = [];
+                
+                    foreach ($votes as $vote) {
+                        $prova[] = $vote->vote;
+                    }
+                
+                    $averageVote = collect($prova)->average();
+                } else {
+                    $averageVote = 0; // o un valore predefinito
+                }
+            @endphp
+
+            <div>
+
+                Media dei voti: {{ $averageVote }}
+
+                <div>
+
+                    @php
+                        
+                    @endphp
+                </div>
+            </div>
+
+        </div>
+
     </div>
 @endsection
