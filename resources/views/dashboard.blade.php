@@ -94,10 +94,26 @@
                     $averageVote = 0;
                 }
             @endphp
-            Media dei voti: {{ $averageVote }}
+            @if ($averageVote == 0)
+                <span class="text-white">Livello di gradimento:</span>
+                <span class="text-danger">N/D</span>
+            @else
+                <span class="text-white">Livello di gradimento:</span>
+                @for ($i = 1; $i <= 5; $i++)
+                    @if ($i <= $averageVote)
+                        <i class="fas fa-star text-warning"></i>
+                    @else
+                        <i class="fas fa-star text-black opacity-25"></i>
+                    @endif
+                @endfor
+            @endif
+
+
+
+            {{--             
             @for ($i = 0; $i < $averageVote; $i++)
                 <i class="fas fa-star text-warning fs-1"></i>
-            @endfor
+            @endfor --}}
 
             <div>
 
