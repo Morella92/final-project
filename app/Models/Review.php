@@ -10,6 +10,6 @@ class Review extends Model
     use HasFactory;
 
     public function teachers(){
-        return $this->hasMany(Teacher::class);
+        return $this->belongsTo(Teacher::class);
     }
 }
