@@ -76,14 +76,6 @@
         </div>
 
         {{-- stelle --}}
-        {{-- @php
-            $teacher = Auth::user()->teacher;
-            $votes = $teacher->votes;
-        @endphp
-
-        <div>
-            Media dei voti: {{ $votes }}
-        </div> --}}
         <div>
             @php
                 $user = Auth::user();
@@ -99,13 +91,17 @@
                 
                     $averageVote = collect($prova)->average();
                 } else {
-                    $averageVote = 0; // o un valore predefinito
+                    $averageVote = 0;
                 }
             @endphp
+            Media dei voti: {{ $averageVote }}
+            @for ($i = 0; $i < $averageVote; $i++)
+                <i class="fas fa-star text-warning fs-1"></i>
+            @endfor
 
             <div>
 
-                Media dei voti: {{ $averageVote }}
+
 
                 <div>
 
