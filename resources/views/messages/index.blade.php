@@ -13,10 +13,13 @@
         <table class="table table-striped table-inverse table-responsive bg-white message-style">
             <thead>
                 <tr>
-                    <th scope="col">Data</th>
-                    <th scope="col">Mittente</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Oggetto</th>
+                    <th scope="col"><a class="btn btn-link" href="{{ route('messages.index', 'sort=Data') }}">Data</a></th>
+                    <th scope="col"><a class="btn btn-link"
+                            href="{{ route('messages.index', 'sort=Mittente') }}">Mittente</a></th>
+                    <th scope="col"><a class="btn btn-link" href="{{ route('messages.index', 'sort=Email') }}">Email</a>
+                    </th>
+                    <th scope="col"><a class="btn btn-link"
+                            href="{{ route('messages.index', 'sort=Oggetto') }}">Oggetto</a></th>
                     <th scope="col" class=" text-center">Leggi</th>
                     <th scope="col" class=" text-center">Cancella</th>
                 </tr>
@@ -25,7 +28,13 @@
             <tbody>
                 @foreach ($messages as $message)
                     <tr>
-                        <td>{{ $message->created_at->format('d/m/y') }}</td>
+                        <td>
+                            @php
+                                $carbonDate = \Illuminate\Support\Carbon::createFromFormat('Y-m-d', $message->date_fake);
+                                $formattedDate = $carbonDate->format('d-m-Y');
+                                echo $formattedDate;
+                            @endphp
+                        </td>
                         <td>{{ $message->ui_name }}</td>
                         <td>{{ $message->ui_email }}</td>
                         <td>{{ $message->title }}</td>

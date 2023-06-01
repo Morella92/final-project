@@ -19,7 +19,25 @@ class MessageController extends Controller
      */
     public function index(Request $request)
     {
+        $sort = $request->sort ?? '';
+
+         // recupero messaggi in base ad id e filtro
+         if ($sort) {
+            $user_id = Auth::user()->id;
+            $messages = Message::where('teacher_id', $user_id)->sortBy($sort);
+        } else {
+            $user_id = Auth::user()->id;
+        $messages = Message::where('teacher_id', $user_id)->get();
+        }
     
+        
+        
+        
+        
+        
+        
+        
+        
         // recupero messaggi in base ad id
         $user_id = Auth::user()->id;
         $messages = Message::where('teacher_id', $user_id)->get();

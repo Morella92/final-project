@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use App\Models\Message;
 use App\Models\Teacher;
+use Carbon\Carbon;
 
 class MessageSeeder extends Seeder
 {
@@ -17,6 +18,12 @@ class MessageSeeder extends Seeder
      */
     public function run(Faker $faker)
     {   
+        $startDate = Carbon::create(2018, 1, 1);
+        $endDate = Carbon::create(2023, 12, 31);
+
+       
+
+        
         $teacherIds = Teacher::all()->pluck('id')->all();
 
         $messages = [
@@ -56,6 +63,7 @@ class MessageSeeder extends Seeder
             $message->ui_name = $faker->name();
             $message->ui_email = $faker->email();
             $message->ui_phone = $faker->phoneNumber();
+            $message->date_fake = $faker->dateTimeBetween('2015-01-01', '2023-12-31');
             $message->teacher_id = $faker->randomElement($teacherIds);
         
             $message->save();

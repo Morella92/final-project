@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Carbon;
 
 return new class extends Migration
 {
@@ -20,6 +21,7 @@ return new class extends Migration
             $table->string('ui_name', 100)->required();
             $table->string('ui_email', 100)->required();
             $table->string('ui_phone', 50)->nullable();
+            $table->date('date_fake')->default(Carbon::createFromFormat('Y-m-d', '2018-01-01')->addDays(rand(0, Carbon::now()->diffInDays(Carbon::createFromFormat('Y-m-d', '2018-01-01')))));
             $table->softDeletes();
             $table->timestamps();
         });
