@@ -14,6 +14,7 @@ class Teacher extends Model
     protected $with = [
         'specializations',
         'user',
+        'review',
     ];
 
     protected $fillable = [
