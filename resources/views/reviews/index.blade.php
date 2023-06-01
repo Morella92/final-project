@@ -9,19 +9,27 @@
                 <tr>
                     <th>N.</th>
                     <th scope="col">Data</th>
+                    <th scope="col">User</th>
                     <th scope="col">Recensione</th>
                 </tr>
             </thead>
-            
+
             <tbody>
                 @foreach ($reviews as $review)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $review->created_at->format('d/m/y')}}</td>
+                        <td>
+                            @php
+                                $carbonDate = \Illuminate\Support\Carbon::createFromFormat('Y-m-d', $review->date_fake);
+                                $formattedDate = $carbonDate->format('d-m-Y');
+                                echo $formattedDate;
+                            @endphp
+                        </td>
+                        <td>{{ $review->user }}</td>
                         <td>{{ $review->text }}</td>
                     </tr>
                 @endforeach
-            </tbody>  
+            </tbody>
         </table>
     </div>
 @endsection

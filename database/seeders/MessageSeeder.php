@@ -63,7 +63,7 @@ class MessageSeeder extends Seeder
             $message->ui_name = $faker->name();
             $message->ui_email = $faker->email();
             $message->ui_phone = $faker->phoneNumber();
-            $message->date_fake = $faker->dateTimeBetween('2015-01-01', '2023-12-31');
+            $message->date_fake = $faker->dateTimeBetween('2015-01-01', '2023-06-06');
             $message->teacher_id = $faker->randomElement($teacherIds);
         
             $message->save();

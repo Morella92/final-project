@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string('title', 100)->required();
             $table->text('text')->required();
-            $table->string('ui_name', 100)->required();
+            $table->string('ui_name', 50)->required();
             $table->string('ui_email', 100)->required();
             $table->string('ui_phone', 50)->nullable();
             $table->date('date_fake')->default(Carbon::createFromFormat('Y-m-d', '2018-01-01')->addDays(rand(0, Carbon::now()->diffInDays(Carbon::createFromFormat('Y-m-d', '2018-01-01')))));
