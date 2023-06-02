@@ -8,6 +8,8 @@ use App\Http\Controllers\Api\MessageController;
 use App\Http\Controllers\Api\ReviewController;
 use App\Http\Controllers\Api\VoteController;
 use App\Http\Controllers\Api\SpecializationController;
+use App\Http\Controllers\Api\TeacherVoteController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +37,5 @@ Route::post('/messages', [MessageController::class, 'store']);
 Route::post('/reviews', [ReviewController::class, 'store']);
 
 Route::post('/votes', [VoteController::class, 'store']);
+
+Route::apiResource('teacher-votes', TeacherVoteController::class);
