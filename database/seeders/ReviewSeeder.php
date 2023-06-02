@@ -71,7 +71,6 @@ class ReviewSeeder extends Seeder
             $review->user = $faker->firstName();
             $review->text = $randomReview;
             $review->teacher_id = $faker->randomElement($teacherIds);
-            $review->date_fake = $faker->dateTimeBetween('2015-01-01', '2023-06-06');
             $review->save();
         }
         
