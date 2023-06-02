@@ -70,7 +70,7 @@ class MessageController extends Controller
     public function show(Message $message)
     {
        // AUTORIZZAZIONI UTENTE
-       if($message->user_id == Auth::id()){
+       if($message->teacher_id == Auth::id()){
         // dd($message);
 
         return view('messages.show', compact('message'));

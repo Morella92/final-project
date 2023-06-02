@@ -9,7 +9,7 @@
                     @if ($teacher->id <= 16)
                         <img src="{{ $teacher->picture }}" class="align-self-center mb-4" alt="...">
                     @else
-                        <img src="{{ asset('storage/' . $teacher->picture) }}" alt="">
+                        <img src="{{ $teacher->picture_path }}" alt="">
                     @endif
                     <div class="card-body">
                         <h5 class="card-title">{{ $teacher->user->name }}</h5>

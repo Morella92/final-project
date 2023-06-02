@@ -16,18 +16,7 @@
         <p>I campi contrassegnati dall'<span class="fw-bolder text-danger">*</span> sono obbligatori</p>
         <form class="row g-3" action="{{ route('teachers.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            {{-- TELEFONO --}}
-            <div class="col-md-6">
-                <label for="phone" class="form-label fw-bold text-uppercase">Numero di telefono</label>
-                <input type="text" name="phone" value=""
-                    class="form-control @error('phone') is-invalid @enderror" id="phone"
-                    placeholder="Inserisci il tuo contatto">
-                @error('phone')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
+
             {{-- multiselect specializzazioni --}}
             <div class="mb-3">
                 <label for="specializations" class="form-label fw-bold text-uppercase">Specializzazione / i <span
@@ -57,11 +46,6 @@
                 @enderror
             </div>
 
-
-
-
-
-
             {{-- PRESTAZIONI --}}
             <div>
 
@@ -76,7 +60,37 @@
                     @enderror
                 </div>
             </div>
+            {{-- TELEFONO --}}
+            <div class="col-md-6">
+                <label for="phone" class="form-label fw-bold text-uppercase">Numero di telefono</label>
+                <input type="text" name="phone" value=""
+                    class="form-control @error('phone') is-invalid @enderror" id="phone"
+                    placeholder="Inserisci il tuo contatto">
+                @error('phone')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
             {{-- UPLOAD --}}
+            {{-- PROFILE IMG --}}
+            <div class="mt-2">
+                <label for="cv" class="form-label fw-bold text-uppercase">Carica l'immagine di profilo</label>
+                <div class="input-group mb-3">
+                    <input type="file" name="picture" value=""
+                        class="form-control @error('picture') is-invalid @enderror" id="inputGroupFile02">
+
+                    @error('picture')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+
+
+
+            {{-- CV --}}
             <div class="col-12">
 
                 <div class="mt-2">
@@ -94,24 +108,11 @@
                     </div>
                 </div>
 
-                <div class="mt-2">
-                    <label for="cv" class="form-label fw-bold text-uppercase">Carica l'immagine di profilo</label>
-                    <div class="input-group mb-3">
-                        <input type="file" name="picture" value=""
-                            class="form-control @error('picture') is-invalid @enderror" id="inputGroupFile02">
 
-                        @error('picture')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </div>
                 {{-- SUBMIT --}}
                 <div class="col-12">
                     <button type="submit" class="btn btn-primary">Crea profilo</button>
                 </div>
-
         </form>
     </div>
 

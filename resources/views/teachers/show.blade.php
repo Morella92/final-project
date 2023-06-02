@@ -6,7 +6,7 @@
         <h1 class="text-center text-white">{{ $teacher->user->name }}</h1>
         {{-- IMG PROFILO --}}
         @if ($teacher->id <= 16)
-            <img src="{{ $teacher->picture }}" class="message-style align-self-center mb-4" alt="...">
+            <img src="{{ $teacher->picture_path }}" class="message-style align-self-center mb-4" alt="...">
         @else
             <img src="{{ asset('storage/' . $teacher->picture) }}" alt="" class="show-profile-img">
         @endif
@@ -16,7 +16,7 @@
                 <span class="fw-bold style-show"> {{ $specialization->name }}</span>
                 <span class="badge modify-button modify-link fw-bold"> {{ $specialization->expertise }} </span>
             </p>
-            <p class="text-white">{{ $specialization->description }}</p>
+            <p class="text-white scb-description">{{ $specialization->description }}</p>
         @empty
             -
         @endforelse
@@ -25,10 +25,13 @@
             <div>
                 <h3 class="style-show">Contatti</h3>
                 <p class="card-text">
-                    <span class="fw-bold my-2 style-show">Email: <span class="text-white fw-light">{{ $teacher->user->email }}; <br></span></span> 
-                    <span class="fw-bold my-2 style-show">Indirizzo: <span class="text-white fw-light">{{ $teacher->user->address }}; <br></span></span> 
+                    <span class="fw-bold my-2 style-show">Email: <span
+                            class="text-white fw-light">{{ $teacher->user->email }}; <br></span></span>
+                    <span class="fw-bold my-2 style-show">Indirizzo: <span
+                            class="text-white fw-light">{{ $teacher->user->address }}; <br></span></span>
                     @if ($teacher->phone)
-                        <span class="fw-bold my-2 style-show">Numero: <span class="text-white fw-light">{{ $teacher->phone }};</span></span> 
+                        <span class="fw-bold my-2 style-show">Numero: <span
+                                class="text-white fw-light">{{ $teacher->phone }};</span></span>
                     @endif
                 </p>
             </div>
@@ -45,7 +48,8 @@
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             @if ($teacher->id <= 16)
-                                <img src="{{ $teacher->cv }}" class="message-style align-self-center mb-4" alt="...">
+                                <img src="{{ $teacher->cv_path }}" class="message-style align-self-center mb-4"
+                                    alt="...">
                             @else
                                 <img src="{{ asset('storage/' . $teacher->cv) }}" alt="">
                             @endif
@@ -66,12 +70,7 @@
                     Modifica il tuo profilo
                 </a>
             </button>
-            {{-- DELETE --}}
-            {{-- <form action="{{ route('teachers.destroy', $teacher) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <input class="btn btn-sm btn-danger" type="submit" value="Elimina">
-            </form> --}}
+
         </div>
 
 

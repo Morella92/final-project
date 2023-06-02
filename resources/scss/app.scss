@@ -7,14 +7,14 @@
     padding: 0;
     box-sizing: border-box;
 }
-.container{
+.container {
     margin: 0 auto;
 }
 img {
     max-width: 100%;
 }
 
-a{
+a {
     text-decoration: none;
     color: currentColor;
 }
@@ -129,75 +129,87 @@ a{
     }
 }
 
-.navbar-style{
+.navbar-style {
     background-color: #2e5330;
     padding: 5px 0;
 }
 
-.logo_navbar_small{
+.logo_navbar_small {
     width: 70px;
 }
-.logo_navbar_text{
+.logo_navbar_text {
     width: 150px;
 }
 
-.link-style{
-    color:rgba(255, 252, 217, 0.94);
-    &:hover{
+.link-style {
+    color: rgba(255, 252, 217, 0.94);
+    &:hover {
         color: rgba(239, 229, 115, 0.94);
     }
 }
 
-.dropdown-style{
+.dropdown-style {
     background-color: rgba(246, 234, 107);
 }
 
-.edit-button{
+.edit-button {
     border: none;
     background-color: #203a22;
     border-radius: 30px;
     padding: 5px 10px;
 }
 
-.edit-link{
+.edit-link {
     color: rgba(255, 252, 217, 0.94);
-    &:hover{
+    &:hover {
         color: rgba(239, 229, 115, 0.94);
     }
 }
 
-.modify-button{
+.modify-button {
     border: none;
     background-color: rgba(239, 229, 115, 0.94);
     border-radius: 30px;
     padding: 5px 10px;
 }
 
-.modify-link{
+.modify-link {
     color: #203a22;
     font-weight: 600;
-    &:hover{
+    &:hover {
         color: #67696a;
     }
 }
 // MESSAGE SECTION
-body{
+body {
     background-color: #2e5330 !important;
 }
 
-.message-style{
+.message-style {
     border: 3px solid rgba(246, 234, 107, 0.94);
     box-shadow: 7px 7px 3px #203a22;
 }
 
-.text-style{
+.text-style {
     text-align: justify;
 }
 
-.style-show{
+.style-show {
     color: #d1bb41;
 }
 
-.style-arrow{
+.style-arrow {
     color: #203a22;
+}
+
+.scb-description {
+    text-align: justify;
+}
+.thumb {
+    width: 100px;
+    margin: 0 auto;
+}
+.thumb-text {
+    font-size: 8px;
+    font-weight: bold;
 }
