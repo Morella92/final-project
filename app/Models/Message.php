@@ -11,12 +11,11 @@ class Message extends Model
     use HasFactory;
     use SoftDeletes;
     protected $fillable = [
-        'data',
         'text',
         'ui_name',
         'ui_email',
         'ui_phone',
-        'sort'
+        'title',
     ];
     public function teachers(){
         return $this->hasMany(Teacher::class);

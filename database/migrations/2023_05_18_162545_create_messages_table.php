@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('ui_name', 50)->required();
             $table->string('ui_email', 100)->required();
             $table->string('ui_phone', 50)->nullable();
-            $table->date('date_fake')->default(Carbon::createFromFormat('Y-m-d', '2018-01-01')->addDays(rand(0, Carbon::now()->diffInDays(Carbon::createFromFormat('Y-m-d', '2018-01-01')))))->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
