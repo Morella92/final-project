@@ -43,7 +43,7 @@ class TeacherVoteController extends Controller
         $data = $request->all();
 
         $validator = Validator::make($data, [
-            'vote_id' => 'nullable|unsigned|between:1,5',
+            'vote_id' => 'required|unsigned|between:1,5',
             'teacher_id' => 'required|integer'
         ]);
 
@@ -63,6 +63,7 @@ class TeacherVoteController extends Controller
             'success' => true,
             'message' => 'Messaggio salvato con successo'
         ]);
+
     }
 
     /**
