@@ -22,7 +22,7 @@ class MessageController extends Controller
     
         // recupero messaggi in base ad id
         $user_id = Auth::user()->id;
-        $messages = Message::where('teacher_id', $user_id)->orderBy('date_fake', 'desc')->get();
+        $messages = Message::where('teacher_id', $user_id)->orderBy('created_at', 'desc')->get();
         
         // CESTINO
         $trashed = Message::onlyTrashed()->get()->count();

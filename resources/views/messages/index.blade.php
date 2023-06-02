@@ -26,11 +26,12 @@
                 @foreach ($messages as $message)
                     <tr>
                         <td>
-                            @php
+                            {{-- @php
                                 $carbonDate = \Illuminate\Support\Carbon::createFromFormat('Y-m-d', $message->date_fake);
                                 $formattedDate = $carbonDate->format('d-m-Y');
                                 echo $formattedDate;
-                            @endphp
+                            @endphp --}}
+                            {{ $message->created_at->format('d-m-Y') }}
                         </td>
                         <td>{{ $message->ui_name }}</td>
                         <td>{{ $message->ui_email }}</td>
