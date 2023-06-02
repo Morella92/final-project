@@ -9,6 +9,11 @@ class Vote extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'vote',
+        'teacher_id'
+    ];
+
     public function teachers(){
         return $this->belongsToMany(Teacher::class);
     }

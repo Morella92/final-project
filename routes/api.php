@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\TeacherController;
 use App\Http\Controllers\Api\LeadController;
 use App\Http\Controllers\Api\MessageController;
 use App\Http\Controllers\Api\ReviewController;
+use App\Http\Controllers\Api\VoteController;
 use App\Http\Controllers\Api\SpecializationController;
 
 /*
@@ -32,3 +33,5 @@ Route::post('/contacts', [LeadController::class, 'store']);
 Route::post('/messages', [MessageController::class, 'store']);
 
 Route::post('/reviews', [ReviewController::class, 'store']);
+
+Route::post('/votes', [VoteController::class, 'store']);
