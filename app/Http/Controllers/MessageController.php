@@ -49,6 +49,8 @@ class MessageController extends Controller
     public function store(StoreMessageRequest $request)
     {
         $message = new Message();
+        $message->teacher_id = $request->input('teacher_id');
+        $message->message = $request->input('message');
         $message->title = $request->input('title');
         $message->text = $request->input('text');
         $message->ui_name = $request->input('ui_name');
@@ -56,7 +58,7 @@ class MessageController extends Controller
         $message->ui_phone = $request->input('ui_phone');
         $message->save();
 
-    return redirect()->route('messages.index', $message)->with('alert-message', 'Messaggio salvato con successo')->with('alert-type', 'success');
+    return redirect()->route('messages.index')->with('alert-message', 'Messaggio salvato con successo')->with('alert-type', 'success');
     }
 
     /**
@@ -68,7 +70,7 @@ class MessageController extends Controller
     public function show(Message $message)
     {
        // AUTORIZZAZIONI UTENTE
-       if($message->teacher_id == Auth::id()){
+       if($message->user_id == Auth::id()){
         // dd($message);
 
         return view('messages.show', compact('message'));

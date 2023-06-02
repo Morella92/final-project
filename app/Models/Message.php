@@ -16,6 +16,7 @@ class Message extends Model
         'ui_email',
         'ui_phone',
         'title',
+        'teacher_id'
     ];
     public function teachers(){
         return $this->hasMany(Teacher::class);
