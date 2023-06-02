@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->unique()->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->longText('performance')->nullable();
+            $table->string('pdf_cv')->nullable();
             $table->string('cv')->nullable();
             $table->string('picture')->nullable();
             $table->string('phone', 20)->nullable();

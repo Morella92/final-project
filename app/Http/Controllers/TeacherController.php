@@ -63,6 +63,16 @@ class TeacherController extends Controller
             $data['picture'] = $picture;
         }
 
+          // UPDATE PDF CV
+          if($request->hasFile('pdf_cv')){
+            $pdf_cv = Storage::put('uploads', $data['pdf_cv']);
+             $data['pdf_cv'] = $pdf_cv;
+             if($teacher->pdf_cv && Storage::exists($teacher->pdf_cv)){
+                //  elimino il vecchio pdf del cv
+                Storage::delete($teacher->picture);
+            }
+         }
+
 
         $new_teacher = Teacher::create($data);
 
@@ -145,6 +155,16 @@ class TeacherController extends Controller
              $data['picture'] = $picture;
              if($teacher->picture && Storage::exists($teacher->picture)){
                 //  elimino la vecchi img di profilo
+                Storage::delete($teacher->picture);
+            }
+         }
+
+         // UPDATE PDF CV
+         if($request->hasFile('pdf_cv')){
+            $pdf_cv = Storage::put('uploads', $data['pdf_cv']);
+             $data['pdf_cv'] = $pdf_cv;
+             if($teacher->pdf_cv && Storage::exists($teacher->pdf_cv)){
+                //  elimino il vecchio pdf del cv
                 Storage::delete($teacher->picture);
             }
          }

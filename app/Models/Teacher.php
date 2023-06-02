@@ -24,7 +24,8 @@ class Teacher extends Model
         'picture',
         'phone',
         'credit_card',
-        'user_id'
+        'user_id', 
+        'pdf_cv'
     ];
 
     public function user(){

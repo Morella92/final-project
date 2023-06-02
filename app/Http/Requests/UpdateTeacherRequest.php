@@ -26,6 +26,7 @@ class UpdateTeacherRequest extends FormRequest
         return [
             'performance' => 'nullable|string|min:10',
             'cv' => 'nullable|image|max:1024',
+            'pdf_cv' => 'nullable|file|mimes:pdf|max:2048',
             'picture' => 'nullable|image|max:1024',
             'phone' =>  'nullable|string|max:20',
             'user_id' => 'exists:user,id',

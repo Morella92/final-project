@@ -6,9 +6,9 @@
         <h1 class="text-center text-white">{{ $teacher->user->name }}</h1>
         {{-- IMG PROFILO --}}
         @if ($teacher->id <= 16)
-            <img src="{{ $teacher->picture_path }}" class="message-style align-self-center mb-4" alt="...">
-        @else
-            <img src="{{ asset('storage/' . $teacher->picture) }}" alt="" class="show-profile-img">
+            <img src="{{ $teacher->picture }}" class="message-style align-self-center mb-4" alt="...">
+            {{-- @else --}}
+            <img src="{{ $teacher->picture_path }}" alt="" class="show-profile-img">
         @endif
         {{-- SPECIALIZZAZIONI --}}
         @forelse ($teacher->specializations()->get() as $specialization)
@@ -48,10 +48,9 @@
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             @if ($teacher->id <= 16)
-                                <img src="{{ $teacher->cv_path }}" class="message-style align-self-center mb-4"
-                                    alt="...">
+                                <img src="{{ $teacher->cv }}" class="message-style align-self-center mb-4" alt="...">
                             @else
-                                <img src="{{ asset('storage/' . $teacher->cv) }}" alt="">
+                                <img src="{{ $teacher->cv_path }}" alt="">
                             @endif
                         </div>
                     </div>

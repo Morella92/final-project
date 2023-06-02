@@ -83,11 +83,11 @@
                     profilo</label>
                 <div class="d-flex align-items-center">
                     <div class="me-3">
-                        @if ($teacher->picture_path && file_exists(public_path($teacher->picture_path)))
-                            <img class="thumb" src="{{ $teacher->picture_path }}" alt="">
+                        @if ($teacher->picture_path)
+                            <img class="thumb" src="{{ asset($teacher->picture_path) }}" alt="">
                             <p class="text-white text-center thumb-text">Immagine esistente</p>
                         @else
-                            {{-- <p class="text-white text-center thumb-text"> Nessuna Immagine esistente</p> --}}
+                            <p class="text-white text-center thumb-text"> Nessuna Immagine esistente</p>
                         @endif
 
                     </div>
@@ -112,19 +112,40 @@
                     <label for="cv" class="form-label fw-bold text-uppercase text-white">
                         Carica Curriculum Vitae in formato immagine
                     </label>
-                    {{-- <div>
-                        <p>Cv esistente</p>
-                        <img src="{{ asset('storage/' . $teacher->cv) }}" alt="">
-                    </div> --}}
-                    <div class="input-group mb-3">
-                        <input type="file" name="cv" value=""
-                            class="message-style form-control @error('cv') is-invalid @enderror" id="inputGroupFile02">
-                        @error('cv')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                    <div class="d-flex align-items-center">
+                        <div class="me-3">
+                            @if ($teacher->cv_path)
+                                <img class="thumb" src="{{ $teacher->cv_path }}" alt="">
+                                <p class="text-white text-center thumb-text">Immagine esistente</p>
+                            @else
+                                <p class="text-white text-center thumb-text"> Nessuna Immagine esistente</p>
+                            @endif
+
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="file" name="cv" value=""
+                                class="message-style form-control @error('cv') is-invalid @enderror" id="inputGroupFile02">
+                            @error('cv')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                     </div>
+
+                </div>
+                {{-- formato pdf --}}
+
+
+                <div>
+                    <input type="file" name="pdf_cv" value=""
+                        class="message-style form-control @error('pdf_cv') is-invalid @enderror" id="inputGroupFile02">
+                    @error('pdf_cv')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+
                 </div>
 
 
