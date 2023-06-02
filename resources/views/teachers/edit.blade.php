@@ -80,12 +80,16 @@
             <div class="col-12">
 
                 <div class="mt-2">
-                    <label for="cv" class="form-label fw-bold text-uppercase text-white">Carica Curriculum Vitae in formato
-                        immagine</label>
+                    <label for="cv" class="form-label fw-bold text-uppercase text-white">
+                        Carica Curriculum Vitae in formato immagine
+                    </label>
+                    {{-- <div>
+                        <p>Cv esistente</p>
+                        <img src="{{ asset('storage/' . $teacher->cv) }}" alt="">
+                    </div> --}}
                     <div class="input-group mb-3">
                         <input type="file" name="cv" value=""
                             class="message-style form-control @error('cv') is-invalid @enderror" id="inputGroupFile02">
-
                         @error('cv')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -108,10 +112,19 @@
                     </div>
                 </div>
                 {{-- SUBMIT --}}
-                <div class="col-12">
-
-                    <button type="submit" class="modify-button modify-link">Modifica profilo</button>
+                <div class="d-flex justify-content-around py-3">
+                    <div>
+                        <button class="modify-button">
+                            <a class="modify-link" href="{{route('dashboard')}}">
+                                Annulla modifiche
+                            </a>
+                        </button>
+                    </div>
+                    <div>
+                        <button type="submit" class="modify-button modify-link">Salva e vedi modifiche</button>
+                    </div>
                 </div>
+                
         </form>
     </div>
 

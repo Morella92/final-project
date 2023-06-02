@@ -6,7 +6,39 @@
             {{-- {{ __('Dashboard') }}  --}}
             Pannello di amministrazione dell'Insegnante <span class="fw-bold text-uppercase">{{ Auth::user()->name }}</span>
         </h2>
-
+        {{-- stelle --}}
+        <div class="pb-3">
+            @php
+                $user = Auth::user();
+                $teacher = $user->teacher;
+                
+                if ($teacher) {
+                    $votes = $teacher->votes;
+                    $prova = [];
+                
+                    foreach ($votes as $vote) {
+                        $prova[] = $vote->vote;
+                    }
+                
+                    $averageVote = collect($prova)->average();
+                } else {
+                    $averageVote = 0;
+                }
+            @endphp
+            @if ($averageVote == 0)
+                <span class="text-white">Livello di gradimento:</span>
+                <span class="text-danger">N/D</span>
+            @else
+                <span class="text-white">Livello di gradimento:</span>
+                @for ($i = 1; $i <= 5; $i++)
+                    @if ($i <= $averageVote)
+                        <i class="fas fa-star text-warning"></i>
+                    @else
+                        <i class="fas fa-star text-black opacity-25"></i>
+                    @endif
+                @endfor
+            @endif
+        </div>
         <div class="d-flex gap-3 flex-wrap">
             {{-- MESSAGGI DI ERRORE IN SESSIONE --}}
             @if (session('error') && session('error_expiry') > time())
@@ -60,74 +92,20 @@
                     @endif
                 </div>
             </div>
-
+        </div>
+        <div class="buttons py-4">
             {{-- MESSAGGI --}}
-            <button>
-                <a href="{{ route('messages.index') }}">
-                    MESSAGGI
+            <button class="modify-button">
+                <a class="modify-link" href="{{ route('messages.index') }}">
+                    Visualizza i tuoi messaggi
                 </a>
             </button>
             {{-- REVIEWS --}}
-            <button>
-                <a href="{{ route('reviews.index') }}">
-                    RECENSIONI
+            <button class="modify-button">
+                <a class="modify-link" href="{{ route('reviews.index') }}">
+                    Guarda le tue recensioni
                 </a>
             </button>
         </div>
-
-        {{-- stelle --}}
-        <div>
-            @php
-                $user = Auth::user();
-                $teacher = $user->teacher;
-                
-                if ($teacher) {
-                    $votes = $teacher->votes;
-                    $prova = [];
-                
-                    foreach ($votes as $vote) {
-                        $prova[] = $vote->vote;
-                    }
-                
-                    $averageVote = collect($prova)->average();
-                } else {
-                    $averageVote = 0;
-                }
-            @endphp
-            @if ($averageVote == 0)
-                <span class="text-white">Livello di gradimento:</span>
-                <span class="text-danger">N/D</span>
-            @else
-                <span class="text-white">Livello di gradimento:</span>
-                @for ($i = 1; $i <= 5; $i++)
-                    @if ($i <= $averageVote)
-                        <i class="fas fa-star text-warning"></i>
-                    @else
-                        <i class="fas fa-star text-black opacity-25"></i>
-                    @endif
-                @endfor
-            @endif
-
-
-
-            {{--             
-            @for ($i = 0; $i < $averageVote; $i++)
-                <i class="fas fa-star text-warning fs-1"></i>
-            @endfor --}}
-
-            <div>
-
-
-
-                <div>
-
-                    @php
-                        
-                    @endphp
-                </div>
-            </div>
-
-        </div>
-
     </div>
 @endsection
