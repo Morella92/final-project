@@ -19,12 +19,7 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>
-                            @php
-                                $carbonDate = \Illuminate\Support\Carbon::createFromFormat('Y-m-d', $review->date_fake);
-                                $formattedDate = $carbonDate->format('d-m-Y');
-                                echo $formattedDate;
-                            @endphp
-                        </td>
+                            {{ $review->created_at->format('d-m-Y') }}< </td>
                         <td>{{ $review->user }}</td>
                         <td>{{ $review->text }}</td>
                     </tr>

@@ -18,7 +18,6 @@ return new class extends Migration
             $table->id();
             $table->string('user', 50)->required();
             $table->text('text')->required();
-            $table->date('date_fake')->default(Carbon::createFromFormat('Y-m-d', '2018-01-01')->addDays(rand(0, Carbon::now()->diffInDays(Carbon::createFromFormat('Y-m-d', '2018-01-01')))));
             $table->softDeletes();
             $table->timestamps();
         });
