@@ -115,10 +115,11 @@ a{
 // SHOW
 // **************************
 .cv-button {
-    color: red !important;
     text-transform: uppercase;
     font-weight: bold;
     background-color: transparent !important;
+    border: none !important;
+    padding-right: 10px;
     .cv-accordion {
         border: none !important;
     }
@@ -165,7 +166,20 @@ a{
     }
 }
 
+.modify-button{
+    border: none;
+    background-color: rgba(239, 229, 115, 0.94);
+    border-radius: 30px;
+    padding: 5px 10px;
+}
 
+.modify-link{
+    color: #203a22;
+    font-weight: 600;
+    &:hover{
+        color: #67696a;
+    }
+}
 // MESSAGE SECTION
 body{
     background-color: #2e5330 !important;
@@ -180,4 +194,10 @@ body{
     text-align: justify;
 }
 
+.style-show{
+    color: #d1bb41;
+}
 
+.style-arrow{
+    color: #203a22;
+}

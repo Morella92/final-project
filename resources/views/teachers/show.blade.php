@@ -3,49 +3,49 @@
 @section('content')
     <div class="container py-5 d-flex flex-column">
         {{-- NOME --}}
-        <h1 class="text-center">{{ $teacher->user->name }}</h1>
+        <h1 class="text-center text-white">{{ $teacher->user->name }}</h1>
         {{-- IMG PROFILO --}}
         @if ($teacher->id <= 16)
-            <img src="{{ $teacher->picture }}" class="align-self-center mb-4" alt="...">
+            <img src="{{ $teacher->picture }}" class="message-style align-self-center mb-4" alt="...">
         @else
             <img src="{{ asset('storage/' . $teacher->picture) }}" alt="" class="show-profile-img">
         @endif
         {{-- SPECIALIZZAZIONI --}}
         @forelse ($teacher->specializations()->get() as $specialization)
             <p class="card-text">
-                <span class="fw-bold"> {{ $specialization->name }}</span>
-                <span class="badge text-bg-success"> {{ $specialization->expertise }} </span>
+                <span class="fw-bold style-show"> {{ $specialization->name }}</span>
+                <span class="badge modify-button modify-link fw-bold"> {{ $specialization->expertise }} </span>
             </p>
-            <p>{{ $specialization->description }}</p>
+            <p class="text-white">{{ $specialization->description }}</p>
         @empty
             -
         @endforelse
         {{-- CONTATTI --}}
         <div class="d-flex justify-content-around py-3">
             <div>
-                <h3>Contatti</h3>
+                <h3 class="style-show">Contatti</h3>
                 <p class="card-text">
-                    <span class="fw-bold my-2">Email:</span> {{ $teacher->user->email }}; <br>
-                    <span class="fw-bold my-2">Indirizzo:</span> {{ $teacher->user->address }}; <br>
+                    <span class="fw-bold my-2 style-show">Email: <span class="text-white fw-light">{{ $teacher->user->email }}; <br></span></span> 
+                    <span class="fw-bold my-2 style-show">Indirizzo: <span class="text-white fw-light">{{ $teacher->user->address }}; <br></span></span> 
                     @if ($teacher->phone)
-                        <span class="fw-bold my-2">Numero:</span> {{ $teacher->phone }};
+                        <span class="fw-bold my-2 style-show">Numero: <span class="text-white fw-light">{{ $teacher->phone }};</span></span> 
                     @endif
                 </p>
             </div>
             {{-- CV --}}
             <div class="accordion" id="accordionExample">
-                <div class="accordion-item">
+                <div class="accordion-item modify-button">
                     <h2 class="accordion-header">
-                        <button class="accordion-button cv-button" type="button" data-bs-toggle="collapse"
+                        <button class="cv-button ms-3" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            <h3 class="fs-4">Curriculum Vitae</h3>
+                            <h3 class="fs-4 modify-link">Curriculum Vitae</h3>
                         </button>
                     </h2>
                     <div id="collapseOne" class="accordion-collapse collapse cv-accordion"
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             @if ($teacher->id <= 16)
-                                <img src="{{ $teacher->cv }}" class="align-self-center mb-4" alt="...">
+                                <img src="{{ $teacher->cv }}" class="message-style align-self-center mb-4" alt="...">
                             @else
                                 <img src="{{ asset('storage/' . $teacher->cv) }}" alt="">
                             @endif
@@ -61,8 +61,8 @@
                     echo $teacher->performance;
                 @endphp
             </p>
-            <button class="edit-button">
-                <a class="edit-link" href="{{ route('teachers.edit', Auth::user()->teacher->id) }}">
+            <button class="modify-button">
+                <a class="modify-link" href="{{ route('teachers.edit', Auth::user()->teacher->id) }}">
                     Modifica il tuo profilo
                 </a>
             </button>
