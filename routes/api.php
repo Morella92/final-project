@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\TeacherController;
 use App\Http\Controllers\Api\LeadController;
+use App\Http\Controllers\Api\MessageController;
 use App\Http\Controllers\Api\SpecializationController;
 
 /*

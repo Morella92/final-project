@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Teacher;
 use App\Models\User;
+use App\Models\Message;
 use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
@@ -15,7 +16,7 @@ class MessageController extends Controller
 
         // recupero messaggi in base ad id
         $user_id = Auth::user()->id;
-        $messages = Message::where('teacher_id', $user_id)->orderBy('date_fake', 'desc')->get();
+        $message = Message::where('teacher_id', $user_id)->orderBy('date_fake', 'desc')->get();
 
 
         $validatedData = $request->validate([
@@ -24,18 +25,28 @@ class MessageController extends Controller
             'ui_name' => 'required|string|min:2|max:50',
             'ui_email' => 'required|email|min:2|max:100',
             'ui_phone' => 'nullable|string|min:2|max:50',
-            'date_fake' => 'required|date',
+            'date_fake' => 'nullable|date',
         ]);
+
+        if ($validatedData->fails()) {
+            return response()->json([
+                'success' => false,
+                'errors' => $validatedData->errors()
+            ]);
+        }
 
         $message = new Message();
         $message->title = $validatedData['title'];
         $message->text = $validatedData['text'];
         $message->ui_name = $validatedData['ui_name'];
-        $message->ui_mail = $validatedData['ui_mail'];
+        $message->ui_email = $validatedData['ui_email'];
         $message->ui_phone = $validatedData['ui_phone'];
         $message->date_fake = $validatedData['date_fake'];
         $message->save();
 
-        return response()->json(['message' => 'Messaggio salvato con successo']);
+        return response()->json([
+            'success' => true,
+            'message' => 'Messaggio salvato con successo'
+        ]);
     }
 }

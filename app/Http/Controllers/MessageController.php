@@ -48,7 +48,16 @@ class MessageController extends Controller
      */
     public function store(StoreMessageRequest $request)
     {
-        //
+        $message = new Message();
+        $message->title = $request->input('title');
+        $message->text = $request->input('text');
+        $message->ui_name = $request->input('ui_name');
+        $message->ui_mail = $request->input('ui_email');
+        $message->ui_phone = $request->input('ui_phone');
+        $message->date_fake = $request->input('date_fake');
+        $message->save();
+
+    return redirect()->route('messages.index', $message)->with('alert-message', 'Messaggio salvato con successo')->with('alert-type', 'success');
     }
 
     /**
