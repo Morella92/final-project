@@ -5,11 +5,11 @@
         {{-- NOME --}}
         <h1 class="text-center text-white">{{ $teacher->user->name }}</h1>
         {{-- IMG PROFILO --}}
-        @if ($teacher->id <= 16)
+        {{-- @if ($teacher->id <= 16)
             <img src="{{ $teacher->picture }}" class="message-style align-self-center mb-4" alt="...">
-            {{-- @else --}}
-            <img src="{{ $teacher->picture_path }}" alt="" class="show-profile-img">
-        @endif
+            @else
+            @endif --}}
+        <img src="{{ $teacher->picture_path }}" alt="" class="show-profile-img">
         {{-- SPECIALIZZAZIONI --}}
         @forelse ($teacher->specializations()->get() as $specialization)
             <p class="card-text">
@@ -47,14 +47,14 @@
                     <div id="collapseOne" class="accordion-collapse collapse cv-accordion"
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            @if ($teacher->id <= 16)
+                            {{-- @if ($teacher->id <= 16)
                                 <img src="{{ $teacher->cv }}" class="message-style align-self-center mb-4" alt="...">
                             @else
-                                <img src="{{ $teacher->cv_path }}" alt="">
-                            @endif
-                            <div class="d-flex justify-content-around">
+                            @endif --}}
+                            <img src="{{ $teacher->cv_path }}" alt="">
+                            {{-- visualizza cv in pdf --}}
+                            <div class="d-flex justify-content-around mt-3">
                                 @if (Storage::exists($teacher->pdf_cv))
-                                    {{-- visualizza cv in pdf --}}
                                     <a href="{{ url('/storage/' . $teacher->pdf_cv) }}" target="_blank"
                                         {{-- scarica cv --}} class="btn btn-primary">Visualizza PDF</a>
                                     <a href="{{ url('/storage/' . $teacher->pdf_cv) }}" download class="btn btn-primary"><i
