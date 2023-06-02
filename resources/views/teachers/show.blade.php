@@ -71,7 +71,10 @@
             </button>
 
         </div>
+        {{-- <button>
+            <button onclick="window.open('{{ $teacher->pdf_cv }}', '_blank')">Visualizza PDF</button>
 
+        </button> --}}
 
 
     </div>

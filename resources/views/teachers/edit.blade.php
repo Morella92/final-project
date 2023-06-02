@@ -135,8 +135,6 @@
 
                 </div>
                 {{-- formato pdf --}}
-
-
                 <div>
                     <input type="file" name="pdf_cv" value=""
                         class="message-style form-control @error('pdf_cv') is-invalid @enderror" id="inputGroupFile02">

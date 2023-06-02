@@ -88,8 +88,6 @@
                 </div>
             </div>
 
-
-
             {{-- CV --}}
             <div class="col-12">
 
@@ -106,6 +104,17 @@
                             </span>
                         @enderror
                     </div>
+                </div>
+                {{-- formato pdf --}}
+                <div>
+                    <input type="file" name="pdf_cv" value=""
+                        class="message-style form-control @error('pdf_cv') is-invalid @enderror" id="inputGroupFile02">
+                    @error('pdf_cv')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+
                 </div>
 
 
