@@ -68,8 +68,8 @@ class ReviewSeeder extends Seeder
 
             $review = new Review();
             $randomReview = $reviews[array_rand($reviews)];
-            $review->user = $faker->firstName();
-            $review->text = $randomReview;
+            $review->userReview = $faker->firstName();
+            $review->review = $randomReview;
             $review->teacher_id = $faker->randomElement($teacherIds);
             $review->save();
         }

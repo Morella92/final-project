@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Review;
 use Illuminate\Http\Request;
+use App\Models\Teacher;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ReviewController extends Controller
 {
@@ -36,7 +40,31 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $validator = Validator::make($data, [
+            'userReview' => 'required|string|max:50|min:1',
+            'review' => 'required|string|min:5|max:3000',
+            'teacher_id' => 'required|integer'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'errors' => $validator->errors()
+            ]);
+        }    
+
+        $review = new Review();
+        $review->userReview = $data['userReview'];
+        $review->review = $data['review'];
+        $review->teacher_id = $data['teacher_id']; 
+        $review->save();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Messaggio salvato con successo'
+        ]);
     }
 
     /**

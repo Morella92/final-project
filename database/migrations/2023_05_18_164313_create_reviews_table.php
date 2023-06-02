@@ -16,8 +16,8 @@ return new class extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->string('user', 50)->required();
-            $table->text('text')->required();
+            $table->string('userReview', 50)->required();
+            $table->text('review')->required();
             $table->softDeletes();
             $table->timestamps();
         });
