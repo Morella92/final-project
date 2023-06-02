@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Teacher;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Response;
+
 
 class TeacherController extends Controller
 {
@@ -35,4 +38,8 @@ class TeacherController extends Controller
             ]);
          }
     }
+
+
+
+
 }

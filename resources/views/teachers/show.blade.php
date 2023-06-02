@@ -52,6 +52,16 @@
                             @else
                                 <img src="{{ $teacher->cv_path }}" alt="">
                             @endif
+                            <div class="d-flex justify-content-around">
+                                @if (Storage::exists($teacher->pdf_cv))
+                                    {{-- visualizza cv in pdf --}}
+                                    <a href="{{ url('/storage/' . $teacher->pdf_cv) }}" target="_blank"
+                                        {{-- scarica cv --}} class="btn btn-primary">Visualizza PDF</a>
+                                    <a href="{{ url('/storage/' . $teacher->pdf_cv) }}" download class="btn btn-primary"><i
+                                            class="fa-solid fa-download fa-beat me-2" style="color: #ff0000;"></i>Scarica
+                                        PDF</a>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -71,11 +81,6 @@
             </button>
 
         </div>
-        {{-- <button>
-            <button onclick="window.open('{{ $teacher->pdf_cv }}', '_blank')">Visualizza PDF</button>
-
-        </button> --}}
-
 
     </div>
 @endsection

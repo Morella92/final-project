@@ -53,11 +53,15 @@ Route::middleware('auth')->group(function () {
         $lead = Lead::first();
         return new NewLead($lead);
 
-  
-
+        
+        
+        
+        
+        
     });
-
+    
 });
+
 
 Route::post('/upload', [HomeController::class,'upload'])->name('ckeditor.upload');
 require __DIR__.'/auth.php';
