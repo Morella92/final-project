@@ -16,11 +16,9 @@
 
                     <div class="d-flex justify-content-end gap-4">
                         <a href="{{ route('messages.index') }}">
-                            <i class="fa-solid fa-envelope text-success fs-4"></i>
+                            <i class="fa-solid fa-rotate-left fa-shake text-success fs-4"></i>
                         </a>
-                        <a href="{{ route('messages.index') }}">
-                            <i class="fa-solid fa-trash text-danger fs-4"></i>
-                        </a>
+
 
                     </div>
 

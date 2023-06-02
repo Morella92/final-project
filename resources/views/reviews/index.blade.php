@@ -19,9 +19,9 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>
-                            {{ $review->created_at->format('d-m-Y') }}< </td>
-                        <td>{{ $review->user }}</td>
-                        <td>{{ $review->text }}</td>
+                            {{ $review->created_at->format('d-m-Y') }} </td>
+                        <td>{{ $review->userReview }}</td>
+                        <td>{{ $review->review }}</td>
                     </tr>
                 @endforeach
             </tbody>

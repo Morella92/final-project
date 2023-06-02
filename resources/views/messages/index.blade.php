@@ -26,11 +26,6 @@
                 @foreach ($messages as $message)
                     <tr>
                         <td>
-                            {{-- @php
-                                $carbonDate = \Illuminate\Support\Carbon::createFromFormat('Y-m-d', $message->date_fake);
-                                $formattedDate = $carbonDate->format('d-m-Y');
-                                echo $formattedDate;
-                            @endphp --}}
                             {{ $message->created_at->format('d-m-Y') }}
                         </td>
                         <td>{{ $message->ui_name }}</td>
@@ -39,7 +34,7 @@
                         <td class=" text-center">
                             {{-- VAI ALLA SHOW DEL MESSAGGIO --}}
                             <a class="text-success" href="{{ route('messages.show', ['message' => $message->id]) }}">
-                                <i class="fa-solid fa-eye text-center"></i>
+                                <i class="fa-solid fa-eye fa-bounce text-center"></i>
                             </a>
                         </td>
                         <td class=" text-center">
@@ -48,8 +43,8 @@
                                 method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger" title="delete"><i
-                                        class="fa-solid fa-trash"></i></button>
+                                <button type="submit" class="scb-delete" title="delete"><i
+                                        class="fa-solid fa-trash fa-shake" style="color: #c74f0f;"></i></button>
                             </form>
                         </td>
                     </tr>

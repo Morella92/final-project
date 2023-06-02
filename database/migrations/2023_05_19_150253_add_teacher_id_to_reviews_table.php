@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('reviews', function (Blueprint $table) {
-            $table->unsignedBigInteger('teacher_id')->nullable()->after('id');
-            $table->foreign('teacher_id')->references('id')->on('teachers');
+            $table->unsignedBigInteger('teacher_id')->nullable()->after('id')->onDelete('CASCADE')->onUpdate('CASCADE');
+            $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('CASCADE')->onUpdate('CASCADE');
         });
     }
 
@@ -27,7 +27,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('reviews', function (Blueprint $table) {
-            $table->dropForeign('reviews_teacher_id_foreign');
+            $table->dropForeign('reviews_teacher_id_foreign')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->dropColumn('teacher_id');
         });
     }

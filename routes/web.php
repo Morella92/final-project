@@ -52,6 +52,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/new-lead-mail', function(){
         $lead = Lead::first();
         return new NewLead($lead);
+
+  
+
     });
 
 });

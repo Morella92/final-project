@@ -16,7 +16,8 @@
                                 method="POST">
                                 @csrf
                                 <button type="submit" class="btn btn-primary" title="restore all"><i
-                                        class="fa-solid fa-recycle"></i>&nbsp;Ripristina tutti</button>
+                                        class="fa-solid fa-recycle fa-beat" style="color: #1f5130;"></i>&nbsp;Ripristina
+                                    tutti</button>
                             </form>
                             {{-- SVUOTA CESTINO --}}
                             <form class="d-inline delete double-confirm" action="{{ route('messages.destroy.all') }}"
@@ -52,8 +53,9 @@
                                         <form class="d-inline" action="{{ route('messages.restore', $message->id) }}"
                                             method="POST">
                                             @csrf
-                                            <button type="submit" class="btn btn-success" title="restore"><i
-                                                    class="fa-solid fa-recycle"></i></button>
+                                            <button type="submit" class="scb-delete" title="restore"><i
+                                                    class="fa-solid fa-recycle fa-beat"
+                                                    style="color: #1f5130;"></i></button>
                                         </form>
                                     </td>
                                     <td class=" text-center">
@@ -62,8 +64,8 @@
                                             action="{{ route('messages.force-delete', $message->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger" title="delete"><i
-                                                    class="fa-solid fa-trash"></i></button>
+                                            <button type="submit" class="scb-delete" title="delete"><i
+                                                    class="fa-solid fa-trash fa-shake" style="color: #c74f0f;"></i></button>
                                         </form>
                                         </form>
                                     </td>

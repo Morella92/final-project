@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('specialization_teacher', function (Blueprint $table) {
             $table->unsignedBigInteger('teacher_id'); 
-            $table->foreign('teacher_id')->references('id')->on('teachers');
+            $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->unsignedBigInteger('specialization_id');
-            $table->foreign('specialization_id')->references('id')->on('specializations');
+            $table->foreign('specialization_id')->references('id')->on('specializations')->onDelete('CASCADE')->onUpdate('CASCADE');
         });
     }
 
