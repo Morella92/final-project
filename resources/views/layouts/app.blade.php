@@ -19,8 +19,8 @@
     <!-- Usando Vite -->
     @vite('resources/js/app.js')
     <script src="
-            https://cdn.jsdelivr.net/npm/sweetalert2@11.7.10/dist/sweetalert2.all.min.js
-            "></script>
+                                                                            https://cdn.jsdelivr.net/npm/sweetalert2@11.7.10/dist/sweetalert2.all.min.js
+                                                                            "></script>
     <link href="
     https://cdn.jsdelivr.net/npm/sweetalert2@11.7.10/dist/sweetalert2.min.css
     " rel="stylesheet">
@@ -33,6 +33,7 @@
 
         <nav class="navbar navbar-expand-md navbar-style">
             <div class="container">
+                <!-- Brand -->
                 @if (Request::url() != route('dashboard'))
                     <a class="navbar-brand d-flex align-items-center" href="{{ url('/dashboard') }}">
                         <div>
@@ -49,12 +50,14 @@
                     </a>
                 @endif
 
+                <!-- Toggle Button -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+                <!-- Navbar Collapse -->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
@@ -62,9 +65,7 @@
                             @if (Request::url() != route('dashboard'))
                                 <a href="{{ route('dashboard') }}" class="home-link link-style">Home</a>
                             @endif
-
                         </li>
-
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -80,33 +81,21 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle link-style" href="#"
-                                    role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                    v-pre>
-                                    {{ Auth::user()->name }}
+                            <li class="nav-item">
+                                <a class="nav-link link-style" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
                                 </a>
-
-                                <div class="dropdown-menu dropdown-menu-right dropdown-style"
-                                    aria-labelledby="navbarDropdown">
-                                    {{-- <a class="dropdown-item" href="{{ url('dashboard') }}">{{ __('Dashboard') }}</a> --}}
-                                    <a class="dropdown-item" href="{{ url('profile') }}">{{ __('Profile') }}</a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
                             </li>
                         @endguest
                     </ul>
                 </div>
             </div>
         </nav>
+
 
     </div>
     <main class="">

@@ -32,7 +32,7 @@
                 <span class="text-white">Livello di gradimento:</span>
                 @for ($i = 1; $i <= 5; $i++)
                     @if ($i <= $averageVote)
-                        <i class="fas fa-star text-warning"></i>
+                        <i class="fa-solid fa-star fa-beat-fade" style="color: #e6de00;"></i>
                     @else
                         <i class="fas fa-star text-black opacity-25"></i>
                     @endif
@@ -55,7 +55,8 @@
             {{-- GESTISTI IL TUO PROFILO --}}
             <div class="card" style="width: 20rem;">
 
-                <img src="{{ asset('/img/varie/teachers.jpeg') }}" class="card-img-top" alt="..." <div class="card-body">
+                <img src="{{ asset('/img/varie/teachers.jpeg') }}" class="card-img-top" alt="..." <div
+                    class="card-body">
                 <h5 class="card-title text-uppercase text-center fw-bold text-danger mt-3">gestisci il tuo profilo</h5>
 
                 <p class="card-text">Usa i bottoni sottostanti per completare o modificare il tuo profilo utente.</p>
@@ -106,6 +107,9 @@
                     Guarda le tue recensioni
                 </a>
             </button>
+            <div class="nav-item">
+                <a class="nav-link link-style" href="{{ url('profile') }}">{{ __('Profilo utente') }}</a>
+            </div>
         </div>
     </div>
 @endsection
