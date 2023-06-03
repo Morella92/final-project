@@ -127,6 +127,10 @@
             <div class="nav-item">
                 <a class="nav-link link-style" href="{{ url('profile') }}">{{ __('Profilo utente') }}</a>
             </div>
+            <div>
+                <a href="{{ route('payment') }}" class="btn btn-primary">Pagamenti</a>
+
+            </div>
         </div>
     </div>
 @endsection

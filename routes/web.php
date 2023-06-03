@@ -8,6 +8,8 @@ use App\Models\Lead;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MessageController as MessagesController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\PaymentController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +63,14 @@ Route::middleware('auth')->group(function () {
     });
     
 });
+
+
+
+Route::get('/payment', [PaymentController::class, 'showPaymentForm'])->name('payment');
+
+
+Route::post('/process-payment', [PaymentController::class, 'processPayment'])->name('processPayment');
+
 
 
 Route::post('/upload', [HomeController::class,'upload'])->name('ckeditor.upload');
