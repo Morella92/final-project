@@ -41,7 +41,7 @@ class Teacher extends Model
     }
 
     public function votes(){
-        return $this->belongsToMany(Vote::class);
+        return $this->belongsToMany(Vote::class, 'teacher_vote', 'teacher_id', 'vote_id');
     }
 
     public function message(){
@@ -75,11 +75,7 @@ class Teacher extends Model
         );
     }
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
-    protected $appends = ['cv_path', 'picture_path'];
+
+protected $appends = ['cv_path', 'picture_path'];
 
 }

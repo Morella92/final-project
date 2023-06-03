@@ -39,32 +39,29 @@ class TeacherVoteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $data = $request->all();
+{
+    $data = $request->all();
 
-        $validator = Validator::make($data, [
-            'vote_id' => 'required|unsigned|between:1,5',
-            'teacher_id' => 'required|integer'
-        ]);
+    $validator = Validator::make($data, [
+        'vote_id' => 'required|integer',
+        'teacher_id' => 'required|integer'
+    ]);
 
-        if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'errors' => $validator->errors()
-            ]);
-        }    
-
-        $vote = new Vote();
-        $vote->vote = $data['vote_id'];
-        $vote->teacher_id = $data['teacher_id']; 
-        $vote->save();
-
+    if ($validator->fails()) {
         return response()->json([
-            'success' => true,
-            'message' => 'Messaggio salvato con successo'
-        ]);
-
+            'success' => false,
+            'errors' => $validator->errors()
+        ], 400);
     }
+
+    $teacher = Teacher::find($data['teacher_id']);
+    $teacher->votes()->attach($data['vote_id']);
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Messaggio salvato con successo'
+    ]);
+}
 
     /**
      * Display the specified resource.

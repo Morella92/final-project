@@ -10,8 +10,8 @@ class Vote extends Model
     use HasFactory;
 
     protected $fillable = [
-        'vote',
-        'teacher_id'
+        'selectedVote',
+        'teacherId'
     ];
 
     public function teachers(){
