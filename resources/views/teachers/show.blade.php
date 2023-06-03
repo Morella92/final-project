@@ -5,10 +5,10 @@
         {{-- NOME --}}
         <h1 class="text-center text-white">{{ $teacher->user->name }}</h1>
         {{-- IMG PROFILO --}}
-        {{-- @if ($teacher->id <= 16)
+        @if ($teacher->id <= 16)
             <img src="{{ $teacher->picture }}" class="message-style align-self-center mb-4" alt="...">
-            @else
-            @endif --}}
+        @else
+        @endif
         <img src="{{ $teacher->picture_path }}" alt="" class="show-profile-img">
         {{-- SPECIALIZZAZIONI --}}
         @forelse ($teacher->specializations()->get() as $specialization)
@@ -47,20 +47,19 @@
                     <div id="collapseOne" class="accordion-collapse collapse cv-accordion"
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            {{-- @if ($teacher->id <= 16)
+                            @if ($teacher->id <= 16)
                                 <img src="{{ $teacher->cv }}" class="message-style align-self-center mb-4" alt="...">
                             @else
-                            @endif --}}
+                            @endif
                             <img src="{{ $teacher->cv_path }}" alt="">
                             {{-- visualizza cv in pdf --}}
                             <div class="d-flex justify-content-around mt-3">
-                                @if (Storage::exists($teacher->pdf_cv))
-                                    <a href="{{ url('/storage/' . $teacher->pdf_cv) }}" target="_blank"
-                                        {{-- scarica cv --}} class="btn btn-primary">Visualizza PDF</a>
-                                    <a href="{{ url('/storage/' . $teacher->pdf_cv) }}" download class="btn btn-primary"><i
-                                            class="fa-solid fa-download fa-beat me-2" style="color: #ff0000;"></i>Scarica
-                                        PDF</a>
-                                @endif
+                                <div class="d-flex justify-content-around mt-3">
+                                    @isset($teacher->pdf_cv)
+                                        <a href="{{ url('/storage/' . $teacher->pdf_cv) }}" target="_blank"
+                                            class="btn btn-primary">Visualizza PDF</a>
+                                    @endisset
+                                </div>
                             </div>
                         </div>
                     </div>
