@@ -19,8 +19,8 @@
     <!-- Usando Vite -->
     @vite('resources/js/app.js')
     <script src="
-                                                                            https://cdn.jsdelivr.net/npm/sweetalert2@11.7.10/dist/sweetalert2.all.min.js
-                                                                            "></script>
+                                                                                            https://cdn.jsdelivr.net/npm/sweetalert2@11.7.10/dist/sweetalert2.all.min.js
+                                                                                            "></script>
     <link href="
     https://cdn.jsdelivr.net/npm/sweetalert2@11.7.10/dist/sweetalert2.min.css
     " rel="stylesheet">
@@ -51,7 +51,7 @@
                 @endif
 
                 <!-- Toggle Button -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                <button class="navbar-toggler btn-warning" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
