@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\LeadController;
 use App\Http\Controllers\Api\MessageController;
 use App\Http\Controllers\Api\ReviewController;
 use App\Http\Controllers\Api\VoteController;
+use App\Http\Controllers\Api\SponsorshipController;
 use App\Http\Controllers\Api\SpecializationController;
 use App\Http\Controllers\Api\TeacherVoteController;
 
@@ -37,5 +38,7 @@ Route::post('/messages', [MessageController::class, 'store']);
 Route::post('/reviews', [ReviewController::class, 'store']);
 
 Route::post('/votes', [VoteController::class, 'store']);
+
+Route::get('/sponsorships', [SponsorshipController::class, 'index']);
 
 Route::apiResource('teacher-votes', TeacherVoteController::class);
