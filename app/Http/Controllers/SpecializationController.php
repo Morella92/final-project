@@ -16,6 +16,7 @@ class SpecializationController extends Controller
     public function index()
     {
         
+        
     }
 
     /**

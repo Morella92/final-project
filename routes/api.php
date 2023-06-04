@@ -41,4 +41,6 @@ Route::post('/votes', [VoteController::class, 'store']);
 
 Route::get('/sponsorships', [SponsorshipController::class, 'index']);
 
+Route::get('/specializations', [SpecializationController::class, 'index']);
+
 Route::apiResource('teacher-votes', TeacherVoteController::class);

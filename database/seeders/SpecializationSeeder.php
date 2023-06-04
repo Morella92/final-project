@@ -19,7 +19,8 @@ class SpecializationSeeder extends Seeder
         $specializations = [
 
             [
-                'name' => 'Maestro del benessere spirituale',                         
+                'name' => 'Maestro del benessere spirituale',  
+                'images' => '/Archivio/01.jpg',             
                 'expertise' => 'Maestro',
                 'description' => "Il  Maestro  del  benessere  spirituale  è  un  professionista  che  si  occupa  di  guidare  e 
                 supportare gli individui nel loro percorso di crescita interiore, equilibrio e benessere 
@@ -34,6 +35,7 @@ class SpecializationSeeder extends Seeder
 
             [
                 'name' => 'Esperto di crescita finanziaria rapida',
+                'images' => '/Archivio/02.jpeg', 
                 'expertise' =>  'Esperto',
                 'description' => "L'Esperto  di  crescita finanziaria  rapida  è  un  professionista  specializzato 
                 nell'identificazione e nell'attuazione di strategie finanziarie innovative per accelerare 
@@ -47,6 +49,7 @@ class SpecializationSeeder extends Seeder
             ],          
             [ 
                 'name' => 'Coach di vita spirituale',
+                'images' => '/Archivio/03.jpeg',
                 'expertise' => 'Professionista',
                 'description' => "Un  coach  di  vita  spirituale  è  un  professionista  che  aiuta  le  persone  a  esplorare  e 
                 sviluppare il loro benessere spirituale. Attraverso un approccio personalizzato, guida i 
@@ -60,6 +63,7 @@ class SpecializationSeeder extends Seeder
             ],
             [
                 'name' => 'Specialista di marketing magico',
+                'images' => '/Archivio/04.jpeg',
                 'expertise' => 'Guru',
                 'description' => "Lo  Specialista  di  marketing  magico  è  un  esperto  nel  combinare  incantesimi  e 
                 strategie di marketing per creare campagne uniche ed efficaci. Utilizza il potere della 
@@ -72,6 +76,7 @@ class SpecializationSeeder extends Seeder
             ],
             [
                 'name' => 'Esperto di pulizia energetica delle case',
+                'images' => '/Archivio/05.jpeg',
                 'expertise' => 'Guru',
                 'description' => "L'esperto  di  pulizia  energetica  negativa  delle  case  è  un  professionista  specializzato 
                 nel  rilevare  e  rimuovere  le  energie  negative  presenti  negli  ambienti  domestici. 
@@ -85,6 +90,7 @@ class SpecializationSeeder extends Seeder
             ],
             [
                 'name' => 'Maestro alla lettura delle foglie del tè',
+                'images' => '/Archivio/06.jpeg',
                 'expertise' => 'Maestro',
                 'description' => "Il Maestro della lettura delle foglie del tè è un esperto che interpreta simboli e segni 
                 presenti nelle foglie del tè dopo la loro infusione. Con abilità intuitive e conoscenza 
@@ -97,6 +103,7 @@ class SpecializationSeeder extends Seeder
             ],
             [
                 'name' => 'Consulente di illuminazione cosmica',
+                'images' => '/Archivio/07.jpeg',
                 'expertise' => 'Illustre',
                 'description' => "Il Consulente di Illuminazione Cosmica è un professionista che si occupa di offrire 
                 supporto  e  guida  nell'approfondimento  della  connessione  tra  l'individuo  e  l'energia 
@@ -110,6 +117,7 @@ class SpecializationSeeder extends Seeder
             ],
             [
                 'name' => 'Specialista in terapia del respiro degli unicorni',
+                'images' => '/Archivio/08.webp',
                 'expertise' => 'Professionista',
                 'description' => "Il  ruolo  di  Specialista  in  terapia  del  respiro  degli  unicorni  è  un  connubio  tra  la  cura  del 
                 respiro umano e l'uso delle proprietà magiche degli unicorni. Questi esperti sono in grado di 
@@ -122,6 +130,7 @@ class SpecializationSeeder extends Seeder
             ],
             [
                 'name' => 'Dubai lifestyle coach',
+                'images' => '/Archivio/09.jpeg',
                 'expertise' => 'Principiante',
                 'description' => "Un Dubai lifestyle coach è un professionista che aiuta le persone a migliorare la loro qualità 
                 di vita e il loro benessere globale. Offrono consulenza personalizzata su diversi aspetti della 
@@ -134,6 +143,7 @@ class SpecializationSeeder extends Seeder
             ],
             [
                 'name' => 'Sacerdote delle cryptovalute',
+                'images' => '/Archivio/10.jpeg',
                 'expertise' => 'Gran maestro',
                 'description' => "Il  Sacerdote  delle  cryptovalute  per  cerimonie  di  benedizione  e  protezione  è  un  esperto 
                 spirituale che si occupa di guidare e assistere i fedeli nel mondo delle criptovalute. Con una 
@@ -147,6 +157,7 @@ class SpecializationSeeder extends Seeder
             ],
             [
                 'name' => 'Professore della comunicazione aliena',
+                'images' => '/Archivio/11.webp',
                 'expertise' => 'Professionista',
                 'description' => "Il  Professore  di  Comunicazione  Aliena  è  un  esperto  nel  campo  dell'interazione  e  della 
                 comprensione  delle  forme  di  comunicazione  extraterrestre. Attraverso  lo  studio  di  lingue, 
@@ -160,6 +171,7 @@ class SpecializationSeeder extends Seeder
             ],
             [
                 'name' => 'Esperto di gestione patrimoniale di crypto',
+                'images' => '/Archivio/12.jpeg',
                 'expertise' => 'Esperto',
                 'description' => "L'Esperto di gestione patrimoniale di crypto è un professionista specializzato nell'aiutare i 
                 clienti a gestire i loro investimenti in criptovalute. Con una solida conoscenza delle diverse 
@@ -173,6 +185,7 @@ class SpecializationSeeder extends Seeder
             ],
             [
                 'name' => 'Lifecoach per il successo finanziario',
+                'images' => '/Archivio/13.jpeg',
                 'expertise' => 'Esperto',
                 'description' =>  "Il Life Coach per il successo finanziario attraverso le cryptovalute è un professionista che 
                 guida e supporta le persone nell'esplorare e sfruttare le opportunità finanziarie offerte dalle 
@@ -185,6 +198,7 @@ class SpecializationSeeder extends Seeder
             ],
             [
                 'name' => 'Consulente per il recupero degli amori perduti',
+                'images' => '/Archivio/14.webp',
                 'expertise' => 'Professionista',
                 'description' => "Un  Consulente  per  il  recupero  degli  amori  perduti  è  un  professionista  specializzato  nel 
                 fornire supporto emotivo e strategie pratiche per aiutare le persone a riconnettersi con i loro 
@@ -197,6 +211,7 @@ class SpecializationSeeder extends Seeder
             ],
             [
                 'name' => 'Maestro della terapia degli abbracci',
+                'images' => '/Archivio/15.jpeg',
                 'expertise' => 'Gran maestro',
                 'description' => "Il Maestro della terapia degli abbracci è un professionista esperto nell'arte di fornire comfort 
                 e  sostegno  attraverso  l'abbraccio.  Con  una  profonda  conoscenza  delle  esigenze  emotive  e 
@@ -214,6 +229,7 @@ class SpecializationSeeder extends Seeder
 
             $specialization = new Specialization();
             $specialization->name = $specInfo['name'];
+            $specialization->images = $specInfo['images'];
             $specialization->expertise = $specInfo['expertise'];
             $specialization->description = $specInfo['description'];
 
