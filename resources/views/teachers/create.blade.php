@@ -12,17 +12,17 @@
 
     <div class="container py-5">
 
-        <h2>Ciao {{ Auth::user()->name }}, completa il tuo profilo da professore!</h2>
-        <p>I campi contrassegnati dall'<span class="fw-bolder text-danger">*</span> sono obbligatori</p>
+        <h2 class="text-white">Ciao {{ Auth::user()->name }}, completa il tuo profilo da professore!</h2>
+        <p class="text-white">I campi contrassegnati dall'<span class="fw-bolder text-danger">*</span> sono obbligatori</p>
         <form class="row g-3" action="{{ route('teachers.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             {{-- multiselect specializzazioni --}}
             <div class="mb-3">
-                <label for="specializations" class="form-label fw-bold text-uppercase">Specializzazione / i <span
+                <label for="specializations" class="text-white form-label fw-bold text-uppercase">Specializzazione / i <span
                         class="fw-bolder text-danger">*</span></label>
                 <div class="dropdown @error('specializations') is-invalid @enderror">
-                    <button class="btn btn-white dropdown-toggle" type="button" id="specializationsDropdown"
+                    <button class="btn btn-white dropdown-toggle text-white message-style" type="button" id="specializationsDropdown"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                     </button>
@@ -30,7 +30,7 @@
                         @foreach ($specializations as $key => $specialization)
                             <div class="form-check">
                                 <input name="specializations[]" @if (in_array($specialization->id, old('specializations', []))) checked @endif
-                                    class="form-check-input" type="checkbox" value="{{ $specialization->id }}"
+                                    class="message-style form-check-input" type="checkbox" value="{{ $specialization->id }}"
                                     id="specialization_{{ $specialization->id }}">
                                 <label class="form-check-label me-3" for="specialization_{{ $specialization->id }}">
                                     {{ $specialization->name }}
@@ -49,7 +49,7 @@
             {{-- PRESTAZIONI --}}
             <div>
 
-                <label class="text-black fw-bold" for="performance">PRESTAZIONI</label>
+                <label class="text-white mb-1 fw-bold" for="performance">PRESTAZIONI</label>
                 <div class="form-floating mb-3">
                     <textarea class="form-control @error('performance') is-invalid @enderror" placeholder="Insert performance here"
                         id="performance" name="performance" style="height: 200px">{{ old('performance') ?? '' }}</textarea>
@@ -62,9 +62,9 @@
             </div>
             {{-- TELEFONO --}}
             <div class="col-md-6">
-                <label for="phone" class="form-label fw-bold text-uppercase">Numero di telefono</label>
+                <label for="phone" class="text-white form-label fw-bold text-uppercase">Numero di telefono</label>
                 <input type="text" name="phone" value=""
-                    class="form-control @error('phone') is-invalid @enderror" id="phone"
+                    class="message-style form-control @error('phone') is-invalid @enderror" id="phone"
                     placeholder="Inserisci il tuo contatto">
                 @error('phone')
                     <span class="invalid-feedback" role="alert">
@@ -75,10 +75,10 @@
             {{-- UPLOAD --}}
             {{-- PROFILE IMG --}}
             <div class="mt-2">
-                <label for="cv" class="form-label fw-bold text-uppercase">Carica l'immagine di profilo</label>
+                <label for="cv" class="text-white form-label fw-bold text-uppercase">Carica l'immagine di profilo</label>
                 <div class="input-group mb-3">
                     <input type="file" name="picture" value=""
-                        class="form-control @error('picture') is-invalid @enderror" id="inputGroupFile02">
+                        class="message-style form-control @error('picture') is-invalid @enderror" id="inputGroupFile02">
 
                     @error('picture')
                         <span class="invalid-feedback" role="alert">
@@ -92,11 +92,11 @@
             <div class="col-12">
 
                 <div class="mt-2">
-                    <label for="cv" class="form-label fw-bold text-uppercase">Carica Curriculum Vitae in formato
+                    <label for="cv" class="text-white form-label fw-bold text-uppercase">Carica Curriculum Vitae in formato
                         immagine</label>
                     <div class="input-group mb-3">
                         <input type="file" name="cv" value=""
-                            class="form-control @error('cv') is-invalid @enderror" id="inputGroupFile02">
+                            class="message-style form-control @error('cv') is-invalid @enderror" id="inputGroupFile02">
 
                         @error('cv')
                             <span class="invalid-feedback" role="alert">
@@ -119,8 +119,12 @@
 
 
                 {{-- SUBMIT --}}
-                <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Crea profilo</button>
+                <div class="col-12 mt-3">
+                    <button type="submit" class="modify-button">
+                        <a href="modify-link">
+                            Crea profilo
+                        </a> 
+                    </button>
                 </div>
         </form>
     </div>

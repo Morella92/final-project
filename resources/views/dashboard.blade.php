@@ -6,8 +6,10 @@
             {{-- {{ __('Dashboard') }}  --}}
             Pannello di amministrazione dell'Insegnante <span class="fw-bold text-uppercase">{{ Auth::user()->name }}</span>
         </h2>
+        
         {{-- stelle --}}
-        <div class="pb-3">
+        
+        <div class="pb-3 d-flex justify-content-end">
             @php
                 $user = Auth::user();
                 $teacher = $user->teacher;
@@ -39,6 +41,7 @@
                 @endfor
             @endif
         </div>
+        
         <div class="d-flex gap-3 flex-wrap">
             {{-- MESSAGGI DI ERRORE IN SESSIONE --}}
             @if (session('error') && session('error_expiry') > time())
@@ -51,87 +54,102 @@
                     }, 5000);
                 </script>
             @endif
-            {{-- OFF CANVAS --}}
-            <button class="btn btn-primary d-lg-none" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasResponsive" aria-controls="offcanvasResponsive">Toggle offcanvas</button>
-
-            <div class="alert alert-info d-none d-lg-block">Resize your browser to show the responsive offcanvas toggle.
-            </div>
-
-            <div class="offcanvas-lg offcanvas-end" tabindex="-1" id="offcanvasResponsive"
-                aria-labelledby="offcanvasResponsiveLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasResponsiveLabel">Responsive offcanvas</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
-                        data-bs-target="#offcanvasResponsive" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <p class="mb-0">This is content within an <code>.offcanvas-lg</code>.</p>
-                </div>
-            </div>
-            {{-- GESTISTI IL TUO PROFILO --}}
-            <div class="card" style="width: 20rem;">
-
-                <img src="{{ asset('/img/varie/teachers.jpeg') }}" class="card-img-top" alt="..." <div
-                    class="card-body">
-                <h5 class="card-title text-uppercase text-center fw-bold text-danger mt-3">gestisci il tuo profilo</h5>
-
-                <p class="card-text">Usa i bottoni sottostanti per completare o modificare il tuo profilo utente.</p>
-                <div class="text-center">
-
-                    <div class="card" style="width: 20rem;">
-
+            
+            <div class="dashboard-cards">
+                <div class="card message-style" style="width: 17rem;">
+                    <h5 class="card-title text-uppercase text-center fw-bold mt-3 title-style">gestisci il tuo profilo</h5>
+                    <div class="d-flex justify-content-center">
+                        <img class="dashboard-img" src="{{asset('/img/varie/avatar.webp')}}" alt="">
+                    </div>
+                    
+                    <p class="card-text px-3">Benvenuto nella tua area personale! Inizia ora a valorizzare la tua esperienza ed competenze!</p>
+    
+                    <div class="text-center mb-3">
+    
                         @if (isset(Auth::user()->teacher->specializations))
-                            <a href="{{ route('teachers.edit', Auth::user()->teacher->id) }}"
-                                class="btn btn-primary text-uppercase fw-bolder">
-                                Modifica il tuo profilo
-                            </a>
+                                <button class="dashboard-button">
+                                    <a href="{{ route('teachers.edit', Auth::user()->teacher->id) }}"
+                                        class="text-uppercase fw-bolder dashboard-link">
+                                        Modifica profilo docente
+                                    </a>
+                                </button>   
+                                <button class="dashboard-button mt-2"> 
+                                    <a class="dashboard-link text-uppercase fw-bolder" href="{{ url('profile') }}">{{ __('Modifica profilo anagrafico') }}</a> 
+                                </button>
                         @else
                             <a href="{{ route('teachers.create') }}" class="btn btn-danger text-uppercase fw-bolder">
                                 Completa il profilo
                             </a>
                         @endif
+                       
+                    </div>
+                </div>
+                
+                <div class="card message-style" style="width: 17rem;">
+                    <h5 class="card-title text-uppercase text-center fw-bold mt-3 title-style">Messaggi e Recensioni</h5>
+                    <div class="d-flex justify-content-center">
+                        <img class="dashboard-img" src="{{asset('/img/varie/emails.gif')}}" alt="">
+                    </div>
+                    <p class="card-text px-3">Benvenuto nella tua area personale! Inizia ora a valorizzare la tua esperienza ed competenze!</p>
+    
+                    <div class="text-center mb-3">
+    
+                        @if (isset(Auth::user()->teacher->specializations))
+                            <button class="dashboard-button text-uppercase fw-bolder">
+                                <a class="dashboard-link" href="{{ route('messages.index') }}">
+                                    Visualizza i tuoi messaggi
+                                </a>
+                            </button>
+                            <button class="dashboard-button text-uppercase fw-bolder mt-2">
+                                <a class="dashboard-link" href="{{ route('reviews.index') }}">
+                                    Guarda le tue recensioni
+                                </a>
+                            </button>
+                        @else
+                        @endif
+                       
+                    </div>
+                </div>
+                <div class="card message-style" style="width: 17rem;">
+                    <h5 class="card-title text-uppercase text-center fw-bold mt-3 title-style">attiva sponsorizzazioni</h5>
+                    <div class="d-flex justify-content-center">
+                        <img class="dashboard-img" src="{{asset('/img/varie/pos.webp')}}" alt="">
+                    </div>
+                    
+                    <p class="card-text px-3">Benvenuto nella tua area personale! Inizia ora a valorizzare la tua esperienza ed competenze!</p>
+    
+                    <div class="text-center mb-3">
+    
+                        @if (isset(Auth::user()->teacher->specializations))
+                            <button class="dashboard-button">
+                                <a href="{{ route('payment') }}" class="dashboard-link">Pagamenti</a>
+                            </button>
+                        @else
+                        @endif
+                       
+                    </div>
+                </div>
+                <div class="card message-style" style="width: 17rem;">
+                    <h5 class="card-title text-uppercase text-center fw-bold mt-3 title-style">gestisci il tuo profilo</h5>
+                    <div class="d-flex justify-content-center">
+                        <img class="dashboard-img" src="{{asset('/img/varie/grafici.webp')}}" alt="">
+                    </div>
+                    
+                    <p class="card-text px-3">Benvenuto nella tua area personale! Inizia ora a valorizzare la tua esperienza ed competenze!</p>
+    
+                    <div class="text-center mb-3">
+    
+                        @if (isset(Auth::user()->teacher->specializations))
+                            <button class="dashboard-button">
+                                <a href="{{ route('bar-chart') }}" class="dashboard-link">Grafici</a>
+                            </button>
+                        @else
+                        @endif
+                       
                     </div>
                 </div>
             </div>
-            {{-- VISTA TEACHER LIST INDEX --}}
-            <div class="card" style="width: 18rem;">
-                <img src="{{ asset('/img/varie/teachers.jpeg') }}" class="card-img-top" alt="..." <div
-                    class="card-body">
-                <h5 class="card-title text-uppercase text-center fw-bold text-danger mt-3">lista insegnanti</h5>
-
-                <p class="card-text">Clicca sul bottone per visualizzare ls lista completa dei INSEGNANTI.</p>
-                <div>
-                    @if (isset(Auth::user()->teacher->specializations))
-                        <a href="{{ route('teachers.index') }}" class="btn btn-primary text-uppercase fw-bolder"
-                            style="width: 100%;">
-                            Lista insegnanti
-                        </a>
-                    @endif
-                </div>
-            </div>
-        </div>
-        <div class="buttons py-4">
-            {{-- MESSAGGI --}}
-            <button class="modify-button">
-                <a class="modify-link" href="{{ route('messages.index') }}">
-                    Visualizza i tuoi messaggi
-                </a>
-            </button>
-            {{-- REVIEWS --}}
-            <button class="modify-button">
-                <a class="modify-link" href="{{ route('reviews.index') }}">
-                    Guarda le tue recensioni
-                </a>
-            </button>
-            <div class="nav-item">
-                <a class="nav-link link-style" href="{{ url('profile') }}">{{ __('Profilo utente') }}</a>
-            </div>
-            <div>
-                <a href="{{ route('payment') }}" class="btn btn-primary">Pagamenti</a>
-                <a href="{{ route('bar-chart') }}" class="btn btn-primary">Grafici</a>
-
-            </div>
-        </div>
+            
+        
     </div>
 @endsection

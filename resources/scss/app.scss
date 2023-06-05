@@ -244,3 +244,38 @@ body {
     box-shadow: none;
     border-color: transparent;
 }
+
+.dashboard-img{
+    border-radius: 100%;
+    width: 200px;
+    border: 3px solid rgba(246, 234, 107, 0.94);
+}
+
+.card{
+    box-shadow: 7px 7px 3px #203a22;
+}
+
+.title-style{
+    color: #d1bb41;
+}
+
+.dashboard-button{
+    background-color: #203a22;
+    border-radius: 30px;
+    padding: 5px 10px;
+    border: none;
+    
+}
+
+.dashboard-link{
+    color: rgba(246, 234, 107, 0.94);
+    &:hover{
+        color:  rgba(255, 252, 217, 0.94);
+    }
+}
+
+.dashboard-cards{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
