@@ -7,7 +7,7 @@
             @foreach ($sponsorships as $sponsorship)
                 <button onclick="showDropIn(this)" data-id="{{ $sponsorship->id }}"
                     data-duration="{{ $sponsorship->duration }}" data-description="{{ $sponsorship->description }}"
-                    class="btn btn-primary">
+                    class="modify-button modify-link">
                     Sponsorizzati per {{ $sponsorship->duration }} ore - per soli {{ $sponsorship->price }} €
                 </button>
             @endforeach
@@ -20,16 +20,16 @@
                 @csrf
                 <div id="dropin-container"></div>
                 <input type="hidden" name="payment_amount" id="payment_amount" value="{{ $defaultPaymentAmount }}">
-                <input class="btn btn-primary" type="submit" value="Effettua pagamento">
-                <button onclick="returnToPromotions()" class="btn btn-primary">Torna alla lista sponsorizzazioni</button>
+                <input class="modify-button modify-link" type="submit" value="Effettua pagamento">
+                <button onclick="returnToPromotions()" class="modify-button modify-link">Torna alla lista sponsorizzazioni</button>
             </form>
         </div>
 
         <div id="promotion-summary" style="display: none;">
-            <h3>Riepilogo sponsorizzazione</h3>
-            <p>Durata: <span id="promotion-duration"></span></p>
-            <p>Prezzo: <span id="promotion-price"></span> €</p>
-            <p>Descrizione: <span id="promotion-description"> </span></p>
+            <h3 class="text-white">Riepilogo sponsorizzazione</h3>
+            <p class="text-white">Durata: <span id="promotion-duration"></span></p>
+            <p class="text-white">Prezzo: <span id="promotion-price"></span> €</p>
+            <p class="text-white">Descrizione: <span id="promotion-description"> </span></p>
         </div>
     </div>
 

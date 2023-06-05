@@ -42,7 +42,7 @@
             @endif
         </div>
         
-        <div class="d-flex gap-3 flex-wrap">
+        <div class="">
             {{-- MESSAGGI DI ERRORE IN SESSIONE --}}
             @if (session('error') && session('error_expiry') > time())
                 <div class="alert alert-danger">
@@ -55,14 +55,14 @@
                 </script>
             @endif
             
-            <div class="dashboard-cards">
-                <div class="card message-style" style="width: 19rem;">
+            <div class="row d-flex justify-content-around mb-5">
+                <div class="col-6 card message-style" style="width: 30rem;">
                     <h5 class="card-title text-uppercase text-center fw-bold mt-3 title-style">gestisci il tuo profilo</h5>
                     <div class="d-flex justify-content-center">
                         <img class="dashboard-img" src="{{asset('/img/varie/avatar.webp')}}" alt="">
                     </div>
                     
-                    <p class="card-text px-3">Benvenuto nella tua area personale! Inizia ora a valorizzare la tua esperienza ed competenze!</p>
+                    <p class="card-text p-3">Benvenuto nella tua area personale! Inizia ora a valorizzare la tua esperienza ed competenze!</p>
     
                     <div class="text-center mb-3">
     
@@ -85,12 +85,12 @@
                     </div>
                 </div>
                 
-                <div class="card message-style" style="width: 19rem;">
+                <div class="col-6 card message-style" style="width: 30rem;">
                     <h5 class="card-title text-uppercase text-center fw-bold mt-3 title-style">Messaggi e Recensioni</h5>
                     <div class="d-flex justify-content-center">
                         <img class="dashboard-img" src="{{asset('/img/varie/emails.gif')}}" alt="">
                     </div>
-                    <p class="card-text px-3">Benvenuto nella tua area personale! Inizia ora a valorizzare la tua esperienza ed competenze!</p>
+                    <p class="card-text p-3">Benvenuto nella sezione dei messaggi e delle recensioni! Scopri le tue comunicazioni non lette.</p>
     
                     <div class="text-center mb-3">
     
@@ -110,13 +110,15 @@
                        
                     </div>
                 </div>
-                <div class="card message-style" style="width: 19rem;">
+            </div>
+            <div class="row d-flex justify-content-around mb-5">
+                <div class="col-6 card message-style" style="width: 30rem;">
                     <h5 class="card-title text-uppercase text-center fw-bold mt-3 title-style">attiva sponsorizzazioni</h5>
                     <div class="d-flex justify-content-center">
                         <img class="dashboard-img" src="{{asset('/img/varie/pos.webp')}}" alt="">
                     </div>
                     
-                    <p class="card-text px-3">Benvenuto nella tua area personale! Inizia ora a valorizzare la tua esperienza ed competenze!</p>
+                    <p class="card-text p-3">Promuovi le tue competenze in modo efficace! Valorizza al meglio le tue abilità e capacità per ottenere il riconoscimento che meriti.</p>
     
                     <div class="text-center mb-3">
     
@@ -129,13 +131,13 @@
                        
                     </div>
                 </div>
-                <div class="card message-style" style="width: 19rem;">
+                <div class="col-6 card message-style" style="width: 30rem;">
                     <h5 class="card-title text-uppercase text-center fw-bold mt-3 title-style">gestisci il tuo profilo</h5>
                     <div class="d-flex justify-content-center">
                         <img class="dashboard-img" src="{{asset('/img/varie/grafici.webp')}}" alt="">
                     </div>
                     
-                    <p class="card-text px-3">Benvenuto nella tua area personale! Inizia ora a valorizzare la tua esperienza ed competenze!</p>
+                    <p class="card-text p-3">Osserva le statistiche dei tuoi corsi e scopri il successo che stanno ottenendo!</p>
     
                     <div class="text-center mb-3">
     
