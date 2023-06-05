@@ -8,6 +8,14 @@
         .ck-editor__editable_inline {
             height: 300px;
         }
+
+        .block{
+            display: block;
+        }
+
+        .none {
+            display: none;
+        }
     </style>
 
     <div class="container py-5">
@@ -119,13 +127,7 @@
 
 
                 {{-- SUBMIT --}}
-                <div class="col-12 mt-3">
-                    <button type="submit" class="modify-button">
-                        <a href="modify-link">
-                            Crea profilo
-                        </a> 
-                    </button>
-                </div>
+                <button type="submit" class="modify-button modify-link">Salva e vedi modifiche</button>
         </form>
     </div>
 
