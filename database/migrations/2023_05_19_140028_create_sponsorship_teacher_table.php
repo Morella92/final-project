@@ -18,6 +18,8 @@ return new class extends Migration
             $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->unsignedBigInteger('sponsorship_id');
             $table->foreign('sponsorship_id')->references('id')->on('sponsorships')->onDelete('CASCADE')->onUpdate('CASCADE');
+            $table->dateTime('inizio_sponsorizzazione')->nullable();
+            $table->dateTime('fine_sponsorizzazione')->nullable();
         });
     }
 

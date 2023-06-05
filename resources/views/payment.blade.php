@@ -105,6 +105,9 @@
                 paymentAmount = 9.99;
             }
 
+            // Aggiorna l'importo predefinito nel modulo di pagamento
+            document.getElementById('payment_amount').value = paymentAmount;
+
             // TESTO BOTTONE EFFETTUA PAGAMENTO
             var paymentButton = document.querySelector('#payment-form input[type="submit"]');
             paymentButton.value = 'Effettua pagamento di € ' + paymentAmount;
