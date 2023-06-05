@@ -56,7 +56,7 @@
             @endif
             
             <div class="row d-flex justify-content-around mb-5">
-                <div class="col-6 card message-style" style="width: 30rem;">
+                <div class="col-6 card message-style m-3" style="width: 30rem;">
                     <h5 class="card-title text-uppercase text-center fw-bold mt-3 title-style">gestisci il tuo profilo</h5>
                     <div class="d-flex justify-content-center">
                         <img class="dashboard-img" src="{{asset('/img/varie/avatar.webp')}}" alt="">
@@ -85,7 +85,7 @@
                     </div>
                 </div>
                 
-                <div class="col-6 card message-style" style="width: 30rem;">
+                <div class="col-6 card message-style m-3" style="width: 30rem;">
                     <h5 class="card-title text-uppercase text-center fw-bold mt-3 title-style">Messaggi e Recensioni</h5>
                     <div class="d-flex justify-content-center">
                         <img class="dashboard-img" src="{{asset('/img/varie/emails.gif')}}" alt="">
@@ -112,7 +112,7 @@
                 </div>
             </div>
             <div class="row d-flex justify-content-around mb-5">
-                <div class="col-6 card message-style" style="width: 30rem;">
+                <div class="col-6 card message-style m-3" style="width: 30rem;">
                     <h5 class="card-title text-uppercase text-center fw-bold mt-3 title-style">attiva sponsorizzazioni</h5>
                     <div class="d-flex justify-content-center">
                         <img class="dashboard-img" src="{{asset('/img/varie/pos.webp')}}" alt="">
@@ -124,26 +124,26 @@
     
                         @if (isset(Auth::user()->teacher->specializations))
                             <button class="dashboard-button">
-                                <a href="{{ route('payment') }}" class="dashboard-link">Pagamenti</a>
+                                <a href="{{ route('payment') }}" class="dashboard-link text-uppercase fw-bold">Pagamenti</a>
                             </button>
                         @else
                         @endif
                        
                     </div>
                 </div>
-                <div class="col-6 card message-style" style="width: 30rem;">
+                <div class="col-6 card message-style m-3" style="width: 30rem;">
                     <h5 class="card-title text-uppercase text-center fw-bold mt-3 title-style">gestisci il tuo profilo</h5>
                     <div class="d-flex justify-content-center">
                         <img class="dashboard-img" src="{{asset('/img/varie/grafici.webp')}}" alt="">
                     </div>
                     
-                    <p class="card-text p-3">Osserva le statistiche dei tuoi corsi e scopri il successo che stanno ottenendo!</p>
+                    <p class="card-text p-3">Osserva le statistiche dei tuoi messaggi e scopri il successo che stanno ottenendo!</p>
     
                     <div class="text-center mb-3">
     
                         @if (isset(Auth::user()->teacher->specializations))
                             <button class="dashboard-button">
-                                <a href="{{ route('bar-chart') }}" class="dashboard-link">Grafici</a>
+                                <a href="{{ route('bar-chart') }}" class="dashboard-link text-uppercase fw-bold">Grafici</a>
                             </button>
                         @else
                         @endif
