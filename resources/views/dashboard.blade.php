@@ -129,6 +129,7 @@
             </div>
             <div>
                 <a href="{{ route('payment') }}" class="btn btn-primary">Pagamenti</a>
+                <a href="{{ route('bar-chart') }}" class="btn btn-primary">Grafici</a>
 
             </div>
         </div>

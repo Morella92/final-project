@@ -8,6 +8,7 @@
 
 <body>
     <canvas id="bar-chart"></canvas>
+    <a href="{{ route('dashboard') }}" class="btn btn-primary">home</a>
 
     <script>
         var labels = {!! json_encode($labels) !!};
