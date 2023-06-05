@@ -56,7 +56,7 @@
             @endif
             
             <div class="dashboard-cards">
-                <div class="card message-style" style="width: 17rem;">
+                <div class="card message-style" style="width: 19rem;">
                     <h5 class="card-title text-uppercase text-center fw-bold mt-3 title-style">gestisci il tuo profilo</h5>
                     <div class="d-flex justify-content-center">
                         <img class="dashboard-img" src="{{asset('/img/varie/avatar.webp')}}" alt="">
@@ -85,7 +85,7 @@
                     </div>
                 </div>
                 
-                <div class="card message-style" style="width: 17rem;">
+                <div class="card message-style" style="width: 19rem;">
                     <h5 class="card-title text-uppercase text-center fw-bold mt-3 title-style">Messaggi e Recensioni</h5>
                     <div class="d-flex justify-content-center">
                         <img class="dashboard-img" src="{{asset('/img/varie/emails.gif')}}" alt="">
@@ -110,7 +110,7 @@
                        
                     </div>
                 </div>
-                <div class="card message-style" style="width: 17rem;">
+                <div class="card message-style" style="width: 19rem;">
                     <h5 class="card-title text-uppercase text-center fw-bold mt-3 title-style">attiva sponsorizzazioni</h5>
                     <div class="d-flex justify-content-center">
                         <img class="dashboard-img" src="{{asset('/img/varie/pos.webp')}}" alt="">
@@ -129,7 +129,7 @@
                        
                     </div>
                 </div>
-                <div class="card message-style" style="width: 17rem;">
+                <div class="card message-style" style="width: 19rem;">
                     <h5 class="card-title text-uppercase text-center fw-bold mt-3 title-style">gestisci il tuo profilo</h5>
                     <div class="d-flex justify-content-center">
                         <img class="dashboard-img" src="{{asset('/img/varie/grafici.webp')}}" alt="">
