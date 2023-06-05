@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Braintree\Gateway;
 use Illuminate\Http\Request;
+use App\Models\Teacher;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Sponsorship;
+
+
 
 class PaymentController extends Controller
 {
@@ -23,9 +28,14 @@ class PaymentController extends Controller
     public function showPaymentForm()
     {
         $clientToken = $this->gateway->clientToken()->generate();
-
-        return view('payment', compact('clientToken'));
+        $defaultPaymentAmount = 0;
+        $sponsorships = Sponsorship::all(); 
+        $selectedSponsorshipId = null;
+    
+        return view('payment', compact('clientToken', 'defaultPaymentAmount', 'sponsorships', 'selectedSponsorshipId'));
     }
+    
+
 
     public function processPayment(Request $request)
     {
@@ -51,8 +61,17 @@ class PaymentController extends Controller
             return back()->withErrors('Il pagamento ha fallito. ' . $errorString);
         }
     }
+    public function teacherSponsorship()
+{
+    // recupero le "sponsorships"
+    $sponsorships = Sponsorship::all();
+    if ($sponsorships->isEmpty()) {
+    }
+    return view('payment', ['sponsorships' => $sponsorships]);
+}
 
 
-  
+    
+
 
 }
