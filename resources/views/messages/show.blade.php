@@ -3,7 +3,7 @@
 @section('content')
     <section class="message-section">
         <div class="container py-5">
-            <div class="card message-style" style="width: 40rem; margin: 0 auto;">
+            <div class="card message-style" style="margin: 0 auto;">
                 <div class="card-body">
                     <h5 class="card-title mb-4">Da: {{ $message->ui_name }}</h5>
                     <h6 class="card-subtitle mb-2 text-body-secondary mb-3">Telefono: {{ $message->ui_phone }}</h6>

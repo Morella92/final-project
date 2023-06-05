@@ -10,47 +10,50 @@
         @endif
 
         {{-- TABELLA --}}
-        <table class="table table-striped table-inverse table-responsive bg-white message-style">
-            <thead>
-                <tr>
-                    <th scope="col">Ricezione</th>
-                    <th scope="col">Mittente</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Oggetto</a></th>
-                    <th scope="col" class=" text-center">Leggi</th>
-                    <th scope="col" class=" text-center">Cancella</th>
-                </tr>
-            </thead>
+        <div class="table-responsive">
 
-            <tbody>
-                @foreach ($messages as $message)
+            <table class="table table-striped table-inverse bg-white message-style">
+                <thead>
                     <tr>
-                        <td>
-                            {{ $message->created_at->format('d-m-Y') }}
-                        </td>
-                        <td>{{ $message->ui_name }}</td>
-                        <td>{{ $message->ui_email }}</td>
-                        <td>{{ $message->title }}</td>
-                        <td class=" text-center">
-                            {{-- VAI ALLA SHOW DEL MESSAGGIO --}}
-                            <a class="text-success" href="{{ route('messages.show', ['message' => $message->id]) }}">
-                                <i class="fa-solid fa-eye fa-bounce text-center"></i>
-                            </a>
-                        </td>
-                        <td class=" text-center">
-                            {{-- CESTINA IL MESSAGGIO --}}
-                            <form class="d-inline delete" action="{{ route('messages.destroy', $message->id) }}"
-                                method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="scb-delete" title="delete"><i
-                                        class="fa-solid fa-trash fa-shake" style="color: #c74f0f;"></i></button>
-                            </form>
-                        </td>
+                        <th scope="col">Ricezione</th>
+                        <th scope="col">Mittente</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Oggetto</a></th>
+                        <th scope="col" class=" text-center">Leggi</th>
+                        <th scope="col" class=" text-center">Cancella</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+
+                <tbody>
+                    @foreach ($messages as $message)
+                        <tr>
+                            <td>
+                                {{ $message->created_at->format('d-m-Y') }}
+                            </td>
+                            <td>{{ $message->ui_name }}</td>
+                            <td>{{ $message->ui_email }}</td>
+                            <td>{{ $message->title }}</td>
+                            <td class=" text-center">
+                                {{-- VAI ALLA SHOW DEL MESSAGGIO --}}
+                                <a class="text-success" href="{{ route('messages.show', ['message' => $message->id]) }}">
+                                    <i class="fa-solid fa-eye fa-bounce text-center"></i>
+                                </a>
+                            </td>
+                            <td class=" text-center">
+                                {{-- CESTINA IL MESSAGGIO --}}
+                                <form class="d-inline delete" action="{{ route('messages.destroy', $message->id) }}"
+                                    method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="scb-delete" title="delete"><i
+                                            class="fa-solid fa-trash fa-shake" style="color: #c74f0f;"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 
     {{-- **************************
