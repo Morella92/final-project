@@ -13,7 +13,7 @@
     <script>
         var labels = {!! json_encode($labels) !!};
         var data = {!! json_encode($data) !!};
-
+    
         var ctx = document.getElementById('bar-chart').getContext('2d');
         new Chart(ctx, {
             type: 'bar',
@@ -31,7 +31,14 @@
                 scales: {
                     y: {
                         beginAtZero: true,
-                        precision: 0
+                        ticks: {
+                            precision: 0,
+                            callback: function(value, index, values) {
+                                if (Number.isInteger(value)) {
+                                    return value;
+                                }
+                            }
+                        }
                     }
                 }
             }
