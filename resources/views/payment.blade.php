@@ -1,17 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div id="promotion-buttons" style="display: block;">
-            <!-- SPONSORSHIP BUTTON -->
+    <div class="container py-5">
+        <div id="promotion-buttons" style="display: block;" class="d-flex justify-content-center gap-5 mb-5">
+            <!-- SPONSORSHIP-->
             @foreach ($sponsorships as $sponsorship)
-                <button onclick="showDropIn(this)" data-id="{{ $sponsorship->id }}"
-                    data-duration="{{ $sponsorship->duration }}" data-description="{{ $sponsorship->description }}"
-                    class="modify-button modify-link">
-                    Sponsorizzati per {{ $sponsorship->duration }} ore - per soli {{ $sponsorship->price }} €
-                </button>
+                <div class="card message-style" style="width: 18rem;">
+                    <div class="d-flex justify-content-center mt-2">
+                        <img src="{{asset('/img/varie/sponsor.webp')}}" class="card-img-top sponsor-img" alt="...">
+                    </div>
+                    
+                    <div class="card-body">
+                        <p class="card-text">{{$sponsorship->description}}</p>
+                        <button onclick="showDropIn(this)" data-id="{{ $sponsorship->id }}"
+                            data-duration="{{ $sponsorship->duration }}" data-description="{{ $sponsorship->description }}"
+                            class="modify-button modify-link">
+                            Sponsorizzati per {{ $sponsorship->duration }} ore - per soli {{ $sponsorship->price }} €
+                        </button>
+                    </div>
+                </div>
+                
             @endforeach
-
         </div>
 
         {{-- DROP IN BRAINTREE --}}

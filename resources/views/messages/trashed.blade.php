@@ -7,7 +7,7 @@
             <div class="col-12 ">
                 <div>
                     <div class="col-6">
-                        <h2>Cestino</h2>
+                        <h2 class="text-white fw-bold">Cestino</h2>
                     </div>
                     <div class="col-6 text-end">
                         @if (count($messages))
@@ -15,76 +15,79 @@
                             <form class="d-inline delete double-confirm" action="{{ route('messages.restore-all') }}"
                                 method="POST">
                                 @csrf
-                                <button type="submit" class="btn btn-primary" title="restore all"><i
+                                <button type="submit" class="modify-button modify-link text-uppercase" title="restore all"><i
                                         class="fa-solid fa-recycle fa-beat" style="color: #1f5130;"></i>&nbsp;Ripristina
-                                    tutti</button>
+                                    tutti
+                                </button>
                             </form>
                             {{-- SVUOTA CESTINO --}}
                             <form class="d-inline delete double-confirm" action="{{ route('messages.destroy.all') }}"
                                 method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <input type="submit" class="my-2 btn btn-outline-danger btn fw-bolder text-end"
+                                <input type="submit" class="my-2 btn btn-danger fw-bolder text-end rounded"
                                     value="SVUOTA CESTINO">
                             </form>
                         @endif
                     </div>
                     {{-- TABELLA --}}
-                    <table class="table table-striped table-inverse table-responsive bg-white message-style">
-                        <thead>
-                            <tr>
-                                <th scope="col">Data</th>
-                                <th scope="col">Mittente</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Oggetto</th>
-                                <th scope="col" class=" text-center">Ripristina</th>
-                                <th scope="col" class=" text-center">Cancella</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            @forelse ($messages as $message)
+                    <div class="table-responsive">
+                        <table class="table table-striped table-inverse bg-white message-style">
+                            <thead>
                                 <tr>
-                                    <td>{{ $message->created_at->format('d/m/y') }}</td>
-                                    <td>{{ $message->ui_name }}</td>
-                                    <td>{{ $message->ui_email }}</td>
-                                    <td>{{ $message->title }}</td>
-                                    <td class=" text-center">
-                                        <form class="d-inline" action="{{ route('messages.restore', $message->id) }}"
-                                            method="POST">
-                                            @csrf
-                                            <button type="submit" class="scb-delete" title="restore"><i
-                                                    class="fa-solid fa-recycle fa-beat"
-                                                    style="color: #1f5130;"></i></button>
-                                        </form>
-                                    </td>
-                                    <td class=" text-center">
-                                        {{-- FORCE DELETE SINGOLO --}}
-                                        <form class="d-inline delete double-confirm"
-                                            action="{{ route('messages.force-delete', $message->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="scb-delete" title="delete"><i
-                                                    class="fa-solid fa-trash fa-shake" style="color: #c74f0f;"></i></button>
-                                        </form>
-                                        </form>
-                                    </td>
+                                    <th scope="col">Data</th>
+                                    <th scope="col">Mittente</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Oggetto</th>
+                                    <th scope="col" class=" text-center">Ripristina</th>
+                                    <th scope="col" class=" text-center">Cancella</th>
                                 </tr>
-                            @empty
-                                <h2>
-                                    Nessun messaggio
-                                </h2>
-                            @endforelse
-                        </tbody>
-                    </table>
+                            </thead>
+    
+                            <tbody>
+                                @forelse ($messages as $message)
+                                    <tr>
+                                        <td>{{ $message->created_at->format('d/m/y') }}</td>
+                                        <td>{{ $message->ui_name }}</td>
+                                        <td>{{ $message->ui_email }}</td>
+                                        <td>{{ $message->title }}</td>
+                                        <td class=" text-center">
+                                            <form class="d-inline" action="{{ route('messages.restore', $message->id) }}"
+                                                method="POST">
+                                                @csrf
+                                                <button type="submit" class="scb-delete" title="restore"><i
+                                                        class="fa-solid fa-recycle fa-beat"
+                                                        style="color: #1f5130;"></i></button>
+                                            </form>
+                                        </td>
+                                        <td class=" text-center">
+                                            {{-- FORCE DELETE SINGOLO --}}
+                                            <form class="d-inline delete double-confirm"
+                                                action="{{ route('messages.force-delete', $message->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="scb-delete" title="delete"><i
+                                                        class="fa-solid fa-trash fa-shake" style="color: #c74f0f;"></i></button>
+                                            </form>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <h2>
+                                        Nessun messaggio
+                                    </h2>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 {{-- COUNTER --}}
-                <div class="card-footer text-end">
+                <div class="card-footer text-end text-white">
                     <b>{{ count($messages) }}</b> messaggio/i
                 </div>
                 {{-- GO BACK --}}
-                <button>
-                    <a href="{{ route('messages.index') }}">
+                <button class="modify-button">
+                    <a class="modify-link" href="{{ route('messages.index') }}">
                         INDIETRO
                     </a>
                 </button>

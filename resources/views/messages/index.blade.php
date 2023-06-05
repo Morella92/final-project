@@ -5,8 +5,12 @@
         <h1 class="text-white">Messaggi ricevuti</h1>
         {{-- cestino --}}
         @if ($trashed)
-            <a class="btn btn-primary" href="{{ route('messages.trashed') }}"><b>{{ $trashed }}</b> messaggio/i nel
-                cestino</a>
+            <button class="modify-button text-uppercase mb-3">
+                <a class="modify-link" href="{{ route('messages.trashed') }}"><b>{{ $trashed }}</b> messaggio/i nel
+                    cestino
+                </a>
+            </button>
+            
         @endif
 
         {{-- TABELLA --}}
