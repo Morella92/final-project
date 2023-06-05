@@ -15,6 +15,22 @@
         var data = {!! json_encode($data) !!};
     
         var ctx = document.getElementById('bar-chart').getContext('2d');
+    
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color + '80';
+        }
+    
+        var backgroundColors = labels.map(function(label) {
+            return getRandomColor();
+        });
+    
+        var borderColor = 'rgba(75, 192, 192, 1)';
+    
         new Chart(ctx, {
             type: 'bar',
             data: {
@@ -22,12 +38,38 @@
                 datasets: [{
                     label: 'Messaggi',
                     data: data,
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: backgroundColors,
+                    borderColor: borderColor,
                     borderWidth: 1
                 }]
             },
             options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Messaggi ricevuti per Mese/Anno'
+                    },
+                    legend: {
+                        display: true,
+                        labels: {
+                            generateLabels: function(chart) {
+                                var data = chart.data;
+                                if (data.labels.length && data.datasets.length) {
+                                    return data.labels.map(function(label, index) {
+                                        var dataset = data.datasets[0];
+                                        return {
+                                            text: label,
+                                            fillStyle: dataset.backgroundColor[index],
+                                            hidden: false,
+                                            index: index
+                                        };
+                                    });
+                                }
+                                return [];
+                            }
+                        }
+                    }
+                },
                 scales: {
                     y: {
                         beginAtZero: true,
@@ -44,6 +86,9 @@
             }
         });
     </script>
+    
+    
+    
 </body>
 
 </html>
