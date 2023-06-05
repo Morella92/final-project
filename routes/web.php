@@ -9,6 +9,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MessageController as MessagesController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\DashboardController;
+
 
 
 /*
@@ -64,7 +66,7 @@ Route::middleware('auth')->group(function () {
     
 });
 
-
+Route::get('/bar-chart', [DashboardController::class, 'showBarChart'])->name('bar-chart');
 
 Route::get('/payment', [PaymentController::class, 'showPaymentForm'])->name('payment');
 
