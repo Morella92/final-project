@@ -9,7 +9,7 @@
             height: 300px;
         }
 
-        .block{
+        .block {
             display: block;
         }
 
@@ -30,8 +30,8 @@
                 <label for="specializations" class="text-white form-label fw-bold text-uppercase">Specializzazione / i <span
                         class="fw-bolder text-danger">*</span></label>
                 <div class="dropdown @error('specializations') is-invalid @enderror">
-                    <button class="btn btn-white dropdown-toggle text-white message-style" type="button" id="specializationsDropdown"
-                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn btn-white dropdown-toggle text-white message-style" type="button"
+                        id="specializationsDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                     </button>
                     <div class="dropdown-menu dd-create" aria-labelledby="specializationsDropdown">
@@ -83,7 +83,8 @@
             {{-- UPLOAD --}}
             {{-- PROFILE IMG --}}
             <div class="mt-2">
-                <label for="cv" class="text-white form-label fw-bold text-uppercase">Carica l'immagine di profilo</label>
+                <label for="cv" class="text-white form-label fw-bold text-uppercase">Carica l'immagine di
+                    profilo</label>
                 <div class="input-group mb-3">
                     <input type="file" name="picture" value=""
                         class="message-style form-control @error('picture') is-invalid @enderror" id="inputGroupFile02">
@@ -100,7 +101,8 @@
             <div class="col-12">
 
                 <div class="mt-2">
-                    <label for="cv" class="text-white form-label fw-bold text-uppercase">Carica Curriculum Vitae in formato
+                    <label for="cv" class="text-white form-label fw-bold text-uppercase">Carica Curriculum Vitae in
+                        formato
                         immagine</label>
                     <div class="input-group mb-3">
                         <input type="file" name="cv" value=""
@@ -115,6 +117,7 @@
                 </div>
                 {{-- formato pdf --}}
                 <div>
+
                     <input type="file" name="pdf_cv" value=""
                         class="message-style form-control @error('pdf_cv') is-invalid @enderror" id="inputGroupFile02">
                     @error('pdf_cv')

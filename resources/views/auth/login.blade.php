@@ -95,7 +95,8 @@
                                             </div>
                                             <div>
                                                 <button type="button" class="btn log-btn-front fw-bold">
-                                                    <a class="nav-link" href="#">Prosegui navigazione</a>
+                                                    <a class="nav-link" href="http://localhost:5174/">Prosegui
+                                                        navigazione</a>
                                                 </button>
                                             </div>
 

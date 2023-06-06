@@ -68,11 +68,11 @@
 
         </div>
         <div>
-            <p>
+            <span class="text-white d-block">
                 @php
                     echo $teacher->performance;
                 @endphp
-            </p>
+            </span>
             <button class="modify-button">
                 <a class="modify-link" href="{{ route('teachers.edit', Auth::user()->teacher->id) }}">
                     Modifica il tuo profilo
