@@ -116,7 +116,7 @@
             </div>
             <div class="row d-flex justify-content-around mb-5">
                 <div class="col-6 card message-style m-3" style="width: 30rem;">
-                    <h5 class="card-title text-uppercase text-center fw-bold mt-3 title-style">asponsorizzazioni</h5>
+                    <h5 class="card-title text-uppercase text-center fw-bold mt-3 title-style">sponsorizzazioni</h5>
                     <div class="d-flex justify-content-center">
                         <img class="dashboard-img" src="{{ asset('/img/varie/pos.webp') }}" alt="">
                     </div>
